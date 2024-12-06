@@ -9,15 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E2E1C3EC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tolitech.Results", "src\Results\Tolitech.Results.csproj", "{07144B10-0604-4D7C-9A5F-4CCBEFD69036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tolitech.Results.UnitTests", "tests\Results.UnitTests\Tolitech.Results.UnitTests.csproj", "{85F86667-195E-49AE-8AC9-DE1DE441F77C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tolitech.Results.UnitTests", "tests\Results\Tolitech.Results.UnitTests.csproj", "{85F86667-195E-49AE-8AC9-DE1DE441F77C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tolitech.Results.Guards", "src\Results.Guards\Tolitech.Results.Guards.csproj", "{4C4F2B11-11A3-4151-B798-3A90FB6591E8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tolitech.Results.Http", "src\Results.Http\Tolitech.Results.Http.csproj", "{D20713A2-059D-4856-BEEC-D45248276E2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tolitech.Results.Guards.UnitTests", "tests\Results.Guards.UnitTests\Tolitech.Results.Guards.UnitTests.csproj", "{7414AD98-81D4-44AF-BB8E-562A6A5023A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tolitech.Results.Guards.UnitTests", "tests\Results.Guards\Tolitech.Results.Guards.UnitTests.csproj", "{7414AD98-81D4-44AF-BB8E-562A6A5023A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tolitech.Results.Http.UnitTests", "tests\Results.Http.UnitTests\Tolitech.Results.Http.UnitTests.csproj", "{5E27E5FA-B544-4196-8519-C38832FDC673}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tolitech.Results.Http.UnitTests", "tests\Results.Http\Tolitech.Results.Http.UnitTests.csproj", "{5E27E5FA-B544-4196-8519-C38832FDC673}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CD680EB0-C436-4F6A-BD57-F412C28B5121}"
 	ProjectSection(SolutionItems) = preProject
