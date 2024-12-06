@@ -1,4 +1,4 @@
-# Results
+﻿# Results
 
 The Results pattern is a design approach used for handling errors and outcomes in a structured manner. Instead of relying solely on exceptions, this pattern involves returning an object that encapsulates both the result and any potential errors that may have occurred during the operation.
 
@@ -104,6 +104,7 @@ public class MathOperation
         }
     }
 }
+```
 
 # Results.Guards
 
