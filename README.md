@@ -1,4 +1,4 @@
-﻿# Results
+﻿# Tolitech.Results
 
 The Results pattern is a design approach used for handling errors and outcomes in a structured manner. Instead of relying solely on exceptions, this pattern involves returning an object that encapsulates both the result and any potential errors that may have occurred during the operation.
 
@@ -106,9 +106,9 @@ public class MathOperation
 }
 ```
 
-# Results.Guards
+# Tolitech.Results.Guards
 
-Results.Guards is a utility library that provides fluent and expressive guard clauses for result-oriented programming. Simplify validation and error handling with these extension methods:
+Tolitech.Results.Guards is a utility library that provides fluent and expressive guard clauses for result-oriented programming. Simplify validation and error handling with these extension methods:
 
 ## Why Use Guards?
 
@@ -373,11 +373,11 @@ result.Guard()
     .ErrorIfNotBetween(amount, minimum, maximum);
 ```
 
-# Results.Http
+# Tolitech.Results.Http
 
 ## Overview
 
-The `Results.Http` library provides extension methods for handling HTTP responses and populating a `Result` object. It contains a method `ReadProblemDetailsAsync` that reads the content of an `HttpResponseMessage` asynchronously and populates the provided `Result` object with the details extracted from the response.
+The `Tolitech.Results.Http` library provides extension methods for handling HTTP responses and populating a `Result` object. It contains a method `ReadProblemDetailsAsync` that reads the content of an `HttpResponseMessage` asynchronously and populates the provided `Result` object with the details extracted from the response.
 
 ## Usage
 
