@@ -1,8 +1,8 @@
-# Results.Http
+﻿# Tolitech.Results.Http
 
 ## Overview
 
-The `Results.Http` library provides extension methods for handling HTTP responses and populating a `Result` object. It contains a method `ReadProblemDetailsAsync` that reads the content of an `HttpResponseMessage` asynchronously and populates the provided `Result` object with the details extracted from the response.
+The `Tolitech.Results.Http` library provides extension methods for handling HTTP responses and populating a `Result` object. It contains a method `ReadProblemDetailsAsync` that reads the content of an `HttpResponseMessage` asynchronously and populates the provided `Result` object with the details extracted from the response.
 
 ## Usage
 

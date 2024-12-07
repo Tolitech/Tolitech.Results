@@ -1,6 +1,6 @@
-# Results.Guards
+﻿# Tolitech.Results.Guards
 
-Results.Guards is a utility library that provides fluent and expressive guard clauses for result-oriented programming. Simplify validation and error handling with these extension methods:
+Tolitech.Results.Guards is a utility library that provides fluent and expressive guard clauses for result-oriented programming. Simplify validation and error handling with these extension methods:
 
 ## Why Use Guards?
 
