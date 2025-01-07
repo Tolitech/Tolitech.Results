@@ -146,6 +146,46 @@ public class Result : IResult
     }
 
     /// <summary>
+    /// Represents a result indicating that the requested resource was found.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the resource was found.</returns>
+    public static Result Found()
+    {
+        return new(true, StatusCode.Found);
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the requested resource was found with a typed value.
+    /// </summary>
+    /// <typeparam name="T">The type of the result value.</typeparam>
+    /// <param name="value">The typed value.</param>
+    /// <returns>An instance of the <see cref="Result{T}"/> class indicating that the resource was found with the specified value.</returns>
+    public static Result<T> Found<T>(T value)
+    {
+        return new(value, true, StatusCode.Found);
+    }
+
+    /// <summary>
+    /// Represents a result indicating that no modifications were made to the requested resource.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating no modifications.</returns>
+    public static Result NotModified()
+    {
+        return new(true, StatusCode.NotModified);
+    }
+
+    /// <summary>
+    /// Represents a result indicating that no modifications were made to the requested resource with a typed value.
+    /// </summary>
+    /// <typeparam name="T">The type of the result value.</typeparam>
+    /// <param name="value">The typed value.</param>
+    /// <returns>An instance of the <see cref="Result{T}"/> class indicating no modifications with the specified value.</returns>
+    public static Result<T> NotModified<T>(T value)
+    {
+        return new(value, true, StatusCode.NotModified);
+    }
+
+    /// <summary>
     /// Represents a result indicating a bad request.
     /// </summary>
     /// <returns>An instance of the <see cref="Result"/> class indicating a bad request.</returns>
@@ -183,6 +223,43 @@ public class Result : IResult
     }
 
     /// <summary>
+    /// Represents a result indicating unauthorized access.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating unauthorized access.</returns>
+    public static Result Unauthorized()
+    {
+        return new(false, StatusCode.Unauthorized);
+    }
+
+    /// <summary>
+    /// Represents a result indicating unauthorized access with additional details.
+    /// </summary>
+    /// <param name="detail">A detailed message describing the reason for unauthorized access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating unauthorized access.</returns>
+    public static Result Unauthorized(string detail)
+    {
+        return new(false, StatusCode.Unauthorized)
+        {
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating unauthorized access with a specific title and additional details.
+    /// </summary>
+    /// <param name="title">A short title describing the unauthorized access.</param>
+    /// <param name="detail">A detailed message providing additional context about the unauthorized access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating unauthorized access.</returns>
+    public static Result Unauthorized(string title, string detail)
+    {
+        return new(false, StatusCode.Unauthorized)
+        {
+            Title = title,
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
     /// Represents a result indicating forbidden access.
     /// </summary>
     /// <returns>An instance of the <see cref="Result"/> class indicating forbidden access.</returns>
@@ -198,7 +275,10 @@ public class Result : IResult
     /// <returns>An instance of the <see cref="Result"/> class indicating forbidden access.</returns>
     public static Result Forbidden(string detail)
     {
-        return new(false, StatusCode.Forbidden);
+        return new(false, StatusCode.Forbidden)
+        {
+            Detail = detail,
+        };
     }
 
     /// <summary>
@@ -209,7 +289,11 @@ public class Result : IResult
     /// <returns>An instance of the <see cref="Result"/> class indicating forbidden access.</returns>
     public static Result Forbidden(string title, string detail)
     {
-        return new(false, StatusCode.Forbidden);
+        return new(false, StatusCode.Forbidden)
+        {
+            Title = title,
+            Detail = detail,
+        };
     }
 
     /// <summary>
@@ -228,7 +312,10 @@ public class Result : IResult
     /// <returns>An instance of the <see cref="Result"/> class indicating a resource not found.</returns>
     public static Result NotFound(string detail)
     {
-        return new(false, StatusCode.NotFound);
+        return new(false, StatusCode.NotFound)
+        {
+            Detail = detail,
+        };
     }
 
     /// <summary>
@@ -239,7 +326,85 @@ public class Result : IResult
     /// <returns>An instance of the <see cref="Result"/> class indicating a resource not found.</returns>
     public static Result NotFound(string title, string detail)
     {
-        return new(false, StatusCode.NotFound);
+        return new(false, StatusCode.NotFound)
+        {
+            Title = title,
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the HTTP method is not allowed for the requested resource.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the method is not allowed.</returns>
+    public static Result MethodNotAllowed()
+    {
+        return new(false, StatusCode.MethodNotAllowed);
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the HTTP method is not allowed for the requested resource with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why the method is not allowed.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the method is not allowed.</returns>
+    public static Result MethodNotAllowed(string detail)
+    {
+        return new(false, StatusCode.MethodNotAllowed)
+        {
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the HTTP method is not allowed for the requested resource with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the method is not allowed.</returns>
+    public static Result MethodNotAllowed(string title, string detail)
+    {
+        return new(false, StatusCode.MethodNotAllowed)
+        {
+            Title = title,
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the request timed out.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a request timeout.</returns>
+    public static Result RequestTimeout()
+    {
+        return new(false, StatusCode.RequestTimeout);
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the request timed out with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why the request timed out.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a request timeout.</returns>
+    public static Result RequestTimeout(string detail)
+    {
+        return new(false, StatusCode.RequestTimeout)
+        {
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the request timed out with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a request timeout.</returns>
+    public static Result RequestTimeout(string title, string detail)
+    {
+        return new(false, StatusCode.RequestTimeout)
+        {
+            Title = title,
+            Detail = detail,
+        };
     }
 
     /// <summary>
@@ -258,7 +423,10 @@ public class Result : IResult
     /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
     public static Result Conflict(string detail)
     {
-        return new(false, StatusCode.Conflict);
+        return new(false, StatusCode.Conflict)
+        {
+            Detail = detail,
+        };
     }
 
     /// <summary>
@@ -269,7 +437,48 @@ public class Result : IResult
     /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
     public static Result Conflict(string title, string detail)
     {
-        return new(false, StatusCode.Conflict);
+        return new(false, StatusCode.Conflict)
+        {
+            Title = title,
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating that too many requests were made in a given time period.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating too many requests.</returns>
+    public static Result TooManyRequests()
+    {
+        return new(false, StatusCode.TooManyRequests);
+    }
+
+    /// <summary>
+    /// Represents a result indicating that too many requests were made with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why too many requests were made.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating too many requests.</returns>
+    public static Result TooManyRequests(string detail)
+    {
+        return new(false, StatusCode.TooManyRequests)
+        {
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating that too many requests were made with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating too many requests.</returns>
+    public static Result TooManyRequests(string title, string detail)
+    {
+        return new(false, StatusCode.TooManyRequests)
+        {
+            Title = title,
+            Detail = detail,
+        };
     }
 
     /// <summary>
@@ -288,7 +497,10 @@ public class Result : IResult
     /// <returns>An instance of the <see cref="Result"/> class indicating an internal server error.</returns>
     public static Result InternalServerError(string detail)
     {
-        return new(false, StatusCode.InternalServerError);
+        return new(false, StatusCode.InternalServerError)
+        {
+            Detail = detail,
+        };
     }
 
     /// <summary>
@@ -299,7 +511,48 @@ public class Result : IResult
     /// <returns>An instance of the <see cref="Result"/> class indicating an internal server error.</returns>
     public static Result InternalServerError(string title, string detail)
     {
-        return new(false, StatusCode.InternalServerError);
+        return new(false, StatusCode.InternalServerError)
+        {
+            Title = title,
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the server encountered an error and acted as a bad gateway.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad gateway error.</returns>
+    public static Result BadGateway()
+    {
+        return new(false, StatusCode.BadGateway);
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the server encountered an error and acted as a bad gateway with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing the bad gateway error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad gateway error.</returns>
+    public static Result BadGateway(string detail)
+    {
+        return new(false, StatusCode.BadGateway)
+        {
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the server encountered an error and acted as a bad gateway with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad gateway error.</returns>
+    public static Result BadGateway(string title, string detail)
+    {
+        return new(false, StatusCode.BadGateway)
+        {
+            Title = title,
+            Detail = detail,
+        };
     }
 
     /// <summary>
@@ -318,7 +571,10 @@ public class Result : IResult
     /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
     public static Result ServiceUnavailable(string detail)
     {
-        return new(false, StatusCode.ServiceUnavailable);
+        return new(false, StatusCode.ServiceUnavailable)
+        {
+            Detail = detail,
+        };
     }
 
     /// <summary>
@@ -329,7 +585,48 @@ public class Result : IResult
     /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
     public static Result ServiceUnavailable(string title, string detail)
     {
-        return new(false, StatusCode.ServiceUnavailable);
+        return new(false, StatusCode.ServiceUnavailable)
+        {
+            Title = title,
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the gateway timed out.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a gateway timeout.</returns>
+    public static Result GatewayTimeout()
+    {
+        return new(false, StatusCode.GatewayTimeout);
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the gateway timed out with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why the gateway timed out.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a gateway timeout.</returns>
+    public static Result GatewayTimeout(string detail)
+    {
+        return new(false, StatusCode.GatewayTimeout)
+        {
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the gateway timed out with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a gateway timeout.</returns>
+    public static Result GatewayTimeout(string title, string detail)
+    {
+        return new(false, StatusCode.GatewayTimeout)
+        {
+            Title = title,
+            Detail = detail,
+        };
     }
 
     /// <summary>

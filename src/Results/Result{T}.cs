@@ -146,6 +146,30 @@ public class Result<T> : Result
     }
 
     /// <summary>
+    /// Represents a result indicating that the requested resource was found with a typed value.
+    /// </summary>
+    /// <param name="value">The typed value.</param>
+    /// <returns>An instance of the <see cref="Result{T}"/> class indicating that the resource was found with the specified value.</returns>
+    public Result<T> Found(T value)
+    {
+        SetValue(value);
+        SetStatusCode(StatusCode.Found);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that no modifications were made to the requested resource with a typed value.
+    /// </summary>
+    /// <param name="value">The typed value.</param>
+    /// <returns>An instance of the <see cref="Result{T}"/> class indicating no modifications with the specified value.</returns>
+    public Result<T> NotModified(T value)
+    {
+        SetValue(value);
+        SetStatusCode(StatusCode.NotModified);
+        return this;
+    }
+
+    /// <summary>
     /// Represents a result indicating a bad request.
     /// </summary>
     /// <returns>An instance of the <see cref="Result"/> class indicating a bad request.</returns>
@@ -179,6 +203,45 @@ public class Result<T> : Result
     {
         SetValue(default!);
         SetStatusCode(StatusCode.BadRequest);
+        SetTitle(title);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating unauthorized access.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating unauthorized access.</returns>
+    public new Result<T> Unauthorized()
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.Unauthorized);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating unauthorized access with additional details.
+    /// </summary>
+    /// <param name="detail">A detailed message describing the reason for unauthorized access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating unauthorized access.</returns>
+    public new Result<T> Unauthorized(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.Unauthorized);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating unauthorized access with a specific title and additional details.
+    /// </summary>
+    /// <param name="title">A short title describing the unauthorized access.</param>
+    /// <param name="detail">A detailed message providing additional context about the unauthorized access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating unauthorized access.</returns>
+    public new Result<T> Unauthorized(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.Unauthorized);
         SetTitle(title);
         SetDetail(detail);
         return this;
@@ -263,6 +326,84 @@ public class Result<T> : Result
     }
 
     /// <summary>
+    /// Represents a result indicating that the HTTP method is not allowed for the requested resource.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the method is not allowed.</returns>
+    public new Result<T> MethodNotAllowed()
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.MethodNotAllowed);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the HTTP method is not allowed for the requested resource with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why the method is not allowed.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the method is not allowed.</returns>
+    public new Result<T> MethodNotAllowed(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.MethodNotAllowed);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the HTTP method is not allowed for the requested resource with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the method is not allowed.</returns>
+    public new Result<T> MethodNotAllowed(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.MethodNotAllowed);
+        SetTitle(title);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the request timed out.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a request timeout.</returns>
+    public new Result<T> RequestTimeout()
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.RequestTimeout);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the request timed out with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why the request timed out.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a request timeout.</returns>
+    public new Result<T> RequestTimeout(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.RequestTimeout);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the request timed out with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a request timeout.</returns>
+    public new Result<T> RequestTimeout(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.RequestTimeout);
+        SetTitle(title);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
     /// Represents a result indicating a conflict.
     /// </summary>
     /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
@@ -296,6 +437,45 @@ public class Result<T> : Result
     {
         SetValue(default!);
         SetStatusCode(StatusCode.Conflict);
+        SetTitle(title);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that too many requests were made in a given time period.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating too many requests.</returns>
+    public new Result<T> TooManyRequests()
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.TooManyRequests);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that too many requests were made with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why too many requests were made.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating too many requests.</returns>
+    public new Result<T> TooManyRequests(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.TooManyRequests);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that too many requests were made with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating too many requests.</returns>
+    public new Result<T> TooManyRequests(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.TooManyRequests);
         SetTitle(title);
         SetDetail(detail);
         return this;
@@ -341,6 +521,45 @@ public class Result<T> : Result
     }
 
     /// <summary>
+    /// Represents a result indicating that the server encountered an error and acted as a bad gateway.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad gateway error.</returns>
+    public new Result<T> BadGateway()
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.BadGateway);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the server encountered an error and acted as a bad gateway with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing the bad gateway error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad gateway error.</returns>
+    public new Result<T> BadGateway(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.BadGateway);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the server encountered an error and acted as a bad gateway with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad gateway error.</returns>
+    public new Result<T> BadGateway(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.BadGateway);
+        SetTitle(title);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
     /// Represents a result indicating that the service is currently unavailable.
     /// </summary>
     /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
@@ -374,6 +593,45 @@ public class Result<T> : Result
     {
         SetValue(default!);
         SetStatusCode(StatusCode.ServiceUnavailable);
+        SetTitle(title);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the gateway timed out.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a gateway timeout.</returns>
+    public new Result<T> GatewayTimeout()
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.GatewayTimeout);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the gateway timed out with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why the gateway timed out.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a gateway timeout.</returns>
+    public new Result<T> GatewayTimeout(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.GatewayTimeout);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the gateway timed out with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a gateway timeout.</returns>
+    public new Result<T> GatewayTimeout(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.GatewayTimeout);
         SetTitle(title);
         SetDetail(detail);
         return this;

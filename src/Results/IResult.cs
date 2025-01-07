@@ -101,6 +101,34 @@ public interface IResult
     static abstract Result<T> NoContent<T>();
 
     /// <summary>
+    /// Represents a result indicating that the requested resource was found.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the resource was found.</returns>
+    static abstract Result Found();
+
+    /// <summary>
+    /// Represents a result indicating that the requested resource was found with a typed value.
+    /// </summary>
+    /// <typeparam name="T">The type of the result value.</typeparam>
+    /// <param name="value">The typed value.</param>
+    /// <returns>An instance of the <see cref="Result{T}"/> class indicating that the resource was found with the specified value.</returns>
+    static abstract Result<T> Found<T>(T value);
+
+    /// <summary>
+    /// Represents a result indicating that no modifications were made to the requested resource.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating no modifications.</returns>
+    static abstract Result NotModified();
+
+    /// <summary>
+    /// Represents a result indicating that no modifications were made to the requested resource with a typed value.
+    /// </summary>
+    /// <typeparam name="T">The type of the result value.</typeparam>
+    /// <param name="value">The typed value.</param>
+    /// <returns>An instance of the <see cref="Result{T}"/> class indicating no modifications with the specified value.</returns>
+    static abstract Result<T> NotModified<T>(T value);
+
+    /// <summary>
     /// Represents a result indicating a bad request.
     /// </summary>
     /// <returns>An instance of the <see cref="Result"/> class indicating a bad request.</returns>
@@ -120,6 +148,27 @@ public interface IResult
     /// <param name="detail">A detailed message providing additional context about the bad request.</param>
     /// <returns>An instance of the <see cref="Result"/> class indicating a bad request.</returns>
     static abstract Result BadRequest(string title, string detail);
+
+    /// <summary>
+    /// Represents a result indicating unauthorized access.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating unauthorized access.</returns>
+    static abstract Result Unauthorized();
+
+    /// <summary>
+    /// Represents a result indicating unauthorized access with additional details.
+    /// </summary>
+    /// <param name="detail">A detailed message describing the reason for unauthorized access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating unauthorized access.</returns>
+    static abstract Result Unauthorized(string detail);
+
+    /// <summary>
+    /// Represents a result indicating unauthorized access with a specific title and additional details.
+    /// </summary>
+    /// <param name="title">A short title describing the unauthorized access.</param>
+    /// <param name="detail">A detailed message providing additional context about the unauthorized access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating unauthorized access.</returns>
+    static abstract Result Unauthorized(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating forbidden access.
@@ -164,6 +213,48 @@ public interface IResult
     static abstract Result NotFound(string title, string detail);
 
     /// <summary>
+    /// Represents a result indicating that the HTTP method is not allowed for the requested resource.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the method is not allowed.</returns>
+    static abstract Result MethodNotAllowed();
+
+    /// <summary>
+    /// Represents a result indicating that the HTTP method is not allowed for the requested resource with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why the method is not allowed.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the method is not allowed.</returns>
+    static abstract Result MethodNotAllowed(string detail);
+
+    /// <summary>
+    /// Represents a result indicating that the HTTP method is not allowed for the requested resource with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the method is not allowed.</returns>
+    static abstract Result MethodNotAllowed(string title, string detail);
+
+    /// <summary>
+    /// Represents a result indicating that the request timed out.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a request timeout.</returns>
+    static abstract Result RequestTimeout();
+
+    /// <summary>
+    /// Represents a result indicating that the request timed out with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why the request timed out.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a request timeout.</returns>
+    static abstract Result RequestTimeout(string detail);
+
+    /// <summary>
+    /// Represents a result indicating that the request timed out with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a request timeout.</returns>
+    static abstract Result RequestTimeout(string title, string detail);
+
+    /// <summary>
     /// Represents a result indicating a conflict.
     /// </summary>
     /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
@@ -183,6 +274,27 @@ public interface IResult
     /// <param name="detail">A detailed message providing additional context about the conflict.</param>
     /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
     static abstract Result Conflict(string title, string detail);
+
+    /// <summary>
+    /// Represents a result indicating that too many requests were made in a given time period.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating too many requests.</returns>
+    static abstract Result TooManyRequests();
+
+    /// <summary>
+    /// Represents a result indicating that too many requests were made with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why too many requests were made.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating too many requests.</returns>
+    static abstract Result TooManyRequests(string detail);
+
+    /// <summary>
+    /// Represents a result indicating that too many requests were made with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating too many requests.</returns>
+    static abstract Result TooManyRequests(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating an internal server error.
@@ -206,6 +318,27 @@ public interface IResult
     static abstract Result InternalServerError(string title, string detail);
 
     /// <summary>
+    /// Represents a result indicating that the server encountered an error and acted as a bad gateway.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad gateway error.</returns>
+    static abstract Result BadGateway();
+
+    /// <summary>
+    /// Represents a result indicating that the server encountered an error and acted as a bad gateway with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing the bad gateway error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad gateway error.</returns>
+    static abstract Result BadGateway(string detail);
+
+    /// <summary>
+    /// Represents a result indicating that the server encountered an error and acted as a bad gateway with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad gateway error.</returns>
+    static abstract Result BadGateway(string title, string detail);
+
+    /// <summary>
     /// Represents a result indicating that the service is currently unavailable.
     /// </summary>
     /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
@@ -225,6 +358,27 @@ public interface IResult
     /// <param name="detail">A detailed message providing additional context about the service unavailability.</param>
     /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
     static abstract Result ServiceUnavailable(string title, string detail);
+
+    /// <summary>
+    /// Represents a result indicating that the gateway timed out.
+    /// </summary>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a gateway timeout.</returns>
+    static abstract Result GatewayTimeout();
+
+    /// <summary>
+    /// Represents a result indicating that the gateway timed out with a detailed message.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why the gateway timed out.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a gateway timeout.</returns>
+    static abstract Result GatewayTimeout(string detail);
+
+    /// <summary>
+    /// Represents a result indicating that the gateway timed out with a specific title and detailed message.
+    /// </summary>
+    /// <param name="title">A short title describing the error.</param>
+    /// <param name="detail">A detailed message providing additional context about the error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a gateway timeout.</returns>
+    static abstract Result GatewayTimeout(string title, string detail);
 
     /// <summary>
     /// Adds an informational message to the result.
