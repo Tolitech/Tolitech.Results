@@ -157,6 +157,34 @@ public class Result<T> : Result
     }
 
     /// <summary>
+    /// Represents a result indicating a bad request.
+    /// </summary>
+    /// <param name="detail">A detailed message describing the reason for the bad request.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad request.</returns>
+    public new Result<T> BadRequest(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.BadRequest);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating a bad request.
+    /// </summary>
+    /// <param name="title">A short title describing the bad request.</param>
+    /// <param name="detail">A detailed message providing additional context about the bad request.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad request.</returns>
+    public new Result<T> BadRequest(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.BadRequest);
+        SetTitle(title);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
     /// Represents a result indicating forbidden access.
     /// </summary>
     /// <returns>An instance of the <see cref="Result"/> class indicating forbidden access.</returns>
@@ -164,6 +192,34 @@ public class Result<T> : Result
     {
         SetValue(default!);
         SetStatusCode(StatusCode.Forbidden);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating forbidden access.
+    /// </summary>
+    /// <param name="detail">A detailed message providing the reason for the forbidden access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating forbidden access.</returns>
+    public new Result<T> Forbidden(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.Forbidden);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating forbidden access.
+    /// </summary>
+    /// <param name="title">A short title describing the forbidden access.</param>
+    /// <param name="detail">A detailed message providing additional context about the forbidden access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating forbidden access.</returns>
+    public new Result<T> Forbidden(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.Forbidden);
+        SetTitle(title);
+        SetDetail(detail);
         return this;
     }
 
@@ -179,6 +235,34 @@ public class Result<T> : Result
     }
 
     /// <summary>
+    /// Represents a result indicating a resource not found.
+    /// </summary>
+    /// <param name="detail">A detailed message describing why the resource was not found.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a resource not found.</returns>
+    public new Result<T> NotFound(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.NotFound);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating a resource not found.
+    /// </summary>
+    /// <param name="title">A short title describing the resource not found.</param>
+    /// <param name="detail">A detailed message providing additional context about why the resource was not found.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a resource not found.</returns>
+    public new Result<T> NotFound(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.NotFound);
+        SetTitle(title);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
     /// Represents a result indicating a conflict.
     /// </summary>
     /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
@@ -186,6 +270,34 @@ public class Result<T> : Result
     {
         SetValue(default!);
         SetStatusCode(StatusCode.Conflict);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating a conflict.
+    /// </summary>
+    /// <param name="detail">A detailed message describing the reason for the conflict.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
+    public new Result<T> Conflict(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.Conflict);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating a conflict.
+    /// </summary>
+    /// <param name="title">A short title describing the conflict.</param>
+    /// <param name="detail">A detailed message providing additional context about the conflict.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
+    public new Result<T> Conflict(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.Conflict);
+        SetTitle(title);
+        SetDetail(detail);
         return this;
     }
 
@@ -201,6 +313,34 @@ public class Result<T> : Result
     }
 
     /// <summary>
+    /// Represents a result indicating an internal server error.
+    /// </summary>
+    /// <param name="detail">A detailed message describing the internal server error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating an internal server error.</returns>
+    public new Result<T> InternalServerError(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.InternalServerError);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating an internal server error.
+    /// </summary>
+    /// <param name="title">A short title describing the internal server error.</param>
+    /// <param name="detail">A detailed message providing additional context about the internal server error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating an internal server error.</returns>
+    public new Result<T> InternalServerError(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.InternalServerError);
+        SetTitle(title);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
     /// Represents a result indicating that the service is currently unavailable.
     /// </summary>
     /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
@@ -208,6 +348,34 @@ public class Result<T> : Result
     {
         SetValue(default!);
         SetStatusCode(StatusCode.ServiceUnavailable);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the service is currently unavailable.
+    /// </summary>
+    /// <param name="detail">A detailed message describing the reason for the service unavailability.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
+    public new Result<T> ServiceUnavailable(string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.ServiceUnavailable);
+        SetDetail(detail);
+        return this;
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the service is currently unavailable.
+    /// </summary>
+    /// <param name="title">A short title describing the service unavailability.</param>
+    /// <param name="detail">A detailed message providing additional context about the service unavailability.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
+    public new Result<T> ServiceUnavailable(string title, string detail)
+    {
+        SetValue(default!);
+        SetStatusCode(StatusCode.ServiceUnavailable);
+        SetTitle(title);
+        SetDetail(detail);
         return this;
     }
 

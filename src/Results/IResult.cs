@@ -107,12 +107,19 @@ public interface IResult
     static abstract Result BadRequest();
 
     /// <summary>
-    /// Represents a result indicating a bad request with a typed value.
+    /// Represents a result indicating a bad request.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <param name="value">The typed value.</param>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating a bad request with the specified value.</returns>
-    static abstract Result<T> BadRequest<T>(T value);
+    /// <param name="detail">A detailed message describing the reason for the bad request.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad request.</returns>
+    static abstract Result BadRequest(string detail);
+
+    /// <summary>
+    /// Represents a result indicating a bad request.
+    /// </summary>
+    /// <param name="title">A short title describing the bad request.</param>
+    /// <param name="detail">A detailed message providing additional context about the bad request.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad request.</returns>
+    static abstract Result BadRequest(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating forbidden access.
@@ -121,11 +128,19 @@ public interface IResult
     static abstract Result Forbidden();
 
     /// <summary>
-    /// Represents a result indicating forbidden access with a typed value.
+    /// Represents a result indicating forbidden access.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating forbidden access with the default value for type <typeparamref name="T"/>.</returns>
-    static abstract Result<T> Forbidden<T>();
+    /// <param name="detail">A detailed message providing the reason for the forbidden access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating forbidden access.</returns>
+    static abstract Result Forbidden(string detail);
+
+    /// <summary>
+    /// Represents a result indicating forbidden access.
+    /// </summary>
+    /// <param name="title">A short title describing the forbidden access.</param>
+    /// <param name="detail">A detailed message providing additional context about the forbidden access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating forbidden access.</returns>
+    static abstract Result Forbidden(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating a resource not found.
@@ -134,12 +149,19 @@ public interface IResult
     static abstract Result NotFound();
 
     /// <summary>
-    /// Represents a result indicating a resource not found with a typed value.
+    /// Represents a result indicating a resource not found.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <param name="value">The typed value.</param>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating a resource not found with the specified value.</returns>
-    static abstract Result<T> NotFound<T>(T value);
+    /// <param name="detail">A detailed message describing why the resource was not found.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a resource not found.</returns>
+    static abstract Result NotFound(string detail);
+
+    /// <summary>
+    /// Represents a result indicating a resource not found.
+    /// </summary>
+    /// <param name="title">A short title describing the resource not found.</param>
+    /// <param name="detail">A detailed message providing additional context about why the resource was not found.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a resource not found.</returns>
+    static abstract Result NotFound(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating a conflict.
@@ -148,12 +170,19 @@ public interface IResult
     static abstract Result Conflict();
 
     /// <summary>
-    /// Represents a result indicating a conflict with a typed value.
+    /// Represents a result indicating a conflict.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <param name="value">The typed value.</param>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating a conflict with the specified value.</returns>
-    static abstract Result<T> Conflict<T>(T value);
+    /// <param name="detail">A detailed message describing the reason for the conflict.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
+    static abstract Result Conflict(string detail);
+
+    /// <summary>
+    /// Represents a result indicating a conflict.
+    /// </summary>
+    /// <param name="title">A short title describing the conflict.</param>
+    /// <param name="detail">A detailed message providing additional context about the conflict.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
+    static abstract Result Conflict(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating an internal server error.
@@ -162,12 +191,19 @@ public interface IResult
     static abstract Result InternalServerError();
 
     /// <summary>
-    /// Represents a result indicating an internal server error with a typed value.
+    /// Represents a result indicating an internal server error.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <param name="value">The typed value.</param>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating an internal server error with the specified value.</returns>
-    static abstract Result<T> InternalServerError<T>(T value);
+    /// <param name="detail">A detailed message describing the internal server error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating an internal server error.</returns>
+    static abstract Result InternalServerError(string detail);
+
+    /// <summary>
+    /// Represents a result indicating an internal server error.
+    /// </summary>
+    /// <param name="title">A short title describing the internal server error.</param>
+    /// <param name="detail">A detailed message providing additional context about the internal server error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating an internal server error.</returns>
+    static abstract Result InternalServerError(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating that the service is currently unavailable.
@@ -176,12 +212,19 @@ public interface IResult
     static abstract Result ServiceUnavailable();
 
     /// <summary>
-    /// Represents a result indicating that the service is currently unavailable with a typed value.
+    /// Represents a result indicating that the service is currently unavailable.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <param name="value">The typed value.</param>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating that the service is currently unavailable with the specified value.</returns>
-    static abstract Result<T> ServiceUnavailable<T>(T value);
+    /// <param name="detail">A detailed message describing the reason for the service unavailability.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
+    static abstract Result ServiceUnavailable(string detail);
+
+    /// <summary>
+    /// Represents a result indicating that the service is currently unavailable.
+    /// </summary>
+    /// <param name="title">A short title describing the service unavailability.</param>
+    /// <param name="detail">A detailed message providing additional context about the service unavailability.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
+    static abstract Result ServiceUnavailable(string title, string detail);
 
     /// <summary>
     /// Adds an informational message to the result.

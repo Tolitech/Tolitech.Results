@@ -21,22 +21,6 @@ public class ResultConflictTests
     }
 
     /// <summary>
-    /// Unit test to verify the behavior of the Conflict method when called with a value as a string parameter.
-    /// </summary>
-    [Fact]
-    public void Conflict_ValueAsString_ReturnsFailureWithStatusCode409AndCorrectValue()
-    {
-        // Arrange & Act
-        Result<string> result = Result.Conflict("Hello, world!");
-
-        // Assert
-        Assert.False(result.IsSuccess);
-        Assert.True(result.IsFailure);
-        Assert.Equal(StatusCode.Conflict, result.StatusCode);
-        Assert.Equal("Hello, world!", result.Value);
-    }
-
-    /// <summary>
     /// Unit test to verify that calling Conflict from Accedpted status should result in IsFailure.
     /// </summary>
     [Fact]

@@ -21,22 +21,6 @@ public class ResultBadRequestTests
     }
 
     /// <summary>
-    /// Unit test to verify the behavior of the BadRequest method when called with a value as a string.
-    /// </summary>
-    [Fact]
-    public void BadRequest_ValueAsString_ReturnsFailureWithStatusCode400AndCorrectValue()
-    {
-        // Arrange & Act
-        Result<string> result = Result.BadRequest("Hello, world!");
-
-        // Assert
-        Assert.False(result.IsSuccess);
-        Assert.True(result.IsFailure);
-        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
-        Assert.Equal("Hello, world!", result.Value);
-    }
-
-    /// <summary>
     /// Unit test to verify the behavior of the BadRequest method when called with a StatusCode.OK parameter.
     /// </summary>
     [Fact]

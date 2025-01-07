@@ -21,22 +21,6 @@ public class ResultInternalServerErrorTests
     }
 
     /// <summary>
-    /// Unit test to verify the behavior of the InternalServerError method when called with a value as a string parameter.
-    /// </summary>
-    [Fact]
-    public void InternalServerError_ValueAsString_ReturnsFailureWithStatusCode500AndCorrectValue()
-    {
-        // Arrange & Act
-        Result<string> result = Result.InternalServerError("Hello, world!");
-
-        // Assert
-        Assert.False(result.IsSuccess);
-        Assert.True(result.IsFailure);
-        Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
-        Assert.Equal("Hello, world!", result.Value);
-    }
-
-    /// <summary>
     /// Unit test to verify that calling InternalServerError from Accedpted status should result in IsFailure.
     /// </summary>
     [Fact]
