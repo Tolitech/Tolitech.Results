@@ -21,22 +21,6 @@ public class ResultNotFoundTests
     }
 
     /// <summary>
-    /// Unit test to verify the behavior of the NotFound method when called with a value as a string parameter.
-    /// </summary>
-    [Fact]
-    public void NotFound_ValueAsString_ReturnsFailureWithStatusCode404AndCorrectValue()
-    {
-        // Arrange & Act
-        Result<string> result = Result.NotFound("Hello, world!");
-
-        // Assert
-        Assert.False(result.IsSuccess);
-        Assert.True(result.IsFailure);
-        Assert.Equal(StatusCode.NotFound, result.StatusCode);
-        Assert.Equal("Hello, world!", result.Value);
-    }
-
-    /// <summary>
     /// Unit test to verify that calling NotFound from Accedpted status should result in IsFailure.
     /// </summary>
     [Fact]

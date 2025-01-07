@@ -21,22 +21,6 @@ public class ResultForbiddenTests
     }
 
     /// <summary>
-    /// Unit test to verify the behavior of the Forbidden method when called with no value as a string parameter.
-    /// </summary>
-    [Fact]
-    public void Forbidden_NoValueAsString_ReturnsFailureWithStatusCode403AndNullValue()
-    {
-        // Arrange & Act
-        Result<string> result = Result.Forbidden<string>();
-
-        // Assert
-        Assert.False(result.IsSuccess);
-        Assert.True(result.IsFailure);
-        Assert.Equal(StatusCode.Forbidden, result.StatusCode);
-        Assert.Null(result.Value);
-    }
-
-    /// <summary>
     /// Unit test to verify that calling Forbidden from Accedpted status should result in IsFailure.
     /// </summary>
     [Fact]

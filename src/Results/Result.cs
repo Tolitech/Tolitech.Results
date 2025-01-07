@@ -155,14 +155,31 @@ public class Result : IResult
     }
 
     /// <summary>
-    /// Represents a result indicating a bad request with a typed value.
+    /// Represents a result indicating a bad request.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <param name="value">The typed value.</param>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating a bad request with the specified value.</returns>
-    public static Result<T> BadRequest<T>(T value)
+    /// <param name="detail">A detailed message describing the reason for the bad request.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad request.</returns>
+    public static Result BadRequest(string detail)
     {
-        return new(value, false, StatusCode.BadRequest);
+        return new(false, StatusCode.BadRequest)
+        {
+            Detail = detail,
+        };
+    }
+
+    /// <summary>
+    /// Represents a result indicating a bad request.
+    /// </summary>
+    /// <param name="title">A short title describing the bad request.</param>
+    /// <param name="detail">A detailed message providing additional context about the bad request.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a bad request.</returns>
+    public static Result BadRequest(string title, string detail)
+    {
+        return new(false, StatusCode.BadRequest)
+        {
+            Title = title,
+            Detail = detail,
+        };
     }
 
     /// <summary>
@@ -175,11 +192,22 @@ public class Result : IResult
     }
 
     /// <summary>
-    /// Represents a result indicating forbidden access with a typed value.
+    /// Represents a result indicating forbidden access.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating forbidden access with the default value for type <typeparamref name="T"/>.</returns>
-    public static Result<T> Forbidden<T>()
+    /// <param name="detail">A detailed message providing the reason for the forbidden access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating forbidden access.</returns>
+    public static Result Forbidden(string detail)
+    {
+        return new(false, StatusCode.Forbidden);
+    }
+
+    /// <summary>
+    /// Represents a result indicating forbidden access.
+    /// </summary>
+    /// <param name="title">A short title describing the forbidden access.</param>
+    /// <param name="detail">A detailed message providing additional context about the forbidden access.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating forbidden access.</returns>
+    public static Result Forbidden(string title, string detail)
     {
         return new(false, StatusCode.Forbidden);
     }
@@ -194,14 +222,24 @@ public class Result : IResult
     }
 
     /// <summary>
-    /// Represents a result indicating a resource not found with a typed value.
+    /// Represents a result indicating a resource not found.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <param name="value">The typed value.</param>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating a resource not found with the specified value.</returns>
-    public static Result<T> NotFound<T>(T value)
+    /// <param name="detail">A detailed message describing why the resource was not found.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a resource not found.</returns>
+    public static Result NotFound(string detail)
     {
-        return new(value, false, StatusCode.NotFound);
+        return new(false, StatusCode.NotFound);
+    }
+
+    /// <summary>
+    /// Represents a result indicating a resource not found.
+    /// </summary>
+    /// <param name="title">A short title describing the resource not found.</param>
+    /// <param name="detail">A detailed message providing additional context about why the resource was not found.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a resource not found.</returns>
+    public static Result NotFound(string title, string detail)
+    {
+        return new(false, StatusCode.NotFound);
     }
 
     /// <summary>
@@ -214,14 +252,24 @@ public class Result : IResult
     }
 
     /// <summary>
-    /// Represents a result indicating a conflict with a typed value.
+    /// Represents a result indicating a conflict.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <param name="value">The typed value.</param>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating a conflict with the specified value.</returns>
-    public static Result<T> Conflict<T>(T value)
+    /// <param name="detail">A detailed message describing the reason for the conflict.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
+    public static Result Conflict(string detail)
     {
-        return new(value, false, StatusCode.Conflict);
+        return new(false, StatusCode.Conflict);
+    }
+
+    /// <summary>
+    /// Represents a result indicating a conflict.
+    /// </summary>
+    /// <param name="title">A short title describing the conflict.</param>
+    /// <param name="detail">A detailed message providing additional context about the conflict.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating a conflict.</returns>
+    public static Result Conflict(string title, string detail)
+    {
+        return new(false, StatusCode.Conflict);
     }
 
     /// <summary>
@@ -234,14 +282,24 @@ public class Result : IResult
     }
 
     /// <summary>
-    /// Represents a result indicating an internal server error with a typed value.
+    /// Represents a result indicating an internal server error.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <param name="value">The typed value.</param>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating an internal server error with the specified value.</returns>
-    public static Result<T> InternalServerError<T>(T value)
+    /// <param name="detail">A detailed message describing the internal server error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating an internal server error.</returns>
+    public static Result InternalServerError(string detail)
     {
-        return new(value, false, StatusCode.InternalServerError);
+        return new(false, StatusCode.InternalServerError);
+    }
+
+    /// <summary>
+    /// Represents a result indicating an internal server error.
+    /// </summary>
+    /// <param name="title">A short title describing the internal server error.</param>
+    /// <param name="detail">A detailed message providing additional context about the internal server error.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating an internal server error.</returns>
+    public static Result InternalServerError(string title, string detail)
+    {
+        return new(false, StatusCode.InternalServerError);
     }
 
     /// <summary>
@@ -254,14 +312,24 @@ public class Result : IResult
     }
 
     /// <summary>
-    /// Represents a result indicating that the service is currently unavailable with a typed value.
+    /// Represents a result indicating that the service is currently unavailable.
     /// </summary>
-    /// <typeparam name="T">The type of the result value.</typeparam>
-    /// <param name="value">The typed value.</param>
-    /// <returns>An instance of the <see cref="Result{T}"/> class indicating that the service is currently unavailable with the specified value.</returns>
-    public static Result<T> ServiceUnavailable<T>(T value)
+    /// <param name="detail">A detailed message describing the reason for the service unavailability.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
+    public static Result ServiceUnavailable(string detail)
     {
-        return new(value, false, StatusCode.ServiceUnavailable);
+        return new(false, StatusCode.ServiceUnavailable);
+    }
+
+    /// <summary>
+    /// Represents a result indicating that the service is currently unavailable.
+    /// </summary>
+    /// <param name="title">A short title describing the service unavailability.</param>
+    /// <param name="detail">A detailed message providing additional context about the service unavailability.</param>
+    /// <returns>An instance of the <see cref="Result"/> class indicating that the service is currently unavailable.</returns>
+    public static Result ServiceUnavailable(string title, string detail)
+    {
+        return new(false, StatusCode.ServiceUnavailable);
     }
 
     /// <summary>
@@ -508,7 +576,13 @@ public class Result : IResult
     /// <returns>True if the status code represents a successful response; otherwise, false.</returns>
     private static bool IsStatusCodeSuccess(StatusCode statusCode)
     {
-        return statusCode is StatusCode.OK or StatusCode.Created or StatusCode.Accepted or StatusCode.NoContent;
+        return statusCode is
+            StatusCode.OK or
+            StatusCode.Created or
+            StatusCode.Accepted or
+            StatusCode.NoContent or
+            StatusCode.Found or
+            StatusCode.NotModified;
     }
 
     /// <summary>

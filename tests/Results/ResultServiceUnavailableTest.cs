@@ -21,22 +21,6 @@ public class ResultServiceUnavailableTest
     }
 
     /// <summary>
-    /// Unit test to verify the behavior of the ServiceUnavailable method when called with a value as a string parameter.
-    /// </summary>
-    [Fact]
-    public void ServiceUnavailable_ValueAsString_ReturnsFailureWithStatusCode503AndCorrectValue()
-    {
-        // Arrange & Act
-        Result<string> result = Result.ServiceUnavailable("Hello, world!");
-
-        // Assert
-        Assert.False(result.IsSuccess);
-        Assert.True(result.IsFailure);
-        Assert.Equal(StatusCode.ServiceUnavailable, result.StatusCode);
-        Assert.Equal("Hello, world!", result.Value);
-    }
-
-    /// <summary>
     /// Unit test to verify that calling ServiceUnavailable from Accedpted status should result in IsFailure.
     /// </summary>
     [Fact]
