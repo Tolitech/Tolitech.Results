@@ -422,4 +422,61 @@ public interface IResult
     /// <param name="statusCode">An optional status code associated with the error.</param>
     /// <param name="exception">An optional exception associated with the error.</param>
     void AddError(string? key, string message, StatusCode statusCode = StatusCode.BadRequest, Exception? exception = null);
+
+    /// <summary>
+    /// Adds messages from the provided result to the internal message collection.
+    /// </summary>
+    /// <param name="result">An instance of the interface IResult containing messages to be added.</param>
+    /// <returns>The current instance of <see cref="Result"/>.</returns>
+    Result AddMessages(IResult result);
+
+    /// <summary>
+    /// Sets the title metadata for the result.
+    /// </summary>
+    /// <param name="title">The title to set.</param>
+    /// <returns>The current instance of <see cref="Result"/>.</returns>
+    Result WithTitle(string title);
+
+    /// <summary>
+    /// Sets the detail metadata for the result.
+    /// </summary>
+    /// <param name="detail">The detail to set.</param>
+    /// <returns>The current instance of <see cref="Result"/>.</returns>
+    Result WithDetail(string detail);
+
+    /// <summary>
+    /// Sets the type metadata for the result.
+    /// </summary>
+    /// <param name="type">The type to set.</param>
+    /// <returns>The current instance of <see cref="Result"/>.</returns>
+    Result WithType(string type);
+
+    /// <summary>
+    /// Sets the status code for the result.
+    /// </summary>
+    /// <param name="statusCode">The status code to set.</param>
+    /// <returns>The current instance of <see cref="Result"/>.</returns>
+    Result WithStatusCode(StatusCode statusCode);
+
+    /// <summary>
+    /// Sets the context name metadata for the result.
+    /// </summary>
+    /// <param name="contextName">The context name to set.</param>
+    /// <returns>The current instance of <see cref="Result"/>.</returns>
+    Result WithContext(string contextName);
+
+    /// <summary>
+    /// Converts the current result to a generic <see cref="Result{T}"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the value associated with the result.</typeparam>
+    /// <returns>A <see cref="Result{T}"/> instance based on the current result.</returns>
+    Result<T> ToResult<T>();
+
+    /// <summary>
+    /// Converts the current result to a generic <see cref="Result{T}"/> with a specified value.
+    /// </summary>
+    /// <typeparam name="T">The type of the value associated with the result.</typeparam>
+    /// <param name="value">The value associated with the result.</param>
+    /// <returns>A <see cref="Result{T}"/> instance based on the current result with the specified value.</returns>
+    Result<T> ToResult<T>(T value);
 }

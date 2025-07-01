@@ -709,7 +709,8 @@ public class Result : IResult
     /// Adds messages from the provided result to the internal message collection.
     /// </summary>
     /// <param name="result">An instance of the interface IResult containing messages to be added.</param>
-    public void AddMessages(IResult result)
+    /// <returns>The current instance of <see cref="Result"/>.</returns>
+    public Result AddMessages(IResult result)
     {
         if (result is not null)
         {
@@ -723,6 +724,8 @@ public class Result : IResult
 
             _messages.AddRange(result.Messages);
         }
+
+        return this;
     }
 
     /// <summary>
