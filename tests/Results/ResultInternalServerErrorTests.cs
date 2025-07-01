@@ -37,4 +37,78 @@ public class ResultInternalServerErrorTests
         Assert.True(string.IsNullOrEmpty(result.Value));
         Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
     }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the InternalServerError method when called with detail parameter.
+    /// </summary>
+    [Fact]
+    public void InternalServerError_DetailParameter_ReturnsFailureWithStatusCode500()
+    {
+        // Arrange & Act
+        Result result = Result.InternalServerError("Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
+        Assert.Null(result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the InternalServerError method when called with title and detail parameters.
+    /// </summary>
+    [Fact]
+    public void InternalServerError_TitleAndDetailParameters_ReturnsFailureWithStatusCode500()
+    {
+        // Arrange & Act
+        Result result = Result.InternalServerError("Title", "Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
+        Assert.Equal("Title", result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the InternalServerError method when called with detail parameter.
+    /// </summary>
+    [Fact]
+    public void InternalServerError_GenericWithDetailParameter_ReturnsFailureWithStatusCode500()
+    {
+        // Arrange
+        Result<string> result = Result.OK("Test");
+
+        // Act
+        result = result.InternalServerError("Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
+        Assert.Null(result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the InternalServerError method when called with title and detail parameters.
+    /// </summary>
+    [Fact]
+    public void InternalServerError_GenericWithTitleAndDetailParameters_ReturnsFailureWithStatusCode500()
+    {
+        // Arrange
+        Result<string> result = Result.OK("Test");
+
+        // Act
+        result = result.InternalServerError("Title", "Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
+        Assert.Equal("Title", result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
 }
