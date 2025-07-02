@@ -37,4 +37,78 @@ public class ResultForbiddenTests
         Assert.True(string.IsNullOrEmpty(result.Value));
         Assert.Equal(StatusCode.Forbidden, result.StatusCode);
     }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Forbidden method when called with detail parameter.
+    /// </summary>
+    [Fact]
+    public void Forbidden_DetailParameter_ReturnsFailureWithStatusCode403()
+    {
+        // Arrange & Act
+        Result result = Result.Forbidden("Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Forbidden, result.StatusCode);
+        Assert.Null(result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Forbidden method when called with title and detail parameters.
+    /// </summary>
+    [Fact]
+    public void Forbidden_TitleAndDetailParameters_ReturnsFailureWithStatusCode403()
+    {
+        // Arrange & Act
+        Result result = Result.Forbidden("Title", "Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Forbidden, result.StatusCode);
+        Assert.Equal("Title", result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Forbidden method when called with detail parameter.
+    /// </summary>
+    [Fact]
+    public void Forbidden_GenericWithDetailParameter_ReturnsFailureWithStatusCode403()
+    {
+        // Arrange
+        Result<string> result = Result.OK("Test");
+
+        // Act
+        result = result.Forbidden("Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Forbidden, result.StatusCode);
+        Assert.Null(result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Forbidden method when called with title and detail parameters.
+    /// </summary>
+    [Fact]
+    public void Forbidden_GenericWithTitleAndDetailParameters_ReturnsFailureWithStatusCode403()
+    {
+        // Arrange
+        Result<string> result = Result.OK("Test");
+
+        // Act
+        result = result.Forbidden("Title", "Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Forbidden, result.StatusCode);
+        Assert.Equal("Title", result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
 }

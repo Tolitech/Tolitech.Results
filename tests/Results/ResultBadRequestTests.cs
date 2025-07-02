@@ -116,4 +116,78 @@ public class ResultBadRequestTests
         Assert.True(string.IsNullOrEmpty(result.Value));
         Assert.Equal(StatusCode.BadRequest, result.StatusCode);
     }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the BadRequest method when called with detail parameter.
+    /// </summary>
+    [Fact]
+    public void BadRequest_DetailParameter_ReturnsFailureWithStatusCode400()
+    {
+        // Arrange & Act
+        Result result = Result.BadRequest("Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
+        Assert.Null(result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the BadRequest method when called with title and detail parameter.
+    /// </summary>
+    [Fact]
+    public void BadRequest_TitleAndDetailParameters_ReturnsFailureWithStatusCode400()
+    {
+        // Arrange & Act
+        Result result = Result.BadRequest("Title", "Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
+        Assert.Equal("Title", result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the BadRequest method when called with detail parameter.
+    /// </summary>
+    [Fact]
+    public void BadRequest_GenericWithDetailParameter_ReturnsFailureWithStatusCode400()
+    {
+        // Arrange
+        Result<string> result = Result.OK("Test");
+
+        // Act
+        result = result.BadRequest("Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
+        Assert.Null(result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the BadRequest method when called with title and detail parameter.
+    /// </summary>
+    [Fact]
+    public void BadRequest_GenericWithTitleAndDetailParameters_ReturnsFailureWithStatusCode400()
+    {
+        // Arrange
+        Result<string> result = Result.OK("Test");
+
+        // Act
+        result = result.BadRequest("Title", "Detail");
+
+        // Assert
+        Assert.False(result.IsSuccess);
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
+        Assert.Equal("Title", result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
 }
