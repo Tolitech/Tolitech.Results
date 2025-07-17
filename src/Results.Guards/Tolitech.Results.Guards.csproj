@@ -7,13 +7,13 @@
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <NeutralLanguage>en</NeutralLanguage>
     <Title>$(AssemblyName)</Title>
-    <Version>1.0.0-preview.2</Version>
+    <Version>1.0.0-preview.3</Version>
     <Authors>Tolitech</Authors>
     <Description>Tolitech.Results.Guards is a utility library that provides fluent and expressive guard clauses for result-oriented programming.</Description>
     <Copyright>Copyright (c) 2025 Tolitech</Copyright>
     <PackageProjectUrl>https://www.tolitech.com.br</PackageProjectUrl>
     <PackageIcon>tolitech-icon.png</PackageIcon>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageReadmeFile>README.en.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/Tolitech/Results</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>results;guards</PackageTags>
@@ -116,7 +116,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="README.md">
+    <None Update="README.en.md">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>

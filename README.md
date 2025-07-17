@@ -1,424 +1,184 @@
-﻿# Tolitech.Results
+﻿# Tolitech.Results - Complete Solution for Results, HTTP, and Guards in .NET
 
-The Results pattern is a design approach used for handling errors and outcomes in a structured manner. Instead of relying solely on exceptions, this pattern involves returning an object that encapsulates both the result and any potential errors that may have occurred during the operation.
+This solution brings together three specialized libraries for result handling, HTTP response mapping, and fluent validation in modern .NET applications. Each project is independent but can be used together to build robust, predictable, and highly maintainable APIs and systems.
 
-## Overview
+## Project Overview
 
-The `Result` object represents the result of an operation with optional metadata and messages. It is designed for handling errors and outcomes in a structured manner, providing information about the operation's status and associated details.
+- **Tolitech.Results**: Core Results pattern library, encapsulating operation outcomes, errors, messages, and metadata.
+- **Tolitech.Results.Http**: Extensions for seamless integration between HTTP responses and Result objects.
+- **Tolitech.Results.Guards**: Fluent guard clauses for parameter and state validation, integrated with the Results pattern.
 
-## Properties
+---
 
-- **`Title`**: Gets the title metadata associated with the result.
-- **`Detail`**: Gets the detail metadata associated with the result.
-- **`StatusCode`**: Gets the status code associated with the result.
-- **`IsSuccess`**: Gets a value indicating whether the result indicates success.
-- **`IsFailure`**: Gets a value indicating whether the result indicates failure.
-- **`Messages`**: Gets a collection of message results associated with the result.
+## Tolitech.Results
 
-## Factory Methods
+### Key Features
+- Encapsulates success, failure, and error in operations.
+- Rich metadata: title, detail, type, status code, messages.
+- Factory methods for all major HTTP statuses and business scenarios.
+- Fluent API for adding messages, titles, details, and errors.
+- Support for generic results (`Result<T>`).
 
-### Success
+### Usage Examples
 
-- `OK()`: Represents a successful result.
-- `OK<T>(T value)`: Represents a successful result with a typed value.
-- `OK<T>()`: Represents a successful result with the default value for type `T`.
-
-### Created
-
-- `Created()`: Represents a result indicating successful creation.
-- `Created<T>(T value)`: Represents a result indicating successful creation with a typed value.
-- `Created<T>()`: Represents a result indicating successful creation with the default value for type `T`.
-
-### No Content
-
-- `NoContent()`: Represents a result indicating no content.
-- `NoContent<T>()`: Represents a result indicating no content with the default value for type `T`.
-
-### Bad Request
-
-- `BadRequest()`: Represents a result indicating a bad request.
-- `BadRequest<T>(T value)`: Represents a result indicating a bad request with a typed value.
-- `BadRequest<T>()`: Represents a result indicating a bad request with the default value for type `T`.
-
-### Forbidden
-
-- `Forbidden()`: Represents a result indicating forbidden access.
-- `Forbidden<T>(T value)`: Represents a result indicating forbidden access with a typed value.
-- `Forbidden<T>()`: Represents a result indicating forbidden access with the default value for type `T`.
-
-### Not Found
-
-- `NotFound()`: Represents a result indicating a resource not found.
-- `NotFound<T>(T value)`: Represents a result indicating a resource not found with a typed value.
-- `NotFound<T>()`: Represents a result indicating a resource not found with the default value for type `T`.
-
-### Internal Server Error
-
-- `InternalServerError()`: Represents a result indicating an internal server error.
-- `InternalServerError<T>(T value)`: Represents a result indicating an internal server error with a typed value.
-- `InternalServerError<T>()`: Represents a result indicating an internal server error with the default value for type `T`.
-
-## Methods
-
-### Message Handling
-
-- `AddInformation(string message)`: Adds an informational message to the result.
-- `AddInformation(string? key, string message)`: Adds an informational message to the result with an optional key.
-- `AddWarning(string message)`: Adds a warning message to the result.
-- `AddWarning(string? key, string message)`: Adds a warning message to the result with an optional key.
-- `AddError(string message, StatusCode statusCode = StatusCode.BadRequest, Exception? exception = null)`: Adds an error message to the result with optional status code and exception.
-- `AddError(string? key, string message, StatusCode statusCode = StatusCode.BadRequest, Exception? exception = null)`: Adds an error message to the result with optional key, status code, and exception.
-
-
-# Example
-
-Consider a scenario where we have an operation to divide two numbers. We can use the Results pattern to handle the outcome of this operation:
-
+#### Success Result
 ```csharp
-// Example implementation of a class using the Results pattern
-
-public class MathOperation
-{
-    public Result<int> Divide(int dividend, int divisor)
-    {
-        try
-        {
-            if (divisor == 0)
-            {
-                // Handling division by zero
-                return Result.BadRequest<int>()
-                    .WithTitle("Cannot divide by zero");
-            }
-
-            int result = dividend / divisor;
-
-            // Returning a successful result with the quotient
-            return Result.OK(result);
-        }
-        catch (Exception ex)
-        {
-            // Handling other exceptions
-            return Result.InternalServerError<int>()
-                .WithTitle(ex.Message)
-                .WithDetail(ex.ToString());
-        }
-    }
-}
+var result = Result.OK();
+var resultWithValue = Result.OK<int>(42);
 ```
 
-# Tolitech.Results.Guards
-
-Tolitech.Results.Guards is a utility library that provides fluent and expressive guard clauses for result-oriented programming. Simplify validation and error handling with these extension methods:
-
-## Why Use Guards?
-
-Guards serve as robust sentinels in your code, ensuring that only valid and expected values proceed. Here's why integrating guards, such as Results.Guards, is beneficial:
-- **`Expressive Validation`**:  Guards offer a clear and expressive way to validate input parameters, making your code self-documenting and easy to understand.
-- **`Error Prevention`**: By catching invalid inputs early, guards help prevent errors before they can propagate through the system, leading to more stable and reliable software.
-- **`Readability and Maintainability`**: Integrating guards improves the overall readability of your code, making it easier to maintain and reducing the cognitive load on developers.
-- **`Fluent API`**: Results.Guards provides a fluent API, allowing you to chain multiple validation checks in a concise and readable manner.
-- **`Result-Oriented Programming`**: Guards seamlessly align with a result-oriented programming paradigm, where the outcome of operations is explicitly represented, enhancing code clarity.
-- **`Consistent Error Handling`**: Guards promote consistency in error handling by providing a standardized way to raise errors when validation conditions are not met.
-- **`Enhanced Debugging`**: With guards, you can easily identify the source of issues related to invalid input, simplifying the debugging process and reducing time-to-resolution.
-
-By incorporating guards into your codebase, you not only strengthen its integrity but also contribute to a more maintainable and developer-friendly project.
-
-## String
-
-### ErrorIfNullOrEmpty
+#### Error Result with Details
 ```csharp
-result.Guard()
-    .ErrorIfNullOrEmpty(categoryName);
+var result = Result.BadRequest()
+    .WithTitle("Validation Error")
+    .WithDetail("The 'Name' field is required.")
+    .AddError("Name not provided");
 ```
 
-### ErrorIfNullOrWhiteSpace
+#### Available Factory Methods
+- `OK()`, `OK<T>(T value)`
+- `Created()`, `Created<T>(T value)`
+- `Accepted()`, `Accepted<T>(T value)`
+- `NoContent()`, `NoContent<T>()`
+- `Found()`, `Found<T>(T value)`
+- `NotModified()`, `NotModified<T>(T value)`
+- `BadRequest()`, `BadRequest(string detail)`, `BadRequest(string title, string detail)`
+- `Unauthorized()`, `Unauthorized(string detail)`, `Unauthorized(string title, string detail)`
+- `Forbidden()`, `Forbidden(string detail)`, `Forbidden(string title, string detail)`
+- `NotFound()`, `NotFound(string detail)`, `NotFound(string title, string detail)`
+- `MethodNotAllowed()`, `MethodNotAllowed(string detail)`, `MethodNotAllowed(string title, string detail)`
+- `RequestTimeout()`, `RequestTimeout(string detail)`, `RequestTimeout(string title, string detail)`
+- `Conflict()`, `Conflict(string detail)`, `Conflict(string title, string detail)`
+- `TooManyRequests()`, `TooManyRequests(string detail)`, `TooManyRequests(string title, string detail)`
+- `InternalServerError()`, `InternalServerError(string detail)`, `InternalServerError(string title, string detail)`
+- `BadGateway()`, `BadGateway(string detail)`, `BadGateway(string title, string detail)`
+- `ServiceUnavailable()`, `ServiceUnavailable(string detail)`, `ServiceUnavailable(string title, string detail)`
+- `GatewayTimeout()`, `GatewayTimeout(string detail)`, `GatewayTimeout(string title, string detail)`
+
+#### Message Handling
 ```csharp
-result.Guard()
-    .ErrorIfNullOrEmpty(categoryName);
+result.AddInformation("Processing completed successfully.");
+result.AddWarning("Warning: optional field not filled.");
+result.AddError("Unexpected error.", StatusCode.InternalServerError);
 ```
 
-### ErrorIfNotNullOrNotEmpty
-```csharp
-result.Guard()
-    .ErrorIfNotNullOrNotEmpty(categoryName);
-```
+#### Important Properties
+- `IsSuccess`, `IsFailure`
+- `StatusCode`, `Title`, `Detail`, `Type`
+- `Messages` (collection of messages associated with the result)
 
-### ErrorIfLengthEqualTo
-```csharp
-result.Guard()
-    .ErrorIfLengthEqualTo(text, length);
-```
+See more examples and details in [`src/Results/README.en.md`](src/Results/README.en.md)
 
-### ErrorIfLengthNotEqualTo
-```csharp
-result.Guard()
-    .ErrorIfLengthNotEqualTo(text, length);
-```
+---
 
-### ErrorIfLengthGreaterThan
-```csharp
-result.Guard()
-    .ErrorIfLengthGreaterThan(text, length);
-```
+## Tolitech.Results.Http
 
-### ErrorIfLengthGreaterThanOrEqualTo
-```csharp
-result.Guard()
-    .ErrorIfLengthGreaterThanOrEqualTo(text, length);
-```
+### Key Features
+- Extension methods to read and map problem details from an `HttpResponseMessage` to a `Result` object.
+- Facilitates error handling for REST APIs and microservices.
+- Transparent integration with the Results pattern.
 
-### ErrorIfLengthLessThan
-```csharp
-result.Guard()
-    .ErrorIfLengthLessThan(text, length);
-```
-
-### ErrorIfLengthLessThanOrEqualTo
-```csharp
-result.Guard()
-    .ErrorIfLengthLessThanOrEqualTo(text, length);
-```
-
-### ErrorIfNotValidEmail
-```csharp
-result.Guard()
-    .ErrorIfNotValidEmail(email);
-```
-
-## DateTime
-
-### ErrorIfFuture
-```csharp
-result.Guard()
-    .ErrorIfFuture(date);
-```
-
-### ErrorIfFutureUtc
-```csharp
-result.Guard()
-    .ErrorIfFutureUtc(date);
-```
-
-### ErrorIfNotFuture
-```csharp
-result.Guard()
-    .ErrorIfNotFuture(date);
-```
-
-### ErrorIfNotFutureUtc
-```csharp
-result.Guard()
-    .ErrorIfNotFutureUtc(date);
-```
-
-### ErrorIfPast
-```csharp
-result.Guard()
-    .ErrorIfPast(date);
-```
-
-### ErrorIfPastUtc
-```csharp
-result.Guard()
-    .ErrorIfPastUtc(date);
-```
-
-### ErrorIfNotPast
-```csharp
-result.Guard()
-    .ErrorIfNotPast(date);
-```
-
-### ErrorIfNotPastUtc
-```csharp
-result.Guard()
-    .ErrorIfNotPastUtc(date);
-```
-
-## Boolean
-
-### ErrorIfTrue
-```csharp
-result.Guard()
-    .ErrorIfTrue(approved);
-```
-
-### ErrorIfFalse
-```csharp
-result.Guard()
-    .ErrorIfFalse(approved);
-```
-
-### ErrorIfFalseOrNull
-```csharp
-result.Guard()
-    .ErrorIfFalseOrNull(approved);
-```
-
-### ErrorIfTrueOrNull
-```csharp
-result.Guard()
-    .ErrorIfTrueOrNull(approved);
-```
-
-## Collections
-
-### ErrorIfEmpty\<T>
-```csharp
-result.Guard()
-    .ErrorIfEmpty(list);
-```
-
-### ErrorIfNotEmpty\<T>
-```csharp
-result.Guard()
-    .ErrorIfNotEmpty(list);
-```
-
-### ErrorIfCountEqualTo\<T>
-```csharp
-result.Guard()
-    .ErrorIfCountEqualTo(list, count);
-```
-
-### ErrorIfCountNotEqualTo\<T>
-```csharp
-result.Guard()
-    .ErrorIfCountNotEqualTo(list, count);
-```
-
-### ErrorIfCountGreaterThan\<T>
-```csharp
-result.Guard()
-    .ErrorIfCountGreaterThan(list, count);
-```
-
-### ErrorIfCountGreaterThanOrEqualTo\<T>
-```csharp
-result.Guard()
-    .ErrorIfCountGreaterThanOrEqualTo(list, count);
-```
-
-### ErrorIfCountLessThan\<T>
-```csharp
-result.Guard()
-    .ErrorIfCountLessThan(list, count);
-```
-
-### ErrorIfCountLessThanOrEqualTo\<T>
-```csharp
-result.Guard()
-    .ErrorIfCountLessThanOrEqualTo(list, count);
-```
-
-## Generics
-
-### ErrorIfNull\<T>
-```csharp
-result.Guard()
-    .ErrorIfNull(amount);
-```
-
-### ErrorIfNotNull\<T>
-```csharp
-result.Guard()
-    .ErrorIfNotNull(amount);
-```
-
-### ErrorIfEqualTo\<T>
-```csharp
-result.Guard()
-    .ErrorIfEqualTo(amount, target);
-```
-
-### ErrorIfNotEqualTo\<T>
-```csharp
-result.Guard()
-    .ErrorIfEqualTo(amount, target);
-```
-
-### ErrorIfLessThan\<T>
-```csharp
-result.Guard()
-    .ErrorIfLessThan(amount, maximum);
-```
-
-### ErrorIfLessThanOrEqualTo\<T>
-```csharp
-result.Guard()
-    .ErrorIfLessThanOrEqualTo(amount, maximum);
-```
-
-### ErrorIfGreaterThan\<T>
-```csharp
-result.Guard()
-    .ErrorIfGreaterThan(amount, minimum);
-```
-
-### ErrorIfGreaterThanOrEqualTo\<T>
-```csharp
-result.Guard()
-    .ErrorIfGreaterThanOrEqualTo(amount, minimum);
-```
-
-### ErrorIfBetween\<T>
-```csharp
-result.Guard()
-    .ErrorIfBetween(amount, minimum, maximum);
-```
-
-### ErrorIfNotBetween\<T>
-```csharp
-result.Guard()
-    .ErrorIfNotBetween(amount, minimum, maximum);
-```
-
-# Tolitech.Results.Http
-
-## Overview
-
-The `Tolitech.Results.Http` library provides extension methods for handling HTTP responses and populating a `Result` object. It contains a method `ReadProblemDetailsAsync` that reads the content of an `HttpResponseMessage` asynchronously and populates the provided `Result` object with the details extracted from the response.
-
-## Usage
-
-To use the `ReadProblemDetailsAsync` method, follow these steps:
-
-1. Ensure you have a valid `Result` object to populate with response details.
-2. Obtain an `HttpResponseMessage` containing the response from an HTTP request.
-3. Call the `ReadProblemDetailsAsync` extension method on the `Result` object, passing the `HttpResponseMessage` as a parameter.
-
+### Usage Example
 ```csharp
 using Tolitech.Results.Http;
 
-namespace Store.Ordering.Orders;
+Result<MyResponse> result = new();
+var response = await httpClient.SendAsync(request);
 
-public sealed class OrderService : IOrderService
+if (response.IsSuccessStatusCode)
 {
-    private readonly HttpClient httpClient;
+    var data = await response.Content.ReadFromJsonAsync<MyResponse>();
+    return result.OK(data!);
+}
 
-    public OrderService(OrderingHttpClient orderingHttpClient)
-    {
-        httpClient = orderingHttpClient.HttpClient;
-    }
-
-    public async Task<Result<CreateOrderResponse>> CreateOrder(CreateOrderRequest request, CancellationToken cancellationToken)
-    {
-        Result<CreateOrderResponse> result = new();
-
-        string url = $"/orders";
-        using var requestMessage = new HttpRequestMessage(HttpMethod.Post, url);
-        requestMessage.Content = new StringContent(JsonSerializer.Serialize(request), Encoding.UTF8, "application/json");
-
-        var response = await httpClient.SendAsync(requestMessage, cancellationToken);
-        
-        if (response.IsSuccessStatusCode)
-        {
-            var resp = await response.Content.ReadFromJsonAsync<CreateOrderResponse>();
-            return result.OK(resp!);
-        }
-
-        await result.ReadProblemDetailsAsync(response);
-
-        return result;
-    }
+await result.ReadProblemDetailsAsync(response);
+return result;
 ```
+
+#### Main Method
+- `ReadProblemDetailsAsync(HttpResponseMessage response)`
+
+See more examples and details in [`src/Results.Http/README.en.md`](src/Results.Http/README.en.md)
+
+---
+
+## Tolitech.Results.Guards
+
+### Key Features
+- Fluent guard clauses for validation of strings, collections, numbers, dates, booleans, and generics.
+- Chaining of multiple validations in a readable and expressive way.
+- Direct integration with Result objects for standardized error handling.
+
+### Usage Examples
+
+#### String Validation
+```csharp
+result.Guard(name)
+    .ErrorIfNullOrEmpty()
+    .ErrorIfLengthGreaterThan(50);
+```
+
+#### Numeric Validation
+```csharp
+result.Guard(age)
+    .ErrorIfLessThan(18);
+```
+
+#### Boolean Validation
+```csharp
+result.Guard(approved)
+    .ErrorIfFalse();
+```
+
+#### Guid Validation
+```csharp
+result.Guard(id)
+    .ErrorIfNotEqualTo(Guid.Empty);
+```
+
+#### Collection Validation
+```csharp
+result.Guard(list)
+    .ErrorIfEmpty()
+    .ErrorIfCountGreaterThan(100);
+```
+
+#### Date Validation
+```csharp
+result.Guard(birthDate)
+    .ErrorIfFuture();
+```
+
+#### Generic Validation
+```csharp
+result.Guard(value)
+    .ErrorIfNull()
+    .ErrorIfEqualTo(expectedValue);
+```
+
+#### Main Available Guards
+- **String:** `ErrorIfNull`, `ErrorIfNullOrEmpty`, `ErrorIfNullOrWhiteSpace`, `ErrorIfNotNull`, `ErrorIfNotNullOrNotEmpty`, `ErrorIfEqualTo`, `ErrorIfNotEqualTo`, `ErrorIfLengthEqualTo`, `ErrorIfLengthNotEqualTo`, `ErrorIfLengthGreaterThan`, `ErrorIfLengthGreaterThanOrEqualTo`, `ErrorIfLengthLessThan`, `ErrorIfLengthLessThanOrEqualTo`, `ErrorIfNotValidEmail`, `ErrorIfContains`, `ErrorIfNotContains`.
+- **Boolean:** `ErrorIfNull`, `ErrorIfNotNull`, `ErrorIfTrue`, `ErrorIfFalse`, `ErrorIfFalseOrNull`, `ErrorIfTrueOrNull`, `ErrorIfEqualTo`, `ErrorIfNotEqualTo`.
+- **Guid:** `ErrorIfNull`, `ErrorIfNotNull`, `ErrorIfEqualTo`, `ErrorIfNotEqualTo`, `ErrorIfNullOrEmpty`, `ErrorIfNotNullOrNotEmpty`.
+- **Collections:** `ErrorIfNull`, `ErrorIfNotNull`, `ErrorIfEmpty`, `ErrorIfNotEmpty`, `ErrorIfCountEqualTo`, `ErrorIfCountNotEqualTo`, `ErrorIfCountGreaterThan`, `ErrorIfCountGreaterThanOrEqualTo`, `ErrorIfCountLessThan`, `ErrorIfCountLessThanOrEqualTo`.
+- **DateTime:** `ErrorIfFuture`, `ErrorIfFutureUtc`, `ErrorIfNotFuture`, `ErrorIfNotFutureUtc`, `ErrorIfPast`, `ErrorIfPastUtc`, `ErrorIfNotPast`, `ErrorIfNotPastUtc`.
+- **Generics:** `ErrorIfNull`, `ErrorIfNotNull`, `ErrorIfEqualTo`, `ErrorIfNotEqualTo`, `ErrorIfLessThan`, `ErrorIfLessThanOrEqualTo`, `ErrorIfGreaterThan`, `ErrorIfGreaterThanOrEqualTo`, `ErrorIfBetween`, `ErrorIfNotBetween`.
+
+See more examples and details in [`src/Results.Guards/README.en.md`](src/Results.Guards/README.en.md)
+
+---
+
+## Repository Structure
+
+```
+/README.md (this file)
+/src/Results/README.en.md
+/src/Results.Http/README.en.md
+/src/Results.Guards/README.en.md
+```
+
+Each project has a detailed README with in-depth technical documentation and examples.
+
+---
+
+For complete details, see the specific READMEs for each project.
