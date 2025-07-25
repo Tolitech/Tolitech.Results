@@ -8,7 +8,7 @@ public class Result : IResult
     /// <summary>
     /// Represents a list of message results associated with the result.
     /// </summary>
-    private readonly List<MessageResult> _messages = [];
+    private List<MessageResult>? _messages;
 
     /// <summary>
     /// Represents the context name associated with the result.
@@ -59,12 +59,12 @@ public class Result : IResult
     /// <summary>
     /// Gets a collection of message results associated with the result.
     /// </summary>
-    public IReadOnlyCollection<MessageResult> Messages => _messages;
+    public IReadOnlyCollection<MessageResult> Messages => _messages ?? [];
 
     /// <summary>
     /// Gets a collection of error message results associated with the result.
     /// </summary>
-    public IEnumerable<MessageResult> Errors => _messages.Where(x => x.Type == MessageType.Error);
+    public IEnumerable<MessageResult> Errors => _messages is null ? [] : _messages.Where(x => x.Type == MessageType.Error);
 
     /// <summary>
     /// Represents a successful result.
@@ -645,7 +645,7 @@ public class Result : IResult
     /// <param name="message">The informational message content.</param>
     public void AddInformation(string? key, string message)
     {
-        _messages.Add(MessageResult.Information(_contextName, key, message));
+        AddMessageResult(MessageResult.Information(_contextName, key, message));
     }
 
     /// <summary>
@@ -664,7 +664,7 @@ public class Result : IResult
     /// <param name="message">The warning message content.</param>
     public void AddWarning(string? key, string message)
     {
-        _messages.Add(MessageResult.Warning(_contextName, key, message));
+        AddMessageResult(MessageResult.Warning(_contextName, key, message));
     }
 
     /// <summary>
@@ -702,7 +702,7 @@ public class Result : IResult
             StatusCode = statusCode;
         }
 
-        _messages.Add(ErrorResult.Create(_contextName, key, message, exception));
+        AddMessageResult(ErrorResult.Create(_contextName, key, message, exception));
     }
 
     /// <summary>
@@ -722,7 +722,7 @@ public class Result : IResult
                 SetStatusCode(result.StatusCode);
             }
 
-            _messages.AddRange(result.Messages);
+            AddMessageResult(result.Messages);
         }
 
         return this;
@@ -897,9 +897,37 @@ public class Result : IResult
         result.SetDetail(Detail);
         result.SetType(Type);
         result.SetStatusCode(StatusCode);
-
-        result._messages.AddRange(_messages);
+        result.AddMessageResult(_messages);
 
         return result;
+    }
+
+    /// <summary>
+    /// Adds a message to the internal collection of messages.
+    /// </summary>
+    /// <remarks>Initializes the message collection if it is not already initialized.</remarks>
+    /// <param name="item">The message result to add. Cannot be null.</param>
+    private void AddMessageResult(MessageResult? item)
+    {
+        if (item is not null)
+        {
+            _messages ??= [];
+            _messages.Add(item);
+        }
+    }
+
+    /// <summary>
+    /// Adds a collection of <see cref="MessageResult"/> items to the internal message list.
+    /// </summary>
+    /// <remarks>If the internal message list is null, it will be initialized before adding the
+    /// items.</remarks>
+    /// <param name="items">The collection of <see cref="MessageResult"/> items to add. This parameter cannot be null.</param>
+    private void AddMessageResult(IEnumerable<MessageResult>? items)
+    {
+        if (items is not null)
+        {
+            _messages ??= [];
+            _messages.AddRange(items);
+        }
     }
 }
