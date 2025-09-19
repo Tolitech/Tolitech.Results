@@ -1,4 +1,6 @@
-﻿namespace Tolitech.Results;
+﻿using Tolitech.Results.Resources;
+
+namespace Tolitech.Results;
 
 /// <summary>
 /// Represents a result with a typed value, success status, and optional metadata.
@@ -98,7 +100,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a bad request.</returns>
     public static new IResult<T> BadRequest()
     {
-        return new Result<T>(false, StatusCode.BadRequest);
+        return new Result<T>(false, StatusCode.BadRequest) { Title = ErrorMessageResources.BadRequest_Title, Detail = ErrorMessageResources.BadRequest_Detail };
     }
 
     /// <summary>
@@ -108,7 +110,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a bad request.</returns>
     public static new IResult<T> BadRequest(string detail)
     {
-        return new Result<T>(false, StatusCode.BadRequest) { Detail = detail };
+        return new Result<T>(false, StatusCode.BadRequest) { Title = ErrorMessageResources.BadRequest_Title, Detail = detail };
     }
 
     /// <summary>
@@ -128,7 +130,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating unauthorized access.</returns>
     public static new IResult<T> Unauthorized()
     {
-        return new Result<T>(false, StatusCode.Unauthorized);
+        return new Result<T>(false, StatusCode.Unauthorized) { Title = ErrorMessageResources.Unauthorized_Title, Detail = ErrorMessageResources.Unauthorized_Detail };
     }
 
     /// <summary>
@@ -138,7 +140,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating unauthorized access.</returns>
     public static new IResult<T> Unauthorized(string detail)
     {
-        return new Result<T>(false, StatusCode.Unauthorized) { Detail = detail };
+        return new Result<T>(false, StatusCode.Unauthorized) { Title = ErrorMessageResources.Unauthorized_Title, Detail = detail };
     }
 
     /// <summary>
@@ -158,7 +160,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating forbidden access.</returns>
     public static new IResult<T> Forbidden()
     {
-        return new Result<T>(false, StatusCode.Forbidden);
+        return new Result<T>(false, StatusCode.Forbidden) { Title = ErrorMessageResources.Forbidden_Title, Detail = ErrorMessageResources.Forbidden_Detail };
     }
 
     /// <summary>
@@ -168,7 +170,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating forbidden access.</returns>
     public static new IResult<T> Forbidden(string detail)
     {
-        return new Result<T>(false, StatusCode.Forbidden) { Detail = detail };
+        return new Result<T>(false, StatusCode.Forbidden) { Title = ErrorMessageResources.Forbidden_Title, Detail = detail };
     }
 
     /// <summary>
@@ -188,7 +190,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a resource not found.</returns>
     public static new IResult<T> NotFound()
     {
-        return new Result<T>(false, StatusCode.NotFound);
+        return new Result<T>(false, StatusCode.NotFound) { Title = ErrorMessageResources.NotFound_Title, Detail = ErrorMessageResources.NotFound_Detail };
     }
 
     /// <summary>
@@ -198,7 +200,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a resource not found.</returns>
     public static new IResult<T> NotFound(string detail)
     {
-        return new Result<T>(false, StatusCode.NotFound) { Detail = detail };
+        return new Result<T>(false, StatusCode.NotFound) { Title = ErrorMessageResources.NotFound_Title, Detail = detail };
     }
 
     /// <summary>
@@ -218,7 +220,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a conflict.</returns>
     public static new IResult<T> Conflict()
     {
-        return new Result<T>(false, StatusCode.Conflict);
+        return new Result<T>(false, StatusCode.Conflict) { Title = ErrorMessageResources.Conflict_Title, Detail = ErrorMessageResources.Conflict_Detail };
     }
 
     /// <summary>
@@ -228,7 +230,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a conflict.</returns>
     public static new IResult<T> Conflict(string detail)
     {
-        return new Result<T>(false, StatusCode.Conflict) { Detail = detail };
+        return new Result<T>(false, StatusCode.Conflict) { Title = ErrorMessageResources.Conflict_Title, Detail = detail };
     }
 
     /// <summary>
@@ -248,7 +250,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating an internal server error.</returns>
     public static new IResult<T> InternalServerError()
     {
-        return new Result<T>(false, StatusCode.InternalServerError);
+        return new Result<T>(false, StatusCode.InternalServerError) { Title = ErrorMessageResources.InternalServerError_Title, Detail = ErrorMessageResources.InternalServerError_Detail };
     }
 
     /// <summary>
@@ -258,7 +260,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult"/> class indicating an internal server error.</returns>
     public static new IResult<T> InternalServerError(string detail)
     {
-        return new Result<T>(false, StatusCode.InternalServerError) { Detail = detail };
+        return new Result<T>(false, StatusCode.InternalServerError) { Title = ErrorMessageResources.InternalServerError_Title, Detail = detail };
     }
 
     /// <summary>
