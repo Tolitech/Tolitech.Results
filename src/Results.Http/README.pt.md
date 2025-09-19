@@ -13,7 +13,7 @@ Tolitech.Results.Http oferece métodos de extensão para mapear respostas HTTP p
 ```csharp
 using Tolitech.Results.Http;
 
-Result<MyResponse> result = new();
+IResult<MyResponse> result = Result<MyResponse>.OK();
 var response = await httpClient.SendAsync(request);
 
 if (response.IsSuccessStatusCode)
@@ -39,9 +39,9 @@ Task ReadProblemDetailsAsync(HttpResponseMessage response)
 ## Exemplo Completo de Integração
 
 ```csharp
-public async Task<Result<CreateOrderResponse>> CreateOrder(CreateOrderRequest request)
+public async Task<IResult<CreateOrderResponse>> CreateOrder(CreateOrderRequest request)
 {
-    Result<CreateOrderResponse> result = new();
+    IResult<CreateOrderResponse> result = Result<CreateOrderResponse>.OK();
     var response = await httpClient.PostAsJsonAsync("/orders", request);
 
     if (response.IsSuccessStatusCode)

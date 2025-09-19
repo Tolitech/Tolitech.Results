@@ -15,17 +15,17 @@ Tolitech.Results é a biblioteca central do padrão Results para .NET, permitind
 ### Resultado de Sucesso
 
 ```csharp
-var result = Result.OK();
-var resultComValor = Result.OK<int>(42);
+IResult result = Result.OK();
+IResult resultComValor = Result<int>.OK(42);
 ```
 
 ### Resultado de Erro com Detalhes
 
 ```csharp
-var result = Result.BadRequest()
-    .WithTitle("Erro de Validação")
-    .WithDetail("O campo 'Nome' é obrigatório.")
-    .AddError("Nome não informado");
+var result = Result.BadRequest(
+    "Erro de Validação"
+    "O campo 'Nome' é obrigatório.")
+        .AddError("Nome não informado");
 ```
 
 ### Métodos de Fábrica Disponíveis
@@ -40,20 +40,12 @@ var result = Result.BadRequest()
 - `Unauthorized()`, `Unauthorized(string detail)`, `Unauthorized(string title, string detail)`
 - `Forbidden()`, `Forbidden(string detail)`, `Forbidden(string title, string detail)`
 - `NotFound()`, `NotFound(string detail)`, `NotFound(string title, string detail)`
-- `MethodNotAllowed()`, `MethodNotAllowed(string detail)`, `MethodNotAllowed(string title, string detail)`
-- `RequestTimeout()`, `RequestTimeout(string detail)`, `RequestTimeout(string title, string detail)`
 - `Conflict()`, `Conflict(string detail)`, `Conflict(string title, string detail)`
-- `TooManyRequests()`, `TooManyRequests(string detail)`, `TooManyRequests(string title, string detail)`
 - `InternalServerError()`, `InternalServerError(string detail)`, `InternalServerError(string title, string detail)`
-- `BadGateway()`, `BadGateway(string detail)`, `BadGateway(string title, string detail)`
-- `ServiceUnavailable()`, `ServiceUnavailable(string detail)`, `ServiceUnavailable(string title, string detail)`
-- `GatewayTimeout()`, `GatewayTimeout(string detail)`, `GatewayTimeout(string title, string detail)`
 
 ### Manipulação de Mensagens
 
 ```csharp
-result.AddInformation("Processamento concluído com sucesso.");
-result.AddWarning("Atenção: campo opcional não preenchido.");
 result.AddError("Erro inesperado.", StatusCode.InternalServerError);
 ```
 
@@ -68,7 +60,7 @@ result.AddError("Erro inesperado.", StatusCode.InternalServerError);
 ```csharp
 public class MathOperation
 {
-    public Result<int> Divide(int dividend, int divisor)
+    public IResult<int> Divide(int dividend, int divisor)
     {
         if (divisor == 0)
             return Result.BadRequest<int>()

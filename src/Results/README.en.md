@@ -14,16 +14,16 @@ Tolitech.Results is the core Results pattern library for .NET, enabling you to e
 
 ### Success Result
 ```csharp
-var result = Result.OK();
-var resultWithValue = Result.OK<int>(42);
+IResult result = Result.OK();
+IResult resultWithValue = Result<int>.OK(42);
 ```
 
 ### Error Result with Details
 ```csharp
-var result = Result.BadRequest()
-    .WithTitle("Validation Error")
-    .WithDetail("The 'Name' field is required.")
-    .AddError("Name not provided");
+var result = Result.BadRequest(
+    "Validation Error",
+    "The 'Name' field is required.")
+        .AddError("Name not provided");
 ```
 
 ### Available Factory Methods
@@ -37,19 +37,11 @@ var result = Result.BadRequest()
 - `Unauthorized()`, `Unauthorized(string detail)`, `Unauthorized(string title, string detail)`
 - `Forbidden()`, `Forbidden(string detail)`, `Forbidden(string title, string detail)`
 - `NotFound()`, `NotFound(string detail)`, `NotFound(string title, string detail)`
-- `MethodNotAllowed()`, `MethodNotAllowed(string detail)`, `MethodNotAllowed(string title, string detail)`
-- `RequestTimeout()`, `RequestTimeout(string detail)`, `RequestTimeout(string title, string detail)`
 - `Conflict()`, `Conflict(string detail)`, `Conflict(string title, string detail)`
-- `TooManyRequests()`, `TooManyRequests(string detail)`, `TooManyRequests(string title, string detail)`
 - `InternalServerError()`, `InternalServerError(string detail)`, `InternalServerError(string title, string detail)`
-- `BadGateway()`, `BadGateway(string detail)`, `BadGateway(string title, string detail)`
-- `ServiceUnavailable()`, `ServiceUnavailable(string detail)`, `ServiceUnavailable(string title, string detail)`
-- `GatewayTimeout()`, `GatewayTimeout(string detail)`, `GatewayTimeout(string title, string detail)`
 
 ### Message Handling
 ```csharp
-result.AddInformation("Processing completed successfully.");
-result.AddWarning("Warning: optional field not filled.");
 result.AddError("Unexpected error.", StatusCode.InternalServerError);
 ```
 
@@ -62,7 +54,7 @@ result.AddError("Unexpected error.", StatusCode.InternalServerError);
 ```csharp
 public class MathOperation
 {
-    public Result<int> Divide(int dividend, int divisor)
+    public IResult<int> Divide(int dividend, int divisor)
     {
         if (divisor == 0)
             return Result.BadRequest<int>()
