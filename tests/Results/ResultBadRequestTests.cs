@@ -12,7 +12,7 @@ public class ResultBadRequestTests
     public void BadRequest_NoParameters_ReturnsFailureWithStatusCode400()
     {
         // Arrange & Act
-        Result result = Result.BadRequest();
+        IResult result = Result.BadRequest();
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultBadRequestTests
     public void BadRequest_WithStatusCodeOK_ShouldResultInIsSuccess()
     {
         // Arrange & Act
-        Result result = Result.BadRequest()
+        IResult result = Result.BadRequest()
             .WithStatusCode(StatusCode.OK);
 
         // Assert
@@ -41,7 +41,7 @@ public class ResultBadRequestTests
     public void BadRequest_WithStatusCodeNoContent_ShouldResultInIsSuccess()
     {
         // Arrange & Act
-        Result result = Result.BadRequest()
+        IResult result = Result.BadRequest()
             .WithStatusCode(StatusCode.NoContent);
 
         // Assert
@@ -55,7 +55,7 @@ public class ResultBadRequestTests
     public void BadRequest_WithStatusCodeCreated_ShouldResultInIsSuccess()
     {
         // Arrange & Act
-        Result result = Result.BadRequest()
+        IResult result = Result.BadRequest()
             .WithStatusCode(StatusCode.Created);
 
         // Assert
@@ -69,7 +69,7 @@ public class ResultBadRequestTests
     public void BadRequest_WithStatusCodeInternalServerError_ReturnsFailureWithStatusCode500()
     {
         // Arrange
-        Result result = Result.BadRequest();
+        IResult result = Result.BadRequest();
 
         // Act
         result = result.WithStatusCode(StatusCode.InternalServerError);
@@ -87,7 +87,7 @@ public class ResultBadRequestTests
     public void BadRequest_WithType_ReturnsFailureWithType()
     {
         // Arrange
-        Result result = Result.BadRequest();
+        IResult result = Result.BadRequest();
 
         // Act
         result = result.WithType("ValidationError");
@@ -106,7 +106,7 @@ public class ResultBadRequestTests
     public void BadRequest_FromAcceptedWithValue_ShouldResultInIsFailureWithNoContent()
     {
         // Arrange
-        Result<string> result = Result.Accepted("Test");
+        IResult<string> result = Result<string>.Accepted("Test");
 
         // Act
         _ = result.BadRequest();
@@ -124,7 +124,7 @@ public class ResultBadRequestTests
     public void BadRequest_DetailParameter_ReturnsFailureWithStatusCode400()
     {
         // Arrange & Act
-        Result result = Result.BadRequest("Detail");
+        IResult result = Result.BadRequest("Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -141,7 +141,7 @@ public class ResultBadRequestTests
     public void BadRequest_TitleAndDetailParameters_ReturnsFailureWithStatusCode400()
     {
         // Arrange & Act
-        Result result = Result.BadRequest("Title", "Detail");
+        IResult result = Result.BadRequest("Title", "Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -158,7 +158,7 @@ public class ResultBadRequestTests
     public void BadRequest_GenericWithDetailParameter_ReturnsFailureWithStatusCode400()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.BadRequest("Detail");
@@ -178,7 +178,7 @@ public class ResultBadRequestTests
     public void BadRequest_GenericWithTitleAndDetailParameters_ReturnsFailureWithStatusCode400()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.BadRequest("Title", "Detail");

@@ -14,7 +14,7 @@ public class BooleanTests
     public void ErrorIfNull_WithNull_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = null;
 
         // Act
@@ -31,7 +31,7 @@ public class BooleanTests
     public void ErrorIfNull_WithTrue_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = true;
 
         // Act
@@ -48,7 +48,7 @@ public class BooleanTests
     public void ErrorIfNotNull_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = null;
 
         // Act
@@ -65,7 +65,7 @@ public class BooleanTests
     public void ErrorIfNotNull_WithTrue_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = true;
 
         // Act
@@ -82,7 +82,7 @@ public class BooleanTests
     public void ErrorIfTrue_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = null;
 
         // Act
@@ -99,7 +99,7 @@ public class BooleanTests
     public void ErrorIfTrue_WithTrueNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = true;
 
         // Act
@@ -116,7 +116,7 @@ public class BooleanTests
     public void ErrorIfTrue_WithFalseNullable_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = false;
 
         // Act
@@ -133,7 +133,7 @@ public class BooleanTests
     public void ErrorIfTrue_WithFalse_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const bool approved = false;
 
         // Act
@@ -150,7 +150,7 @@ public class BooleanTests
     public void ErrorIfTrue_WithTrue_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const bool approved = true;
 
         // Act
@@ -167,7 +167,7 @@ public class BooleanTests
     public void ErrorIfFalse_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = null;
 
         // Act
@@ -184,7 +184,7 @@ public class BooleanTests
     public void ErrorIfFalse_WithFalse_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const bool approved = false;
 
         // Act
@@ -201,7 +201,7 @@ public class BooleanTests
     public void ErrorIfFalse_WithFalseNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = false;
 
         // Act
@@ -218,7 +218,7 @@ public class BooleanTests
     public void ErrorIfFalse_WithTrue_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const bool approved = true;
 
         // Act
@@ -238,7 +238,7 @@ public class BooleanTests
     public void ErrorIfFalseOrNull_WithNullOrFalse_ReturnsFailureInResult(bool? approved)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(approved).ErrorIfFalseOrNull().End();
@@ -254,7 +254,7 @@ public class BooleanTests
     public void ErrorIfFalseOrNull_WithTrue_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = true;
 
         // Act
@@ -274,7 +274,7 @@ public class BooleanTests
     public void ErrorIfTrueOrNull_WithNull_ReturnsFailureInResult(bool? approved)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(approved).ErrorIfTrueOrNull().End();
@@ -290,7 +290,7 @@ public class BooleanTests
     public void ErrorIfTrueOrNull_WithFalse_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = false;
 
         // Act
@@ -307,7 +307,7 @@ public class BooleanTests
     public void ErrorIfEqualTo_WithFalseNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = false;
 
         // Act
@@ -324,7 +324,7 @@ public class BooleanTests
     public void ErrorIfEqualTo_WithFalse_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const bool approved = false;
 
         // Act
@@ -341,7 +341,7 @@ public class BooleanTests
     public void ErrorIfEqualTo_WithTrue_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const bool approved = true;
 
         // Act
@@ -358,7 +358,7 @@ public class BooleanTests
     public void ErrorIfNotEqualTo_WithFalseNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = false;
 
         // Act
@@ -375,7 +375,7 @@ public class BooleanTests
     public void ErrorIfNotEqualTo_WithFalse_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const bool approved = false;
 
         // Act
@@ -392,7 +392,7 @@ public class BooleanTests
     public void ErrorIfNotEqualTo_WithTrue_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const bool approved = true;
 
         // Act
@@ -421,7 +421,7 @@ public class BooleanTests
         CultureInfo.DefaultThreadCurrentCulture = culture;
         CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-        Result result = Result.OK();
+        IResult result = Result.OK();
         bool? approved = null;
 
         // Act
@@ -430,7 +430,6 @@ public class BooleanTests
         // Assert
         Assert.True(result.IsFailure);
         Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
-        Assert.Contains(result.Messages, m => m.Type == MessageType.Error);
-        Assert.Contains("approved", result.Messages.First().Message, StringComparison.CurrentCulture);
+        Assert.Contains("approved", result.Errors.First().Message, StringComparison.CurrentCulture);
     }
 }

@@ -13,7 +13,7 @@ public static class ResultGuard
     /// <param name="value">The value being guarded.</param>
     /// <param name="propertyName">The name of the property associated with the value.</param>
     /// <returns>A new instance of <see cref="ResultGuard{T}"/>.</returns>
-    public static ResultGuard<T?> Create<T>(Result result, T? value, string propertyName)
+    public static ResultGuard<T?> Create<T>(IResult result, T? value, string propertyName)
     {
         return new(result, value, propertyName);
     }

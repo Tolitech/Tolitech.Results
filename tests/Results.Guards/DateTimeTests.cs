@@ -12,7 +12,7 @@ public class DateTimeTests
     public void ErrorIfFuture_WithFutureDateTime_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.Today.AddDays(1);
 
         // Act
@@ -29,7 +29,7 @@ public class DateTimeTests
     public void ErrorIfFuture_WithFutureDateTimeNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = DateTime.Today.AddDays(1);
 
         // Act
@@ -46,7 +46,7 @@ public class DateTimeTests
     public void ErrorIfFuture_WithNow_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.Now;
 
         // Act
@@ -63,7 +63,7 @@ public class DateTimeTests
     public void ErrorIfFuture_WithTodayDateTime_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.Today;
 
         // Act
@@ -80,7 +80,7 @@ public class DateTimeTests
     public void ErrorIfFuture_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = null;
 
         // Act
@@ -97,7 +97,7 @@ public class DateTimeTests
     public void ErrorIfFuture_WithFutureDateOnly_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.Today.AddDays(1));
 
         // Act
@@ -114,7 +114,7 @@ public class DateTimeTests
     public void ErrorIfFuture_WithFutureDateOnlyNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = DateOnly.FromDateTime(DateTime.Today.AddDays(1));
 
         // Act
@@ -131,7 +131,7 @@ public class DateTimeTests
     public void ErrorIfFuture_WithTodayDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.Today);
 
         // Act
@@ -148,7 +148,7 @@ public class DateTimeTests
     public void ErrorIfFuture_WithNullDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = null;
 
         // Act
@@ -165,7 +165,7 @@ public class DateTimeTests
     public void ErrorIfFutureUtc_WithFutureDateTime_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.UtcNow.Date.AddDays(1);
 
         // Act
@@ -182,7 +182,7 @@ public class DateTimeTests
     public void ErrorIfFutureUtc_WithFutureDateTimeNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = DateTime.UtcNow.Date.AddDays(1);
 
         // Act
@@ -199,7 +199,7 @@ public class DateTimeTests
     public void ErrorIfFutureUtc_WithTodayDateTime_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.UtcNow.Date;
 
         // Act
@@ -216,7 +216,7 @@ public class DateTimeTests
     public void ErrorIfFutureUtc_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = null;
 
         // Act
@@ -233,7 +233,7 @@ public class DateTimeTests
     public void ErrorIfFutureUtc_WithFutureDateOnly_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddDays(1));
 
         // Act
@@ -250,7 +250,7 @@ public class DateTimeTests
     public void ErrorIfFutureUtc_WithFutureDateOnlyNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddDays(1));
 
         // Act
@@ -267,7 +267,7 @@ public class DateTimeTests
     public void ErrorIfFutureUtc_WithNullDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = null;
 
         // Act
@@ -284,7 +284,7 @@ public class DateTimeTests
     public void ErrorIfFutureUtc_WithTodayDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.UtcNow.Date);
 
         // Act
@@ -301,7 +301,7 @@ public class DateTimeTests
     public void ErrorIfPast_WithPastDateTime_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.Today.AddDays(-1);
 
         // Act
@@ -318,7 +318,7 @@ public class DateTimeTests
     public void ErrorIfPast_WithPastDateTimeNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = DateTime.Today.AddDays(-1);
 
         // Act
@@ -335,7 +335,7 @@ public class DateTimeTests
     public void ErrorIfPast_WithTomorrowDateTime_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.Today.AddDays(1);
 
         // Act
@@ -352,7 +352,7 @@ public class DateTimeTests
     public void ErrorIfPast_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = null;
 
         // Act
@@ -369,7 +369,7 @@ public class DateTimeTests
     public void ErrorIfPast_WithPastDateOnly_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.Today.AddDays(-1));
 
         // Act
@@ -386,7 +386,7 @@ public class DateTimeTests
     public void ErrorIfPast_WithPastDateOnlyNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = DateOnly.FromDateTime(DateTime.Today.AddDays(-1));
 
         // Act
@@ -403,7 +403,7 @@ public class DateTimeTests
     public void ErrorIfPast_WithTodayDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.Today);
 
         // Act
@@ -420,7 +420,7 @@ public class DateTimeTests
     public void ErrorIfPast_WithNullDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = null;
 
         // Act
@@ -437,7 +437,7 @@ public class DateTimeTests
     public void ErrorIfPastUtc_WithPastDateTime_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.UtcNow.Date.AddDays(-1);
 
         // Act
@@ -454,7 +454,7 @@ public class DateTimeTests
     public void ErrorIfPastUtc_WithPastDateTimeNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = DateTime.UtcNow.Date.AddDays(-1);
 
         // Act
@@ -471,7 +471,7 @@ public class DateTimeTests
     public void ErrorIfPastUtc_WithTomorrowDateTime_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.UtcNow.Date.AddDays(1);
 
         // Act
@@ -488,7 +488,7 @@ public class DateTimeTests
     public void ErrorIfPastUtc_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = null;
 
         // Act
@@ -505,7 +505,7 @@ public class DateTimeTests
     public void ErrorIfPastUtc_WithPastDateOnly_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddDays(-1));
 
         // Act
@@ -522,7 +522,7 @@ public class DateTimeTests
     public void ErrorIfPastUtc_WithPastDateOnlyNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddDays(-1));
 
         // Act
@@ -539,7 +539,7 @@ public class DateTimeTests
     public void ErrorIfPastUtc_WithTodayDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.UtcNow.Date);
 
         // Act
@@ -556,7 +556,7 @@ public class DateTimeTests
     public void ErrorIfPastUtc_WithNullDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = null;
 
         // Act
@@ -573,7 +573,7 @@ public class DateTimeTests
     public void ErrorIfNotFuture_WithFutureDateTime_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.Today.AddDays(1);
 
         // Act
@@ -590,7 +590,7 @@ public class DateTimeTests
     public void ErrorIfNotFuture_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = null;
 
         // Act
@@ -607,7 +607,7 @@ public class DateTimeTests
     public void ErrorIfNotFuture_WithTodayDateTime_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.Today;
 
         // Act
@@ -624,7 +624,7 @@ public class DateTimeTests
     public void ErrorIfNotFuture_WithTodayDateTimeNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = DateTime.Today;
 
         // Act
@@ -641,7 +641,7 @@ public class DateTimeTests
     public void ErrorIfNotFuture_WithFutureDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.Today.AddDays(1));
 
         // Act
@@ -658,7 +658,7 @@ public class DateTimeTests
     public void ErrorIfNotFuture_WithNullDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = null;
 
         // Act
@@ -675,7 +675,7 @@ public class DateTimeTests
     public void ErrorIfNotFuture_WithTodayDateOnly_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.Today);
 
         // Act
@@ -692,7 +692,7 @@ public class DateTimeTests
     public void ErrorIfNotFuture_WithTodayDateOnlyNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = DateOnly.FromDateTime(DateTime.Today);
 
         // Act
@@ -709,7 +709,7 @@ public class DateTimeTests
     public void ErrorIfNotFutureUtc_WithFutureDateTime_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.UtcNow.Date.AddDays(1);
 
         // Act
@@ -726,7 +726,7 @@ public class DateTimeTests
     public void ErrorIfNotFutureUtc_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = null;
 
         // Act
@@ -743,7 +743,7 @@ public class DateTimeTests
     public void ErrorIfNotFutureUtc_WithTodayDateTime_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.UtcNow.Date;
 
         // Act
@@ -760,7 +760,7 @@ public class DateTimeTests
     public void ErrorIfNotFutureUtc_WithTodayDateTimeNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = DateTime.UtcNow.Date;
 
         // Act
@@ -777,7 +777,7 @@ public class DateTimeTests
     public void ErrorIfNotFutureUtc_WithFutureDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddDays(1));
 
         // Act
@@ -794,7 +794,7 @@ public class DateTimeTests
     public void ErrorIfNotFutureUtc_WithNullDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = null;
 
         // Act
@@ -811,7 +811,7 @@ public class DateTimeTests
     public void ErrorIfNotFutureUtc_WithTodayDateOnly_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.UtcNow.Date);
 
         // Act
@@ -828,7 +828,7 @@ public class DateTimeTests
     public void ErrorIfNotFutureUtc_WithTodayDateOnlyNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = DateOnly.FromDateTime(DateTime.UtcNow.Date);
 
         // Act
@@ -845,7 +845,7 @@ public class DateTimeTests
     public void ErrorIfNotPast_WithPastDateTime_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.Today.AddDays(-1);
 
         // Act
@@ -862,7 +862,7 @@ public class DateTimeTests
     public void ErrorIfNotPast_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = null;
 
         // Act
@@ -879,7 +879,7 @@ public class DateTimeTests
     public void ErrorIfNotPast_WithTomorrowDateTime_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.Today.AddDays(1);
 
         // Act
@@ -896,7 +896,7 @@ public class DateTimeTests
     public void ErrorIfNotPast_WithTomorrowDateTimeNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = DateTime.Today.AddDays(1);
 
         // Act
@@ -913,7 +913,7 @@ public class DateTimeTests
     public void ErrorIfNotPast_WithPastDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.Today.AddDays(-1));
 
         // Act
@@ -930,7 +930,7 @@ public class DateTimeTests
     public void ErrorIfNotPast_WithNullDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = null;
 
         // Act
@@ -947,7 +947,7 @@ public class DateTimeTests
     public void ErrorIfNotPast_WithTodayDateOnly_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.Today);
 
         // Act
@@ -964,7 +964,7 @@ public class DateTimeTests
     public void ErrorIfNotPast_WithTodayDateOnlyNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = DateOnly.FromDateTime(DateTime.Today);
 
         // Act
@@ -981,7 +981,7 @@ public class DateTimeTests
     public void ErrorIfNotPastUtc_WithPastDateTime_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.UtcNow.Date.AddDays(-1);
 
         // Act
@@ -998,7 +998,7 @@ public class DateTimeTests
     public void ErrorIfNotPastUtc_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = null;
 
         // Act
@@ -1015,7 +1015,7 @@ public class DateTimeTests
     public void ErrorIfNotPastUtc_WithTomorrowDateTime_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime date = DateTime.UtcNow.Date.AddDays(1);
 
         // Act
@@ -1032,7 +1032,7 @@ public class DateTimeTests
     public void ErrorIfNotPastUtc_WithTomorrowDateTimeNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateTime? date = DateTime.UtcNow.Date.AddDays(1);
 
         // Act
@@ -1049,7 +1049,7 @@ public class DateTimeTests
     public void ErrorIfNotPastUtc_WithPastDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.UtcNow.Date.AddDays(-1));
 
         // Act
@@ -1066,7 +1066,7 @@ public class DateTimeTests
     public void ErrorIfNotPastUtc_WithNullDateOnly_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = null;
 
         // Act
@@ -1083,7 +1083,7 @@ public class DateTimeTests
     public void ErrorIfNotPastUtc_WithTodayDateOnly_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly date = DateOnly.FromDateTime(DateTime.UtcNow.Date);
 
         // Act
@@ -1100,7 +1100,7 @@ public class DateTimeTests
     public void ErrorIfNotPastUtc_WithTodayDateOnlyNullable_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         DateOnly? date = DateOnly.FromDateTime(DateTime.UtcNow.Date);
 
         // Act

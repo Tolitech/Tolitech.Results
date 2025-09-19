@@ -12,7 +12,7 @@ public class GuidTests
     public void ErrorIfNull_WithNull_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = null;
 
         // Act
@@ -29,7 +29,7 @@ public class GuidTests
     public void ErrorIfNull_WithNotNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = Guid.Empty;
 
         // Act
@@ -46,7 +46,7 @@ public class GuidTests
     public void ErrorIfNotNull_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = null;
 
         // Act
@@ -63,7 +63,7 @@ public class GuidTests
     public void ErrorIfNotNull_WithNotNull_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = Guid.Empty;
 
         // Act
@@ -80,7 +80,7 @@ public class GuidTests
     public void ErrorIfEqualTo_WithNull_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = null;
 
         // Act
@@ -97,7 +97,7 @@ public class GuidTests
     public void ErrorIfEqualTo_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = null;
 
         // Act
@@ -114,7 +114,7 @@ public class GuidTests
     public void ErrorIfEqualTo_WithEmpty_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid id = Guid.Empty;
 
         // Act
@@ -131,7 +131,7 @@ public class GuidTests
     public void ErrorIfEqualTo_WithSameData_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = Guid.Empty;
 
         // Act
@@ -148,7 +148,7 @@ public class GuidTests
     public void ErrorIfEqualTo_WithDifferentData_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = Guid.NewGuid();
 
         // Act
@@ -165,7 +165,7 @@ public class GuidTests
     public void ErrorIfNotEqualTo_WithNull_ReturnsSucessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = null;
 
         // Act
@@ -182,7 +182,7 @@ public class GuidTests
     public void ErrorIfNotEqualTo_WithNull_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = null;
 
         // Act
@@ -199,7 +199,7 @@ public class GuidTests
     public void ErrorIfNotEqualTo_WithEmpty_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid id = Guid.Empty;
 
         // Act
@@ -216,7 +216,7 @@ public class GuidTests
     public void ErrorIfNotEqualTo_WithSameData_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = Guid.NewGuid();
 
         // Act
@@ -233,7 +233,7 @@ public class GuidTests
     public void ErrorIfNotEqualTo_WithDifferentData_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = Guid.NewGuid();
 
         // Act
@@ -250,7 +250,7 @@ public class GuidTests
     public void ErrorIfNullOrEmpty_WithNull_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = null;
 
         // Act
@@ -267,7 +267,7 @@ public class GuidTests
     public void ErrorIfNullOrEmpty_WithEmpty_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = Guid.Empty;
 
         // Act
@@ -284,7 +284,7 @@ public class GuidTests
     public void ErrorIfNullOrEmpty_WithNewGuid_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = Guid.NewGuid();
 
         // Act
@@ -301,7 +301,7 @@ public class GuidTests
     public void ErrorIfNotNullOrNotEmpty_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = null;
 
         // Act
@@ -318,7 +318,7 @@ public class GuidTests
     public void ErrorIfNotNullOrNotEmpty_WithEmpty_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = Guid.Empty;
 
         // Act
@@ -335,7 +335,7 @@ public class GuidTests
     public void ErrorIfNotNullOrNotEmpty_WithNewGuid_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         Guid? id = Guid.NewGuid();
 
         // Act

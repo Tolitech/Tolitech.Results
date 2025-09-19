@@ -12,7 +12,7 @@ public class ResultGuard<T>
     /// <param name="result">The Result instance associated with the guard.</param>
     /// <param name="value">The value being guarded.</param>
     /// <param name="propertyName">The name of the property associated with the value.</param>
-    internal ResultGuard(Result result, T? value, string propertyName)
+    internal ResultGuard(IResult result, T? value, string propertyName)
     {
         Result = result;
         Value = value;
@@ -27,7 +27,7 @@ public class ResultGuard<T>
     /// <summary>
     /// Gets the Result instance associated with the guard.
     /// </summary>
-    internal Result Result { get; }
+    internal IResult Result { get; }
 
     /// <summary>
     /// Gets the name of the property associated with the value.

@@ -16,9 +16,9 @@ public class ProblemDetailsResponseTests
     public async Task ReadProblemDetailsAsync_WithValidProblemDetailsMessage_ShouldPopulateResultObject()
     {
         // Arrange
-        Result result = Result.BadRequest();
+        IResult result = Result.BadRequest();
         using HttpResponseMessage response = new(HttpStatusCode.BadRequest);
-        const string json = /*lang=json,strict*/ "{\"errors\": [{\"message\": \"message1\", \"key\": \"key1\", \"contextName\": \"contextName1\" }, { \"message\": \"message2\", \"key\": \"key2\", \"contextName\": \"contextName2\" } ], \"status\": 400, \"detail\": \"message detail\", \"title\": \"message title\", \"type\": \"message type\"}";
+        const string json = /*lang=json,strict*/ "{\"errors\": [{\"message\": \"message1\", \"key\": \"key1\" }, { \"message\": \"message2\", \"key\": \"key2\" } ], \"status\": 400, \"detail\": \"message detail\", \"title\": \"message title\", \"type\": \"message type\"}";
         response.Content = new StringContent(json, Encoding.UTF8, "application/json");
 
         // Act
@@ -30,14 +30,11 @@ public class ProblemDetailsResponseTests
         Assert.Equal("message title", result.Title);
         Assert.Equal("message detail", result.Detail);
         Assert.Equal(StatusCode.BadRequest, result.StatusCode);
-        Assert.Equal(2, result.Messages.Count);
-        Assert.Equal(2, result.Errors.Count());
-        Assert.Equal("contextName1", result.Messages.First().ContextName);
-        Assert.Equal("key1", result.Messages.First().Key);
-        Assert.Equal("message1", result.Messages.First().Message);
-        Assert.Equal("contextName2", result.Messages.Last().ContextName);
-        Assert.Equal("key2", result.Messages.Last().Key);
-        Assert.Equal("message2", result.Messages.Last().Message);
+        Assert.Equal(2, result.Errors.Count);
+        Assert.Equal("key1", result.Errors.First().Key);
+        Assert.Equal("message1", result.Errors.First().Message);
+        Assert.Equal("key2", result.Errors.Last().Key);
+        Assert.Equal("message2", result.Errors.Last().Message);
     }
 
     /// <summary>
@@ -48,7 +45,7 @@ public class ProblemDetailsResponseTests
     public async Task ReadProblemDetailsAsync_WithValidProblemDetailsMessageWithoutKeyAndContext_ShouldPopulateResultObject()
     {
         // Arrange
-        Result result = Result.BadRequest();
+        IResult result = Result.BadRequest();
         using HttpResponseMessage response = new(HttpStatusCode.BadRequest);
         const string json = /*lang=json,strict*/ "{\"errors\": [{\"message\": \"message1\" }, { \"message\": \"message2\" } ], \"status\": 400, \"detail\": \"message detail\", \"title\": \"message title\", \"type\": \"message type\"}";
         response.Content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -62,10 +59,9 @@ public class ProblemDetailsResponseTests
         Assert.Equal("message title", result.Title);
         Assert.Equal("message detail", result.Detail);
         Assert.Equal(StatusCode.BadRequest, result.StatusCode);
-        Assert.Equal(2, result.Messages.Count);
-        Assert.Equal(2, result.Errors.Count());
-        Assert.Equal("message1", result.Messages.First().Message);
-        Assert.Equal("message2", result.Messages.Last().Message);
+        Assert.Equal(2, result.Errors.Count);
+        Assert.Equal("message1", result.Errors.First().Message);
+        Assert.Equal("message2", result.Errors.Last().Message);
     }
 
     /// <summary>
@@ -76,7 +72,7 @@ public class ProblemDetailsResponseTests
     public async Task ReadProblemDetailsAsync_WithNoContentMessage_ShouldThrowsAnException()
     {
         // Arrange
-        Result result = Result.BadRequest();
+        IResult result = Result.BadRequest();
         using HttpResponseMessage response = new(HttpStatusCode.BadRequest);
 
         // Act
@@ -85,7 +81,7 @@ public class ProblemDetailsResponseTests
 
         // Assert
         Assert.True(result.IsFailure);
-        Assert.Single(result.Messages);
+        Assert.Single(result.Errors);
     }
 
     /// <summary>
@@ -96,7 +92,7 @@ public class ProblemDetailsResponseTests
     public async Task ReadProblemDetailsAsync_WithInvalidMessage_ShouldHaveEmptyMessages()
     {
         // Arrange
-        Result result = Result.BadRequest();
+        IResult result = Result.BadRequest();
         using HttpResponseMessage response = new(HttpStatusCode.BadRequest);
         const string json = /*lang=json,strict*/ "{\"property\": \"value\"}";
         response.Content = new StringContent(json, Encoding.UTF8, "application/json");
@@ -107,7 +103,7 @@ public class ProblemDetailsResponseTests
 
         // Assert
         Assert.True(result.IsFailure);
-        Assert.Empty(result.Messages);
+        Assert.Empty(result.Errors);
     }
 
     /// <summary>
@@ -118,7 +114,7 @@ public class ProblemDetailsResponseTests
     public async Task ReadProblemDetailsAsync_WithSuccessResult_ShouldExit()
     {
         // Arrange
-        Result result = Result.OK().WithTitle("Hello, world!");
+        IResult result = Result.OK().WithTitle("Hello, world!");
         using HttpResponseMessage response = new(HttpStatusCode.OK);
 
         // Act
@@ -128,6 +124,6 @@ public class ProblemDetailsResponseTests
         // Assert
         Assert.Equal("Hello, world!", result.Title);
         Assert.Equal(StatusCode.OK, result.StatusCode);
-        Assert.Empty(result.Messages);
+        Assert.Empty(result.Errors);
     }
 }

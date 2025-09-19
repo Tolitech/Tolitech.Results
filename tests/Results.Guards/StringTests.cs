@@ -12,7 +12,7 @@ public class StringTests
     public void ErrorIfNull_WithNull_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string? categoryName = null;
 
         // Act
@@ -29,7 +29,7 @@ public class StringTests
     public void ErrorIfNull_WithNullAndPropertyName_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string? categoryName = null;
 
         // Act
@@ -37,7 +37,7 @@ public class StringTests
 
         // Assert
         Assert.True(result.IsFailure);
-        Assert.Contains(result.Messages, m => m.Key == nameof(categoryName));
+        Assert.Contains(result.Errors, m => m.Key == nameof(categoryName));
     }
 
     /// <summary>
@@ -47,7 +47,7 @@ public class StringTests
     public void ErrorIfNull_WithEmpty_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         string categoryName = string.Empty;
 
         // Act
@@ -64,7 +64,7 @@ public class StringTests
     public void ErrorIfNullOrEmpty_WithEmpty_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         string? categoryName = string.Empty;
 
         // Act
@@ -81,7 +81,7 @@ public class StringTests
     public void ErrorIfNullOrEmpty_WithWhiteSpace_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string categoryName = " ";
 
         // Act
@@ -98,7 +98,7 @@ public class StringTests
     public void ErrorIfNullOrWhiteSpace_WithWhiteSpace_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string? categoryName = "   ";
 
         // Act
@@ -115,7 +115,7 @@ public class StringTests
     public void ErrorIfNullOrWhiteSpace_WithData_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string categoryName = "Hello, world!";
 
         // Act
@@ -132,7 +132,7 @@ public class StringTests
     public void ErrorIfNotNull_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string? categoryName = null;
 
         // Act
@@ -149,7 +149,7 @@ public class StringTests
     public void ErrorIfNotNull_WithEmpty_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         string categoryName = string.Empty;
 
         // Act
@@ -166,7 +166,7 @@ public class StringTests
     public void ErrorIfNotNullOrNotEmpty_WithData_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string? categoryName = "Hello, world!";
 
         // Act
@@ -183,7 +183,7 @@ public class StringTests
     public void ErrorIfNotNullOrNotEmpty_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string? categoryName = null;
 
         // Act
@@ -200,7 +200,7 @@ public class StringTests
     public void ErrorIfEqualTo_WithSameData_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string categoryName = "Hello, world!";
 
         // Act
@@ -217,7 +217,7 @@ public class StringTests
     public void ErrorIfEqualTo_WithNoSameData_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string categoryName = "Hello, world!";
 
         // Act
@@ -234,7 +234,7 @@ public class StringTests
     public void ErrorIfNotEqualTo_WithSameData_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string categoryName = "Hello, world!";
 
         // Act
@@ -251,7 +251,7 @@ public class StringTests
     public void ErrorIfNotEqualTo_WithNoSameData_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string categoryName = "Hello, world!";
 
         // Act
@@ -272,7 +272,7 @@ public class StringTests
     public void ErrorIflengthEqualTo_WithEqualslength_ReturnsFailureInResult(string text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthEqualTo(length).End();
@@ -293,7 +293,7 @@ public class StringTests
     public void ErrorIflengthEqualTo_WithNotEqualslength_ReturnsSuccessInResult(string? text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthEqualTo(length).End();
@@ -314,7 +314,7 @@ public class StringTests
     public void ErrorIflengthNotEqualTo_WithEqualslength_ReturnsSuccessInResult(string? text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthNotEqualTo(length).End();
@@ -334,7 +334,7 @@ public class StringTests
     public void ErrorIflengthNotEqualTo_WithNotEqualslength_ReturnsFailureInResult(string text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthNotEqualTo(length).End();
@@ -355,7 +355,7 @@ public class StringTests
     public void ErrorIflengthGreaterThan_WithEqualslength_ReturnsSuccessInResult(string? text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthGreaterThan(length).End();
@@ -375,7 +375,7 @@ public class StringTests
     public void ErrorIflengthGreaterThan_WithLesslength_ReturnsFailureInResult(string text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthGreaterThan(length).End();
@@ -395,7 +395,7 @@ public class StringTests
     public void ErrorIflengthGreaterThanOrEqualTo_WithEqualslength_ReturnsFailureInResult(string text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthGreaterThanOrEqualTo(length).End();
@@ -416,7 +416,7 @@ public class StringTests
     public void ErrorIflengthGreaterThanOrEqualTo_WithLesslength_ReturnsSuccessInResult(string? text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthGreaterThanOrEqualTo(length).End();
@@ -437,7 +437,7 @@ public class StringTests
     public void ErrorIflengthLessThan_WithEqualslength_ReturnsSuccessInResult(string? text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthLessThan(length).End();
@@ -457,7 +457,7 @@ public class StringTests
     public void ErrorIflengthLessThan_WithLesslength_ReturnsFailureInResult(string text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthLessThan(length).End();
@@ -477,7 +477,7 @@ public class StringTests
     public void ErrorIflengthLessThanOrEqualTo_WithEqualslength_ReturnsFailureInResult(string text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthLessThanOrEqualTo(length).End();
@@ -498,7 +498,7 @@ public class StringTests
     public void ErrorIflengthLessThanOrEqualTo_WithLesslength_ReturnsSuccessInResult(string? text, int length)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(text).ErrorIfLengthLessThanOrEqualTo(length).End();
@@ -518,7 +518,7 @@ public class StringTests
     public void ErrorIfNotValidEmail_WithValidEmail_ReturnsSuccessInResult(string email)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(email).ErrorIfNotValidEmail().End();
@@ -537,7 +537,7 @@ public class StringTests
     public void ErrorIfNotValidEmail_WithInvalidEmail_ReturnsFailureInResult(string email)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(email).ErrorIfNotValidEmail().End();
@@ -557,7 +557,7 @@ public class StringTests
     public void ErrorIfContains_WithContainsString_ReturnsFailureInResult(string value, string target)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(value).ErrorIfContains(target).End();
@@ -573,7 +573,7 @@ public class StringTests
     public void ErrorIfContains_WithContainsString_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string value = "test";
         const string? target = null;
 
@@ -595,7 +595,7 @@ public class StringTests
     public void ErrorIfNotContains_WithNotContainsString_ReturnsFailureInResult(string value, string target)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(value).ErrorIfNotContains(target).End();
@@ -615,7 +615,7 @@ public class StringTests
     public void ErrorIfNotContains_WithNotContainsStringNullable_ReturnsFailureInResult(string? value, string? target)
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Act
         result.Guard(value).ErrorIfNotContains(target).End();
@@ -631,7 +631,7 @@ public class StringTests
     public void ErrorIfNotContains_WithNotContainsNullable_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const string? value = null;
         const string? target = null;
 

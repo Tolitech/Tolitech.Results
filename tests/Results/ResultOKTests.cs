@@ -12,7 +12,7 @@ public class ResultOKTests
     public void OK_NoParameters_ReturnsSuccessWithStatusCode200()
     {
         // Arrange & Act
-        Result result = Result.OK();
+        IResult result = Result.OK();
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultOKTests
     public void OK_ValueAsString_ReturnsSuccessWithStatusCode200AndCorrectValue()
     {
         // Arrange & Act
-        Result<string> result = Result.OK("Hello, world!");
+        IResult<string> result = Result<string>.OK("Hello, world!");
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -43,7 +43,7 @@ public class ResultOKTests
     public void OK_WithTitle_ReturnsResultWithTitle()
     {
         // Arrange & Act
-        Result result = Result.OK()
+        IResult result = Result.OK()
             .WithTitle("Everything is OK.");
 
         // Assert
@@ -58,30 +58,12 @@ public class ResultOKTests
     public void OK_WithDetail_ReturnsResultWithDetail()
     {
         // Arrange & Act
-        Result result = Result.OK()
+        IResult result = Result.OK()
             .WithDetail("Everything is OK.");
 
         // Assert
         Assert.True(result.IsSuccess);
         Assert.Equal("Everything is OK.", result.Detail);
-    }
-
-    /// <summary>
-    /// Unit test to verify the behavior of the OK method when called with a context name parameter.
-    /// </summary>
-    [Fact]
-    public void OK_WithContextName_ReturnsMessagesWithContextName()
-    {
-        // Arrange
-        Result result = Result.OK()
-            .WithContext("Root");
-
-        // Act
-        result.AddInformation("Hello, World.");
-
-        // Assert
-        Assert.True(result.IsSuccess);
-        Assert.True(result.Messages.Where(m => m.ContextName == "Root").ToList().Count > 0);
     }
 
     /// <summary>
@@ -91,7 +73,7 @@ public class ResultOKTests
     public void OK_WithStatusCodeBadRequest_ShouldResultInIsFailure()
     {
         // Arrange & Act
-        Result result = Result.OK()
+        IResult result = Result.OK()
             .WithStatusCode(StatusCode.BadRequest);
 
         // Assert
@@ -105,7 +87,7 @@ public class ResultOKTests
     public void OK_WithStatusCodeForbidden_ShouldResultInIsFailure()
     {
         // Arrange & Act
-        Result result = Result.OK()
+        IResult result = Result.OK()
             .WithStatusCode(StatusCode.Forbidden);
 
         // Assert
@@ -119,7 +101,7 @@ public class ResultOKTests
     public void OK_WithStatusCodeNotFound_ShouldResultInIsFailure()
     {
         // Arrange & Act
-        Result result = Result.OK()
+        IResult result = Result.OK()
             .WithStatusCode(StatusCode.NotFound);
 
         // Assert
@@ -133,7 +115,7 @@ public class ResultOKTests
     public void OK_WithStatusCodeInternalServerError_ShouldResultInIsFailure()
     {
         // Arrange & Act
-        Result result = Result.OK()
+        IResult result = Result.OK()
             .WithStatusCode(StatusCode.InternalServerError);
 
         // Assert
@@ -147,7 +129,7 @@ public class ResultOKTests
     public void OK_FromNoContent_ShouldResultInIsSuccess()
     {
         // Arrange
-        Result<string> result = new();
+        IResult<string> result = Result<string>.NoContent();
 
         // Act
         _ = result.OK("Test");

@@ -24,6 +24,9 @@ csharp_style_unused_value_expression_statement_preference = discard_variable
 # IDE0160: Convert to block scoped namespace
 csharp_style_namespace_declarations = file_scoped
 
+# CA1000: Do not declare static members on generic types
+dotnet_diagnostic.CA1000.severity = silent
+
 # CA1008: Enums should have zero value
 dotnet_diagnostic.CA1008.severity = silent
 

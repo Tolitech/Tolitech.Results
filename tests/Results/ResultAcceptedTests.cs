@@ -12,7 +12,7 @@ public class ResultAcceptedTests
     public void Accept_NoParameters_ReturnsSuccessWithStatusCode202()
     {
         // Arrange & Act
-        Result result = Result.Accepted();
+        IResult result = Result.Accepted();
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultAcceptedTests
     public void Accepted_ValueAsString_ReturnsSuccessWithStatusCode202AndCorrectValue()
     {
         // Arrange & Act
-        Result<string> result = Result.Accepted("Hello, world!");
+        IResult<string> result = Result<string>.Accepted("Hello, world!");
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -43,7 +43,7 @@ public class ResultAcceptedTests
     public void Accepted_FromNoContent_ShouldResultInIsSuccess()
     {
         // Arrange
-        Result<string> result = new();
+        IResult<string> result = Result<string>.NoContent();
 
         // Act
         _ = result.Accepted("Test");

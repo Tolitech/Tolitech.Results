@@ -14,7 +14,7 @@ public static class ResultExtensions
     /// <param name="response">The HttpResponseMessage containing the response.</param>
     /// <returns>A task representing the asynchronous operation.</returns>
     /// <exception cref="ArgumentNullException">Thrown when either the result or response is null.</exception>
-    public static async Task ReadProblemDetailsAsync(this Result result, HttpResponseMessage response)
+    public static async Task ReadProblemDetailsAsync(this IResult result, HttpResponseMessage response)
     {
         ArgumentNullException.ThrowIfNull(result);
         ArgumentNullException.ThrowIfNull(response);
@@ -30,18 +30,25 @@ public static class ResultExtensions
                 .ReadFromJsonAsync(ProblemDetailsJsonContext.Default.ProblemDetailsResponse)
                 .ConfigureAwait(false);
 
-            result.WithType(problemDetailsResponse!.Type)
+            if (problemDetailsResponse is null)
+            {
+                result.BadRequest(
+                    "Conversion Failure",
+                    "Unable to convert the return of the HttpResponseMessage object into a ProblemDetailsResponse.");
+
+                return;
+            }
+
+            result.WithType(problemDetailsResponse.Type)
                 .WithTitle(problemDetailsResponse.Title)
                 .WithDetail(problemDetailsResponse.Detail)
                 .WithStatusCode((StatusCode)problemDetailsResponse.Status);
 
             if (problemDetailsResponse.Errors != null)
             {
-                foreach (ProblemDetailsResponse.MessageResponse error in problemDetailsResponse.Errors)
+                foreach (ProblemDetailsResponse.ErrorMessageResponse error in problemDetailsResponse.Errors)
                 {
-                    result
-                        .WithContext(error.ContextName!)
-                        .AddError(error.Key, error.Message!);
+                    result.AddError(error.Key, error.Message);
                 }
             }
         }
@@ -49,7 +56,7 @@ public static class ResultExtensions
         {
             result.WithTitle("Conversion Failure")
                 .WithDetail("Unable to convert the return of the HttpResponseMessage object into a ProblemDetailsResponse.")
-                .AddError(ex.Message, StatusCode.InternalServerError, ex);
+                .AddError(ex.Message, StatusCode.InternalServerError);
         }
     }
 }
