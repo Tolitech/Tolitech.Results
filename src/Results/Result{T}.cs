@@ -16,6 +16,7 @@ public class Result<T> : Result, IResult<T>
     protected internal Result(bool isSuccess, StatusCode statusCode)
         : base(isSuccess, statusCode)
     {
+        Value = default!;
     }
 
     /// <summary>
@@ -24,7 +25,7 @@ public class Result<T> : Result, IResult<T>
     /// <param name="isSuccess">The success status of the result.</param>
     /// <param name="statusCode">The status code associated with the result.</param>
     /// <param name="value">The result value.</param>
-    protected internal Result(bool isSuccess, StatusCode statusCode, T? value)
+    protected internal Result(bool isSuccess, StatusCode statusCode, T value)
         : base(isSuccess, statusCode)
     {
         Value = value;
@@ -33,14 +34,14 @@ public class Result<T> : Result, IResult<T>
     /// <summary>
     /// Gets the typed value of the result.
     /// </summary>
-    public T? Value { get; private set; }
+    public T Value { get; private set; }
 
     /// <summary>
     /// Represents a successful result with a typed value.
     /// </summary>
     /// <param name="value">The typed value.</param>
     /// <returns>An instance of the <see cref="Result{T}"/> class indicating success with the specified value.</returns>
-    public static IResult<T> OK(T? value)
+    public static IResult<T> OK(T value)
     {
         return new Result<T>(true, StatusCode.OK, value);
     }
@@ -50,7 +51,7 @@ public class Result<T> : Result, IResult<T>
     /// </summary>
     /// <param name="value">The typed value.</param>
     /// <returns>An instance of the <see cref="Result{T}"/> class indicating success with the specified value.</returns>
-    public static IResult<T> Created(T? value)
+    public static IResult<T> Created(T value)
     {
         return new Result<T>(true, StatusCode.Created, value);
     }
@@ -60,7 +61,7 @@ public class Result<T> : Result, IResult<T>
     /// </summary>
     /// <param name="value">The typed value.</param>
     /// <returns>An instance of the <see cref="IResult{T}"/> class indicating that the request has been accepted for processing with the specified value.</returns>
-    public static IResult<T> Accepted(T? value)
+    public static IResult<T> Accepted(T value)
     {
         return new Result<T>(true, StatusCode.Accepted, value);
     }
@@ -71,7 +72,7 @@ public class Result<T> : Result, IResult<T>
     /// <returns>An instance of the <see cref="IResult{T}"/> class indicating no content with the default value for type <typeparamref name="T"/>.</returns>
     public static new IResult<T> NoContent()
     {
-        return new Result<T>(true, StatusCode.NoContent, default);
+        return new Result<T>(true, StatusCode.NoContent, default!);
     }
 
     /// <summary>
@@ -79,7 +80,7 @@ public class Result<T> : Result, IResult<T>
     /// </summary>
     /// <param name="value">The typed value.</param>
     /// <returns>An instance of the <see cref="IResult{T}"/> class indicating that the resource was found with the specified value.</returns>
-    public static IResult<T> Found(T? value)
+    public static IResult<T> Found(T value)
     {
         return new Result<T>(true, StatusCode.Found, value);
     }
@@ -89,7 +90,7 @@ public class Result<T> : Result, IResult<T>
     /// </summary>
     /// <param name="value">The typed value.</param>
     /// <returns>An instance of the <see cref="IResult{T}"/> class indicating no modifications with the specified value.</returns>
-    public static IResult<T> NotModified(T? value)
+    public static IResult<T> NotModified(T value)
     {
         return new Result<T>(true, StatusCode.NotModified, value);
     }
@@ -323,7 +324,7 @@ public class Result<T> : Result, IResult<T>
     /// </summary>
     /// <param name="value">The value to set.</param>
     /// <returns>The current instance of <see cref="IResult{T}"/>.</returns>
-    public IResult<T> WithValue(T? value)
+    public IResult<T> WithValue(T value)
     {
         Value = value;
         return this;
@@ -360,7 +361,7 @@ public class Result<T> : Result, IResult<T>
     /// name="TNew"/> allows it.</param>
     /// <returns>A new result of type <typeparamref name="TNew"/> that retains the success state and status code of the current
     /// result.</returns>
-    public IResult<TNew> ToResult<TNew>(TNew? value)
+    public IResult<TNew> ToResult<TNew>(TNew value)
     {
         IResult<TNew> result = new Result<TNew>(IsSuccess, StatusCode, value);
         return FromCurrentToNewResult(result);
