@@ -12,7 +12,7 @@ public class GenericTests
     public void ErrorIfNull_WithNull_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -29,7 +29,7 @@ public class GenericTests
     public void ErrorIfNull_WithNotNull_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -46,7 +46,7 @@ public class GenericTests
     public void ErrorIfNotNull_WithNull_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -63,7 +63,7 @@ public class GenericTests
     public void ErrorIfNotNull_WithNotNull_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -80,7 +80,7 @@ public class GenericTests
     public void ErrorIfEqualTo_WithNull_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -97,7 +97,7 @@ public class GenericTests
     public void ErrorIfEqualTo_WithValueAndNull_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10;
 
         // Act
@@ -114,7 +114,7 @@ public class GenericTests
     public void ErrorIfEqualTo_WithValue_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const decimal amount = 10;
 
         // Act
@@ -131,7 +131,7 @@ public class GenericTests
     public void ErrorIfEqualTo_WithNull_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -148,7 +148,7 @@ public class GenericTests
     public void ErrorIfEqualTo_WithEqual_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -165,7 +165,7 @@ public class GenericTests
     public void ErrorIfEqualTo_WithNotEqual_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -182,7 +182,7 @@ public class GenericTests
     public void ErrorIfNotEqualTo_WithNull_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -199,7 +199,7 @@ public class GenericTests
     public void ErrorIfNotEqualTo_WithNull_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -216,7 +216,7 @@ public class GenericTests
     public void ErrorIfNotEqualTo_WithValue_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const decimal amount = 10;
 
         // Act
@@ -233,7 +233,7 @@ public class GenericTests
     public void ErrorIfNotEqualTo_WithNotEqual_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -250,7 +250,7 @@ public class GenericTests
     public void ErrorIfNotEqualTo_WithEqual_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -267,7 +267,7 @@ public class GenericTests
     public void ErrorIfLessThan_WithNull_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -284,7 +284,7 @@ public class GenericTests
     public void ErrorIfLessThan_WithLess_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -301,7 +301,7 @@ public class GenericTests
     public void ErrorIfLessThan_WithEqual_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -318,7 +318,7 @@ public class GenericTests
     public void ErrorIfLessThanOrEqualTo_WithNull_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -335,7 +335,7 @@ public class GenericTests
     public void ErrorIfLessThanOrEqualTo_WithEqual_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -352,7 +352,7 @@ public class GenericTests
     public void ErrorIfLessThanOrEqualTo_WithValue_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const decimal amount = 10.50M;
 
         // Act
@@ -369,7 +369,7 @@ public class GenericTests
     public void ErrorIfLessThanOrEqualTo_WithGreater_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -386,7 +386,7 @@ public class GenericTests
     public void ErrorIfGreaterThan_WithNull_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -403,7 +403,7 @@ public class GenericTests
     public void ErrorIfGreaterThan_WithEqual_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -420,7 +420,7 @@ public class GenericTests
     public void ErrorIfGreaterThan_WithGreaterNullable_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -437,7 +437,7 @@ public class GenericTests
     public void ErrorIfGreaterThan_WithGreater_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const decimal amount = 10.50M;
 
         // Act
@@ -454,7 +454,7 @@ public class GenericTests
     public void ErrorIfGreaterThanOrEqualTo_WithNull_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -471,7 +471,7 @@ public class GenericTests
     public void ErrorIfGreaterThanOrEqualTo_WithEqualNullable_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -488,7 +488,7 @@ public class GenericTests
     public void ErrorIfGreaterThanOrEqualTo_WithEqual_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const decimal amount = 10.50M;
 
         // Act
@@ -505,7 +505,7 @@ public class GenericTests
     public void ErrorIfGreaterThanOrEqualTo_WithLess_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10.50M;
 
         // Act
@@ -522,7 +522,7 @@ public class GenericTests
     public void ErrorIfBetween_WithNull_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -539,7 +539,7 @@ public class GenericTests
     public void ErrorIfBetween_WithBetweenNullable_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10M;
 
         // Act
@@ -556,7 +556,7 @@ public class GenericTests
     public void ErrorIfBetween_WithBetween_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const decimal amount = 10M;
 
         // Act
@@ -573,7 +573,7 @@ public class GenericTests
     public void ErrorIfBetween_WithNotBetweenNullable_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10;
 
         // Act
@@ -590,7 +590,7 @@ public class GenericTests
     public void ErrorIfBetween_WithNotBetween_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const decimal amount = 10;
 
         // Act
@@ -607,7 +607,7 @@ public class GenericTests
     public void ErrorIfNotBetween_WithNull_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = null;
 
         // Act
@@ -624,7 +624,7 @@ public class GenericTests
     public void ErrorIfNotBetween_WithBetweenNullable_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10M;
 
         // Act
@@ -641,7 +641,7 @@ public class GenericTests
     public void ErrorIfNotBetween_WithBetween_ReturnsSuccessResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const decimal amount = 10M;
 
         // Act
@@ -658,7 +658,7 @@ public class GenericTests
     public void ErrorIfNotBetween_WithNotBetweenNullable_ReturnsSuccessFailure()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10M;
 
         // Act
@@ -675,7 +675,7 @@ public class GenericTests
     public void ErrorIfNotBetween_WithNotBetween_ReturnsSuccessFailure()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const decimal amount = 10M;
 
         // Act
@@ -692,7 +692,7 @@ public class GenericTests
     public void ErrorIfNotBetween_WithNotBetween_ReturnsFailureResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         decimal? amount = 10M;
 
         // Act

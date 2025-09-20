@@ -12,7 +12,7 @@ public class ResultConflictTests
     public void Conflict_NoParameters_ReturnsFailureWithStatusCode409()
     {
         // Arrange & Act
-        Result result = Result.Conflict();
+        IResult result = Result.Conflict();
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultConflictTests
     public void Conflict_FromAcceptedWithValue_ShouldResultInIsFailureWithNoContent()
     {
         // Arrange
-        Result<string> result = Result.Accepted("Test");
+        IResult<string> result = Result<string>.Accepted("Test");
 
         // Act
         _ = result.Conflict();
@@ -45,13 +45,13 @@ public class ResultConflictTests
     public void Conflict_DetailParameter_ReturnsFailureWithStatusCode409()
     {
         // Arrange & Act
-        Result result = Result.Conflict("Detail");
+        IResult result = Result.Conflict("Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
         Assert.True(result.IsFailure);
         Assert.Equal(StatusCode.Conflict, result.StatusCode);
-        Assert.Null(result.Title);
+        Assert.NotNull(result.Title);
         Assert.Equal("Detail", result.Detail);
     }
 
@@ -62,7 +62,7 @@ public class ResultConflictTests
     public void Conflict_TitleAndDetailParameters_ReturnsFailureWithStatusCode409()
     {
         // Arrange & Act
-        Result result = Result.Conflict("Title", "Detail");
+        IResult result = Result.Conflict("Title", "Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -79,7 +79,7 @@ public class ResultConflictTests
     public void Conflict_GenericWithDetailParameter_ReturnsFailureWithStatusCode409()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.Conflict("Detail");
@@ -99,7 +99,7 @@ public class ResultConflictTests
     public void Conflict_GenericWithTitleAndDetailParameters_ReturnsFailureWithStatusCode409()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.Conflict("Title", "Detail");

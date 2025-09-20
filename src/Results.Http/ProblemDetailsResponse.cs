@@ -14,17 +14,15 @@ public sealed record ProblemDetailsResponse(
     string Title,
     string Detail,
     int Status,
-    IEnumerable<ProblemDetailsResponse.MessageResponse> Errors)
+    IEnumerable<ProblemDetailsResponse.ErrorMessageResponse>? Errors)
 {
     /// <summary>
     /// Represents an individual error message related to a problem in the response.
     /// This record stores additional context for each error, such as the context name, a key, and the actual error message.
     /// </summary>
-    /// <param name="ContextName">An optional name or identifier that provides context for the error (e.g., the area of the application where the error occurred).</param>
     /// <param name="Key">An optional key associated with the error, which can be used for localization or for programmatically identifying the error.</param>
     /// <param name="Message">The actual error message describing the issue in detail, typically aimed at the end user or developer.</param>
-    public sealed record MessageResponse(
-        string? ContextName,
+    public sealed record ErrorMessageResponse(
         string? Key,
-        string? Message);
+        string Message);
 }

@@ -12,7 +12,7 @@ public class ResultNoContentTests
     public void NoContent_NoParameters_ReturnsSuccessWithStatusCode204()
     {
         // Arrange & Act
-        Result result = Result.NoContent();
+        IResult result = Result.NoContent();
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultNoContentTests
     public void NoContent_NoValueAsString_ReturnsSuccessWithStatusCode204AndNullValue()
     {
         // Arrange & Act
-        Result<string> result = Result.NoContent<string>();
+        IResult<string> result = Result<string>.NoContent();
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -43,7 +43,7 @@ public class ResultNoContentTests
     public void NoContent_FromNoContent_ShouldResultInIsSuccess()
     {
         // Arrange
-        Result<string> result = new();
+        IResult<string> result = Result<string>.NoContent();
 
         // Act
         _ = result.NoContent();

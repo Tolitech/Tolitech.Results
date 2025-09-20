@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title>$(AssemblyName)</Title>
-    <Version>1.0.0-preview.4</Version>
+    <Version>1.0.0-preview.5</Version>
     <Authors>Tolitech</Authors>
     <Description>This package provides extension methods for handling HTTP responses in .NET applications, facilitating the extraction and mapping of relevant data from HttpResponseMessage objects into Result objects.</Description>
     <Copyright>Copyright (c) 2025 Tolitech</Copyright>

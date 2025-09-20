@@ -12,7 +12,7 @@ public class ResultInternalServerErrorTests
     public void InternalServerError_NoParameters_ReturnsFailureWithStatusCode500()
     {
         // Arrange & Act
-        Result result = Result.InternalServerError();
+        IResult result = Result.InternalServerError();
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultInternalServerErrorTests
     public void InternalServerError_FromAcceptedWithValue_ShouldResultInIsFailureWithNoContent()
     {
         // Arrange
-        Result<string> result = Result.Accepted("Test");
+        IResult<string> result = Result<string>.Accepted("Test");
 
         // Act
         _ = result.InternalServerError();
@@ -45,13 +45,13 @@ public class ResultInternalServerErrorTests
     public void InternalServerError_DetailParameter_ReturnsFailureWithStatusCode500()
     {
         // Arrange & Act
-        Result result = Result.InternalServerError("Detail");
+        IResult result = Result.InternalServerError("Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
         Assert.True(result.IsFailure);
         Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
-        Assert.Null(result.Title);
+        Assert.NotNull(result.Title);
         Assert.Equal("Detail", result.Detail);
     }
 
@@ -62,7 +62,7 @@ public class ResultInternalServerErrorTests
     public void InternalServerError_TitleAndDetailParameters_ReturnsFailureWithStatusCode500()
     {
         // Arrange & Act
-        Result result = Result.InternalServerError("Title", "Detail");
+        IResult result = Result.InternalServerError("Title", "Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -79,7 +79,7 @@ public class ResultInternalServerErrorTests
     public void InternalServerError_GenericWithDetailParameter_ReturnsFailureWithStatusCode500()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.InternalServerError("Detail");
@@ -99,7 +99,7 @@ public class ResultInternalServerErrorTests
     public void InternalServerError_GenericWithTitleAndDetailParameters_ReturnsFailureWithStatusCode500()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.InternalServerError("Title", "Detail");

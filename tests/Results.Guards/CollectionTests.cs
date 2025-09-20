@@ -12,7 +12,7 @@ public class CollectionTests
     public void ErrorIfNull_WithNull_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = null;
 
         // Act
@@ -29,7 +29,7 @@ public class CollectionTests
     public void ErrorIfNull_WithNotNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [];
 
         // Act
@@ -46,7 +46,7 @@ public class CollectionTests
     public void ErrorIfNotNull_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = null;
 
         // Act
@@ -63,7 +63,7 @@ public class CollectionTests
     public void ErrorIfNotNull_WithNotNull_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [];
 
         // Act
@@ -80,7 +80,7 @@ public class CollectionTests
     public void ErrorIfEmpty_WithEmpty_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [];
 
         // Act
@@ -97,7 +97,7 @@ public class CollectionTests
     public void ErrorIfEmpty_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = null;
 
         // Act
@@ -114,7 +114,7 @@ public class CollectionTests
     public void ErrorIfEmpty_WithNotEmpty_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -131,7 +131,7 @@ public class CollectionTests
     public void ErrorIfNotEmpty_WithEmpty_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [];
 
         // Act
@@ -148,7 +148,7 @@ public class CollectionTests
     public void ErrorIfNotEmpty_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = null;
 
         // Act
@@ -165,7 +165,7 @@ public class CollectionTests
     public void ErrorIfNotEmpty_WithNotEmpty_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -182,7 +182,7 @@ public class CollectionTests
     public void ErrorIfCountEqualTo_WithCountEqual_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -199,7 +199,7 @@ public class CollectionTests
     public void ErrorIfCountEqualTo_CountNoEqual_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -216,7 +216,7 @@ public class CollectionTests
     public void ErrorIfCountEqualTo_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = null;
 
         // Act
@@ -233,7 +233,7 @@ public class CollectionTests
     public void ErrorIfCountNotEqualTo_WithCountNoEqual_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -250,7 +250,7 @@ public class CollectionTests
     public void ErrorIfCountNotEqualTo_WithCountEqual_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -267,7 +267,7 @@ public class CollectionTests
     public void ErrorIfCountNotEqualTo_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = null;
 
         // Act
@@ -284,7 +284,7 @@ public class CollectionTests
     public void ErrorIfCountGreaterThan_WithCountGreater_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -301,7 +301,7 @@ public class CollectionTests
     public void ErrorIfCountGreaterThan_WithCountEqual_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -318,7 +318,7 @@ public class CollectionTests
     public void ErrorIfCountGreaterThan_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = null;
 
         // Act
@@ -335,7 +335,7 @@ public class CollectionTests
     public void ErrorIfCountGreaterThanOrEqualTo_WithCountEqual_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -352,7 +352,7 @@ public class CollectionTests
     public void ErrorIfCountGreaterThanOrEqualTo_WithCountLess_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -369,7 +369,7 @@ public class CollectionTests
     public void ErrorIfCountGreaterThanOrEqualTo_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = null;
 
         // Act
@@ -386,7 +386,7 @@ public class CollectionTests
     public void ErrorIfCountLessThan_WithCountLess_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -403,7 +403,7 @@ public class CollectionTests
     public void ErrorIfCountLessThan_WithCountEqual_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -420,7 +420,7 @@ public class CollectionTests
     public void ErrorIfCountLessThan_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = null;
 
         // Act
@@ -437,7 +437,7 @@ public class CollectionTests
     public void ErrorIfCountLessThanOrEqualTo_WithEqual_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -454,7 +454,7 @@ public class CollectionTests
     public void ErrorIfCountLessThanOrEqualTo_WithGreater_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = [10, 20, 30];
 
         // Act
@@ -471,7 +471,7 @@ public class CollectionTests
     public void ErrorIfCountLessThanOrEqualTo_WithNull_ReturnsSuccessInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         List<int>? list = null;
 
         // Act

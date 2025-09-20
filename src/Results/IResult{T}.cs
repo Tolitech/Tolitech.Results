@@ -1,143 +1,131 @@
 ﻿namespace Tolitech.Results;
 
 /// <summary>
-/// Represents the result of an operation with optional metadata and messages.
+/// Represents the result of an operation, optionally containing a value and metadata such as status code, title, and
+/// detail.
 /// </summary>
-public interface IResult
+/// <remarks>This interface extends <see cref="IResult"/> to include a strongly-typed value. It is commonly used
+/// to represent the outcome of an operation, including success or failure states, associated messages, and optional
+/// metadata.</remarks>
+/// <typeparam name="T">The type of the value contained in the result.</typeparam>
+public interface IResult<T> : IResult
 {
     /// <summary>
-    /// Gets the title metadata associated with the result.
+    /// Gets the value stored in the current instance.
     /// </summary>
-    string Title { get; }
+    T? Value { get; }
 
     /// <summary>
-    /// Gets the detail metadata associated with the result.
-    /// </summary>
-    string Detail { get; }
-
-    /// <summary>
-    /// Gets the type metadata associated with the result.
-    /// </summary>
-    string? Type { get; }
-
-    /// <summary>
-    /// Gets the status code associated with the result.
-    /// </summary>
-    StatusCode StatusCode { get; }
-
-    /// <summary>
-    /// Gets a value indicating whether the result indicates success.
-    /// </summary>
-    bool IsSuccess { get; }
-
-    /// <summary>
-    /// Gets a value indicating whether the result indicates failure.
-    /// </summary>
-    bool IsFailure { get; }
-
-    /// <summary>
-    /// Gets a collection of error message results associated with the result.
-    /// </summary>
-    IReadOnlyCollection<ErrorMessage> Errors { get; }
-
-    /// <summary>
-    /// Adds an error message to the result with an optional status code and exception.
-    /// </summary>
-    /// <param name="errorMessage">The error message content.</param>
-    /// <param name="statusCode">An optional status code associated with the error.</param>
-    void AddError(string errorMessage, StatusCode statusCode = StatusCode.BadRequest);
-
-    /// <summary>
-    /// Adds an error message to the result with an optional key, status code, and exception.
-    /// </summary>
-    /// <param name="key">An optional key associated with the error message.</param>
-    /// <param name="errorMessage">The error message content.</param>
-    /// <param name="statusCode">An optional status code associated with the error.</param>
-    void AddError(string? key, string errorMessage, StatusCode statusCode = StatusCode.BadRequest);
-
-    /// <summary>
-    /// Adds error messages from the provided result to the internal message collection.
+    /// Adds messages from the provided result to the internal message collection.
     /// </summary>
     /// <param name="result">An instance of the interface IResult containing messages to be added.</param>
     /// <returns>The current instance of <see cref="IResult"/>.</returns>
-    IResult AddErrors(IResult result);
+    new IResult<T> AddErrors(IResult result);
 
     /// <summary>
     /// Sets the title metadata for the result.
     /// </summary>
     /// <param name="title">The title to set.</param>
     /// <returns>The current instance of <see cref="IResult"/>.</returns>
-    IResult WithTitle(string title);
+    new IResult<T> WithTitle(string title);
 
     /// <summary>
     /// Sets the detail metadata for the result.
     /// </summary>
     /// <param name="detail">The detail to set.</param>
     /// <returns>The current instance of <see cref="IResult"/>.</returns>
-    IResult WithDetail(string detail);
+    new IResult<T> WithDetail(string detail);
 
     /// <summary>
     /// Sets the type metadata for the result.
     /// </summary>
     /// <param name="type">The type to set.</param>
     /// <returns>The current instance of <see cref="IResult"/>.</returns>
-    IResult WithType(string? type);
+    new IResult<T> WithType(string? type);
 
     /// <summary>
     /// Sets the status code for the result.
     /// </summary>
     /// <param name="statusCode">The status code to set.</param>
     /// <returns>The current instance of <see cref="IResult"/>.</returns>
-    IResult WithStatusCode(StatusCode statusCode);
+    new IResult<T> WithStatusCode(StatusCode statusCode);
 
     /// <summary>
-    /// Represents a successful result.
+    /// Sets the result with the specified value.
     /// </summary>
-    /// <returns>An instance of the <see cref="IResult"/> class indicating success.</returns>
-    static abstract IResult OK();
+    /// <param name="value">The value to associate with the result.</param>
+    /// <returns>The current instance of <see cref="IResult"/>.</returns>
+    IResult<T> WithValue(T? value);
 
     /// <summary>
-    /// Represents a result indicating successful creation.
+    /// Converts the current result to a new result type.
     /// </summary>
-    /// <returns>An instance of the <see cref="IResult"/> class indicating success.</returns>
-    static abstract IResult Created();
+    /// <typeparam name="TNew">The type of the value in the new result.</typeparam>
+    /// <returns>A new result of type <typeparamref name="TNew"/>. The conversion does not modify the state of the current
+    /// result.</returns>
+    IResult<TNew> ToResult<TNew>();
 
     /// <summary>
-    /// Represents a result indicating that the request has been accepted for processing, but the processing has not been completed.
+    /// Converts the current instance to a new result containing the specified value.
     /// </summary>
-    /// <returns>An instance of the <see cref="IResult"/> class indicating that the request has been accepted for processing.</returns>
-    static abstract IResult Accepted();
+    /// <typeparam name="TNew">The type of the value to include in the new result.</typeparam>
+    /// <param name="value">The value to include in the new result.</param>
+    /// <returns>A new result containing the specified value.</returns>
+    IResult<TNew> ToResult<TNew>(TNew? value);
 
     /// <summary>
-    /// Represents a result indicating no content.
+    /// Represents a successful result with a typed value.
     /// </summary>
-    /// <returns>An instance of the <see cref="IResult"/> class indicating no content.</returns>
-    static abstract IResult NoContent();
+    /// <param name="value">The typed value.</param>
+    /// <returns>An instance of the <see cref="IResult{T}"/> class indicating success with the specified value.</returns>
+    static abstract IResult<T> OK(T? value);
 
     /// <summary>
-    /// Represents a result indicating that the requested resource was found.
+    /// Represents a result indicating successful creation with a typed value.
     /// </summary>
-    /// <returns>An instance of the <see cref="IResult"/> class indicating that the resource was found.</returns>
-    static abstract IResult Found();
+    /// <param name="value">The typed value.</param>
+    /// <returns>An instance of the <see cref="IResult{T}"/> class indicating success with the specified value.</returns>
+    static abstract IResult<T> Created(T? value);
 
     /// <summary>
-    /// Represents a result indicating that no modifications were made to the requested resource.
+    /// Represents a result indicating that the request has been accepted for processing with a typed value.
     /// </summary>
-    /// <returns>An instance of the <see cref="IResult"/> class indicating no modifications.</returns>
-    static abstract IResult NotModified();
+    /// <param name="value">The typed value.</param>
+    /// <returns>An instance of the <see cref="IResult{T}"/> class indicating that the request has been accepted for processing with the specified value.</returns>
+    static abstract IResult<T> Accepted(T? value);
+
+    /// <summary>
+    /// Represents a result indicating no content with a typed value.
+    /// </summary>
+    /// <returns>An instance of the <see cref="IResult{T}"/> class indicating no content with the default value for type <typeparamref name="T"/>.</returns>
+    static new abstract IResult<T> NoContent();
+
+    /// <summary>
+    /// Represents a result indicating that the requested resource was found with a typed value.
+    /// </summary>
+    /// <param name="value">The typed value.</param>
+    /// <returns>An instance of the <see cref="IResult{T}"/> class indicating that the resource was found with the specified value.</returns>
+    static abstract IResult<T> Found(T? value);
+
+    /// <summary>
+    /// Represents a result indicating that no modifications were made to the requested resource with a typed value.
+    /// </summary>
+    /// <param name="value">The typed value.</param>
+    /// <returns>An instance of the <see cref="IResult{T}"/> class indicating no modifications with the specified value.</returns>
+    static abstract IResult<T> NotModified(T? value);
 
     /// <summary>
     /// Represents a result indicating a bad request.
     /// </summary>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a bad request.</returns>
-    static abstract IResult BadRequest();
+    static new abstract IResult<T> BadRequest();
 
     /// <summary>
     /// Represents a result indicating a bad request.
     /// </summary>
     /// <param name="detail">A detailed message describing the reason for the bad request.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a bad request.</returns>
-    static abstract IResult BadRequest(string detail);
+    static new abstract IResult<T> BadRequest(string detail);
 
     /// <summary>
     /// Represents a result indicating a bad request.
@@ -145,20 +133,20 @@ public interface IResult
     /// <param name="title">A short title describing the bad request.</param>
     /// <param name="detail">A detailed message providing additional context about the bad request.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a bad request.</returns>
-    static abstract IResult BadRequest(string title, string detail);
+    static new abstract IResult<T> BadRequest(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating unauthorized access.
     /// </summary>
     /// <returns>An instance of the <see cref="IResult"/> class indicating unauthorized access.</returns>
-    static abstract IResult Unauthorized();
+    static new abstract IResult<T> Unauthorized();
 
     /// <summary>
     /// Represents a result indicating unauthorized access with additional details.
     /// </summary>
     /// <param name="detail">A detailed message describing the reason for unauthorized access.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating unauthorized access.</returns>
-    static abstract IResult Unauthorized(string detail);
+    static new abstract IResult<T> Unauthorized(string detail);
 
     /// <summary>
     /// Represents a result indicating unauthorized access with a specific title and additional details.
@@ -166,20 +154,20 @@ public interface IResult
     /// <param name="title">A short title describing the unauthorized access.</param>
     /// <param name="detail">A detailed message providing additional context about the unauthorized access.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating unauthorized access.</returns>
-    static abstract IResult Unauthorized(string title, string detail);
+    static new abstract IResult<T> Unauthorized(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating forbidden access.
     /// </summary>
     /// <returns>An instance of the <see cref="IResult"/> class indicating forbidden access.</returns>
-    static abstract IResult Forbidden();
+    static new abstract IResult<T> Forbidden();
 
     /// <summary>
     /// Represents a result indicating forbidden access.
     /// </summary>
     /// <param name="detail">A detailed message providing the reason for the forbidden access.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating forbidden access.</returns>
-    static abstract IResult Forbidden(string detail);
+    static new abstract IResult<T> Forbidden(string detail);
 
     /// <summary>
     /// Represents a result indicating forbidden access.
@@ -187,20 +175,20 @@ public interface IResult
     /// <param name="title">A short title describing the forbidden access.</param>
     /// <param name="detail">A detailed message providing additional context about the forbidden access.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating forbidden access.</returns>
-    static abstract IResult Forbidden(string title, string detail);
+    static new abstract IResult<T> Forbidden(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating a resource not found.
     /// </summary>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a resource not found.</returns>
-    static abstract IResult NotFound();
+    static new abstract IResult<T> NotFound();
 
     /// <summary>
     /// Represents a result indicating a resource not found.
     /// </summary>
     /// <param name="detail">A detailed message describing why the resource was not found.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a resource not found.</returns>
-    static abstract IResult NotFound(string detail);
+    static new abstract IResult<T> NotFound(string detail);
 
     /// <summary>
     /// Represents a result indicating a resource not found.
@@ -208,20 +196,20 @@ public interface IResult
     /// <param name="title">A short title describing the resource not found.</param>
     /// <param name="detail">A detailed message providing additional context about why the resource was not found.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a resource not found.</returns>
-    static abstract IResult NotFound(string title, string detail);
+    static new abstract IResult<T> NotFound(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating a conflict.
     /// </summary>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a conflict.</returns>
-    static abstract IResult Conflict();
+    static new abstract IResult<T> Conflict();
 
     /// <summary>
     /// Represents a result indicating a conflict.
     /// </summary>
     /// <param name="detail">A detailed message describing the reason for the conflict.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a conflict.</returns>
-    static abstract IResult Conflict(string detail);
+    static new abstract IResult<T> Conflict(string detail);
 
     /// <summary>
     /// Represents a result indicating a conflict.
@@ -229,20 +217,20 @@ public interface IResult
     /// <param name="title">A short title describing the conflict.</param>
     /// <param name="detail">A detailed message providing additional context about the conflict.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating a conflict.</returns>
-    static abstract IResult Conflict(string title, string detail);
+    static new abstract IResult<T> Conflict(string title, string detail);
 
     /// <summary>
     /// Represents a result indicating an internal server error.
     /// </summary>
     /// <returns>An instance of the <see cref="IResult"/> class indicating an internal server error.</returns>
-    static abstract IResult InternalServerError();
+    static new abstract IResult<T> InternalServerError();
 
     /// <summary>
     /// Represents a result indicating an internal server error.
     /// </summary>
     /// <param name="detail">A detailed message describing the internal server error.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating an internal server error.</returns>
-    static abstract IResult InternalServerError(string detail);
+    static new abstract IResult<T> InternalServerError(string detail);
 
     /// <summary>
     /// Represents a result indicating an internal server error.
@@ -250,5 +238,5 @@ public interface IResult
     /// <param name="title">A short title describing the internal server error.</param>
     /// <param name="detail">A detailed message providing additional context about the internal server error.</param>
     /// <returns>An instance of the <see cref="IResult"/> class indicating an internal server error.</returns>
-    static abstract IResult InternalServerError(string title, string detail);
+    static new abstract IResult<T> InternalServerError(string title, string detail);
 }

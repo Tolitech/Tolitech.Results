@@ -12,7 +12,7 @@ public class ResultForbiddenTests
     public void Forbidden_NoParameters_ReturnsFailureWithStatusCode403()
     {
         // Arrange & Act
-        Result result = Result.Forbidden();
+        IResult result = Result.Forbidden();
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultForbiddenTests
     public void Forbidden_FromAcceptedWithValue_ShouldResultInIsFailureWithNoContent()
     {
         // Arrange
-        Result<string> result = Result.Accepted("Test");
+        IResult<string> result = Result<string>.Accepted("Test");
 
         // Act
         _ = result.Forbidden();
@@ -45,13 +45,13 @@ public class ResultForbiddenTests
     public void Forbidden_DetailParameter_ReturnsFailureWithStatusCode403()
     {
         // Arrange & Act
-        Result result = Result.Forbidden("Detail");
+        IResult result = Result.Forbidden("Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
         Assert.True(result.IsFailure);
         Assert.Equal(StatusCode.Forbidden, result.StatusCode);
-        Assert.Null(result.Title);
+        Assert.NotNull(result.Title);
         Assert.Equal("Detail", result.Detail);
     }
 
@@ -62,7 +62,7 @@ public class ResultForbiddenTests
     public void Forbidden_TitleAndDetailParameters_ReturnsFailureWithStatusCode403()
     {
         // Arrange & Act
-        Result result = Result.Forbidden("Title", "Detail");
+        IResult result = Result.Forbidden("Title", "Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -79,7 +79,7 @@ public class ResultForbiddenTests
     public void Forbidden_GenericWithDetailParameter_ReturnsFailureWithStatusCode403()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.Forbidden("Detail");
@@ -99,7 +99,7 @@ public class ResultForbiddenTests
     public void Forbidden_GenericWithTitleAndDetailParameters_ReturnsFailureWithStatusCode403()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.Forbidden("Title", "Detail");

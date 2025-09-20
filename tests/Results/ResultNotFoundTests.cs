@@ -12,7 +12,7 @@ public class ResultNotFoundTests
     public void NotFound_NoParameters_ReturnsFailureWithStatusCode404()
     {
         // Arrange & Act
-        Result result = Result.NotFound();
+        IResult result = Result.NotFound();
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultNotFoundTests
     public void NotFound_FromAcceptedWithValue_ShouldResultInIsFailureWithNoContent()
     {
         // Arrange
-        Result<string> result = Result.Accepted("Test");
+        IResult<string> result = Result<string>.Accepted("Test");
 
         // Act
         _ = result.NotFound();
@@ -45,13 +45,13 @@ public class ResultNotFoundTests
     public void NotFound_DetailParameter_ReturnsFailureWithStatusCode404()
     {
         // Arrange & Act
-        Result result = Result.NotFound("Detail");
+        IResult result = Result.NotFound("Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
         Assert.True(result.IsFailure);
         Assert.Equal(StatusCode.NotFound, result.StatusCode);
-        Assert.Null(result.Title);
+        Assert.NotNull(result.Title);
         Assert.Equal("Detail", result.Detail);
     }
 
@@ -62,7 +62,7 @@ public class ResultNotFoundTests
     public void NotFound_TitleAndDetailParameters_ReturnsFailureWithStatusCode404()
     {
         // Arrange & Act
-        Result result = Result.NotFound("Title", "Detail");
+        IResult result = Result.NotFound("Title", "Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -79,7 +79,7 @@ public class ResultNotFoundTests
     public void NotFound_GenericWithDetailParameter_ReturnsFailureWithStatusCode404()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.NotFound("Detail");
@@ -99,7 +99,7 @@ public class ResultNotFoundTests
     public void NotFound_GenericWithTitleAndDetailParameters_ReturnsFailureWithStatusCode404()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.NotFound("Title", "Detail");

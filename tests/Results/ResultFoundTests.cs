@@ -12,7 +12,7 @@ public class ResultFoundTests
     public void Found_NoParameters_ReturnsSuccessWithStatusCode302()
     {
         // Arrange & Act
-        Result result = Result.Found();
+        IResult result = Result.Found();
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultFoundTests
     public void Found_ValueAsString_ReturnsSuccessWithStatusCode302AndCorrectValue()
     {
         // Arrange & Act
-        Result<string> result = Result.Found("Hello, world!");
+        IResult<string> result = Result<string>.Found("Hello, world!");
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -43,7 +43,7 @@ public class ResultFoundTests
     public void Found_WithStatusFound_ReturnsSuccess()
     {
         // Arrange & Act
-        Result<string> result = Result.Found("Hello, world!")
+        IResult<string> result = Result<string>.Found("Hello, world!")
             .WithStatusCode(StatusCode.Found);
 
         // Assert
@@ -60,7 +60,7 @@ public class ResultFoundTests
     public void Found_WithStatusOK_ReturnsSuccess()
     {
         // Arrange & Act
-        Result result = Result.Found()
+        IResult result = Result.Found()
             .WithStatusCode(StatusCode.OK);
 
         // Assert
@@ -76,8 +76,7 @@ public class ResultFoundTests
     public void Found_WithValueAndTitleAndDetailAndContextName_ReturnsSuccessWithValueAndTitleAndDetail()
     {
         // Arrange
-        Result<string> result = Result.NoContent<string>()
-            .WithContext("Root");
+        IResult<string> result = Result<string>.NoContent();
 
         // Act
         result = result
@@ -103,8 +102,7 @@ public class ResultFoundTests
     public void Found_WithStatusCodeBadRequest_ShouldResultInIsFailure()
     {
         // Arrange & Act
-        Result result = Result.Found("test")
-            .WithContext("Test")
+        IResult result = Result<string>.Found("test")
             .WithTitle("Title")
             .WithDetail("Detail")
             .WithStatusCode(StatusCode.BadRequest);
@@ -120,7 +118,7 @@ public class ResultFoundTests
     public void Found_FromNoContent_ShouldResultInIsSuccess()
     {
         // Arrange
-        Result<string> result = new();
+        IResult<string> result = Result<string>.NoContent();
 
         // Act
         _ = result.Found("Test");

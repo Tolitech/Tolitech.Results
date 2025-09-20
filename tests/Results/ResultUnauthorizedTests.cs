@@ -12,7 +12,7 @@ public class ResultUnauthorizedTests
     public void Unauthorized_NoParameters_ReturnsFailureWithStatusCode401()
     {
         // Arrange & Act
-        Result result = Result.Unauthorized();
+        IResult result = Result.Unauthorized();
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultUnauthorizedTests
     public void Unauthorized_FromAcceptedWithValue_ShouldResultInIsFailureWithNoContent()
     {
         // Arrange
-        Result<string> result = Result.Accepted("Test");
+        IResult<string> result = Result<string>.Accepted("Test");
 
         // Act
         _ = result.Unauthorized();
@@ -45,13 +45,13 @@ public class ResultUnauthorizedTests
     public void Unauthorized_DetailParameter_ReturnsFailureWithStatusCode401()
     {
         // Arrange & Act
-        Result result = Result.Unauthorized("Detail");
+        IResult result = Result.Unauthorized("Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
         Assert.True(result.IsFailure);
         Assert.Equal(StatusCode.Unauthorized, result.StatusCode);
-        Assert.Null(result.Title);
+        Assert.NotNull(result.Title);
         Assert.Equal("Detail", result.Detail);
     }
 
@@ -62,7 +62,7 @@ public class ResultUnauthorizedTests
     public void Unauthorized_TitleAndDetailParameters_ReturnsFailureWithStatusCode401()
     {
         // Arrange & Act
-        Result result = Result.Unauthorized("Title", "Detail");
+        IResult result = Result.Unauthorized("Title", "Detail");
 
         // Assert
         Assert.False(result.IsSuccess);
@@ -79,7 +79,7 @@ public class ResultUnauthorizedTests
     public void Unauthorized_GenericWithDetailParameter_ReturnsFailureWithStatusCode401()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.Unauthorized("Detail");
@@ -99,7 +99,7 @@ public class ResultUnauthorizedTests
     public void Unauthorized_GenericWithTitleAndDetailParameters_ReturnsFailureWithStatusCode401()
     {
         // Arrange
-        Result<string> result = Result.OK("Test");
+        IResult<string> result = Result<string>.OK("Test");
 
         // Act
         result = result.Unauthorized("Title", "Detail");

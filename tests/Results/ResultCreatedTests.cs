@@ -12,7 +12,7 @@ public class ResultCreatedTests
     public void Created_NoParameters_ReturnsSuccessWithStatusCode201()
     {
         // Arrange & Act
-        Result result = Result.Created();
+        IResult result = Result.Created();
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultCreatedTests
     public void Created_ValueAsString_ReturnsSuccessWithStatusCode201AndCorrectValue()
     {
         // Arrange & Act
-        Result<string> result = Result.Created("Hello, world!");
+        IResult<string> result = Result<string>.Created("Hello, world!");
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -43,7 +43,7 @@ public class ResultCreatedTests
     public void Created_WithStatusCreated_ReturnsSuccess()
     {
         // Arrange & Act
-        Result<string> result = Result.Created("Hello, world!")
+        IResult<string> result = Result<string>.Created("Hello, world!")
             .WithStatusCode(StatusCode.Created);
 
         // Assert
@@ -60,7 +60,7 @@ public class ResultCreatedTests
     public void Created_WithStatusOK_ReturnsSuccess()
     {
         // Arrange & Act
-        Result result = Result.Created()
+        IResult result = Result.Created()
             .WithStatusCode(StatusCode.OK);
 
         // Assert
@@ -70,14 +70,13 @@ public class ResultCreatedTests
     }
 
     /// <summary>
-    /// Unit test to verify the behavior of the Created method when called with a value, title, detail, and context name parameters.
+    /// Unit test to verify the behavior of the Created method when called with a value, title, detail parameters.
     /// </summary>
     [Fact]
-    public void Created_WithValueAndTitleAndDetailAndContextName_ReturnsSuccessWithValueAndTitleAndDetail()
+    public void Created_WithValueAndTitleAndDetail_ReturnsSuccessWithValueAndTitleAndDetail()
     {
         // Arrange
-        Result<string> result = Result.NoContent<string>()
-            .WithContext("Root");
+        IResult<string> result = Result<string>.NoContent();
 
         // Act
         result = result
@@ -103,8 +102,7 @@ public class ResultCreatedTests
     public void Created_WithStatusCodeBadRequest_ShouldResultInIsFailure()
     {
         // Arrange & Act
-        Result result = Result.Created("test")
-            .WithContext("Test")
+        IResult result = Result<string>.Created("test")
             .WithTitle("Title")
             .WithDetail("Detail")
             .WithStatusCode(StatusCode.BadRequest);
@@ -120,7 +118,7 @@ public class ResultCreatedTests
     public void Created_FromNoContent_ShouldResultInIsSuccess()
     {
         // Arrange
-        Result<string> result = new();
+        IResult<string> result = Result<string>.NoContent();
 
         // Act
         _ = result.Created("Test");

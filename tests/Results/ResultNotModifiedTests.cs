@@ -12,7 +12,7 @@ public class ResultNotModifiedTests
     public void NotModified_NoParameters_ReturnsSuccessWithStatusCode304()
     {
         // Arrange & Act
-        Result result = Result.NotModified();
+        IResult result = Result.NotModified();
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -27,7 +27,7 @@ public class ResultNotModifiedTests
     public void NotModified_ValueAsString_ReturnsSuccessWithStatusCode304AndCorrectValue()
     {
         // Arrange & Act
-        Result<string> result = Result.NotModified("Hello, world!");
+        IResult<string> result = Result<string>.NotModified("Hello, world!");
 
         // Assert
         Assert.True(result.IsSuccess);
@@ -43,7 +43,7 @@ public class ResultNotModifiedTests
     public void NotModified_WithStatusNotModified_ReturnsSuccess()
     {
         // Arrange & Act
-        Result<string> result = Result.NotModified("Hello, world!")
+        IResult<string> result = Result<string>.NotModified("Hello, world!")
             .WithStatusCode(StatusCode.NotModified);
 
         // Assert
@@ -60,7 +60,7 @@ public class ResultNotModifiedTests
     public void NotModified_WithStatusOK_ReturnsSuccess()
     {
         // Arrange & Act
-        Result result = Result.NotModified()
+        IResult result = Result.NotModified()
             .WithStatusCode(StatusCode.OK);
 
         // Assert
@@ -73,11 +73,10 @@ public class ResultNotModifiedTests
     /// Unit test to verify the behavior of the NotModified method when called with a value, title, detail, and context name parameters.
     /// </summary>
     [Fact]
-    public void NotModified_WithValueAndTitleAndDetailAndContextName_ReturnsSuccessWithValueAndTitleAndDetail()
+    public void NotModified_WithValueAndTitleAndDetail_ReturnsSuccessWithValueAndTitleAndDetail()
     {
         // Arrange
-        Result<string> result = Result.NoContent<string>()
-            .WithContext("Root");
+        IResult<string> result = Result<string>.NoContent();
 
         // Act
         result = result
@@ -103,8 +102,7 @@ public class ResultNotModifiedTests
     public void NotModified_WithStatusCodeBadRequest_ShouldResultInIsFailure()
     {
         // Arrange & Act
-        Result result = Result.NotModified("test")
-            .WithContext("Test")
+        IResult result = Result<string>.NotModified("test")
             .WithTitle("Title")
             .WithDetail("Detail")
             .WithStatusCode(StatusCode.BadRequest);
@@ -120,7 +118,7 @@ public class ResultNotModifiedTests
     public void NotModified_FromNoContent_ShouldResultInIsSuccess()
     {
         // Arrange
-        Result<string> result = new();
+        IResult<string> result = Result<string>.NoContent();
 
         // Act
         _ = result.NotModified("Test");

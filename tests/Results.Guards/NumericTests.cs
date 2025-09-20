@@ -12,7 +12,7 @@ public class NumericTests
     public void ErrorIfLessThan_WithMessage_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const int age = 17;
 
         // Act
@@ -20,8 +20,8 @@ public class NumericTests
 
         // Assert
         Assert.True(result.IsFailure);
-        Assert.Equal("age", result.Messages.First().Key);
-        Assert.Equal("Invalid age.", result.Messages.First().Message);
+        Assert.Equal("age", result.Errors.First().Key);
+        Assert.Equal("Invalid age.", result.Errors.First().Message);
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ public class NumericTests
     public void ErrorIfLessThan_WithoutMessage_ReturnsFailureInResult()
     {
         // Arrange
-        Result result = Result.OK();
+        IResult result = Result.OK();
         const int age = 17;
 
         // Act
@@ -39,6 +39,6 @@ public class NumericTests
 
         // Assert
         Assert.True(result.IsFailure);
-        Assert.Equal("age", result.Messages.First().Key);
+        Assert.Equal("age", result.Errors.First().Key);
     }
 }

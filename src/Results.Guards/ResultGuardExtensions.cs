@@ -21,7 +21,7 @@ public static partial class ResultGuardExtensions
     /// This method is used to guard a value within the context of a <see cref="Result"/>.
     /// It creates a <see cref="ResultGuard{T}"/> instance, associating the value and property name with the provided <see cref="Result"/> instance.
     /// </remarks>
-    public static ResultGuard<T?> Guard<T>(this Result result, T? value, string? propertyName = null, [CallerArgumentExpression(nameof(value))] string name = "")
+    public static ResultGuard<T?> Guard<T>(this IResult result, T? value, string? propertyName = null, [CallerArgumentExpression(nameof(value))] string name = "")
     {
         return ResultGuard.Create(result, value, propertyName ?? name);
     }
@@ -82,7 +82,7 @@ public static partial class ResultGuardExtensions
     /// <param name="key">The key associated with the error.</param>
     /// <param name="message">The error message.</param>
     /// <param name="statusCode">The status code associated with the error.</param>
-    private static void AddError(Result result, string? key, string message, StatusCode statusCode)
+    private static void AddError(IResult result, string? key, string message, StatusCode statusCode)
     {
         result.AddError(key, message, statusCode);
     }
