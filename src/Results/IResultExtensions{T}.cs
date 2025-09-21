@@ -12,7 +12,7 @@ public static partial class IResultExtensions
     /// <param name="value">The typed value.</param>
     /// <typeparam name="T">The type of the value contained in the result.</typeparam>
     /// <returns>An instance of the <see cref="IResult{T}"/> class indicating success with the specified value.</returns>
-    public static IResult<T> OK<T>(this IResult<T> result, T? value)
+    public static IResult<T> OK<T>(this IResult<T> result, T value)
     {
         ArgumentNullException.ThrowIfNull(result);
 
@@ -28,7 +28,7 @@ public static partial class IResultExtensions
     /// <param name="value">The typed value.</param>
     /// <typeparam name="T">The type of the value contained in the result.</typeparam>
     /// <returns>An instance of the <see cref="IResult{T}"/> class indicating success with the specified value.</returns>
-    public static IResult<T> Created<T>(this IResult<T> result, T? value)
+    public static IResult<T> Created<T>(this IResult<T> result, T value)
     {
         ArgumentNullException.ThrowIfNull(result);
 
@@ -44,7 +44,7 @@ public static partial class IResultExtensions
     /// <param name="value">The typed value.</param>
     /// <typeparam name="T">The type of the value contained in the result.</typeparam>
     /// <returns>An instance of the <see cref="IResult{T}"/> class indicating that the request has been accepted for processing with the specified value.</returns>
-    public static IResult<T> Accepted<T>(this IResult<T> result, T? value)
+    public static IResult<T> Accepted<T>(this IResult<T> result, T value)
     {
         ArgumentNullException.ThrowIfNull(result);
 
@@ -65,7 +65,7 @@ public static partial class IResultExtensions
 
         return result
             .WithStatusCode(StatusCode.NoContent)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -75,7 +75,7 @@ public static partial class IResultExtensions
     /// <param name="value">The typed value.</param>
     /// <typeparam name="T">The type of the value contained in the result.</typeparam>
     /// <returns>An instance of the <see cref="IResult{T}"/> class indicating that the resource was found with the specified value.</returns>
-    public static IResult<T> Found<T>(this IResult<T> result, T? value)
+    public static IResult<T> Found<T>(this IResult<T> result, T value)
     {
         ArgumentNullException.ThrowIfNull(result);
 
@@ -91,7 +91,7 @@ public static partial class IResultExtensions
     /// <param name="value">The typed value.</param>
     /// <typeparam name="T">The type of the value contained in the result.</typeparam>
     /// <returns>An instance of the <see cref="IResult{T}"/> class indicating no modifications with the specified value.</returns>
-    public static IResult<T> NotModified<T>(this IResult<T> result, T? value)
+    public static IResult<T> NotModified<T>(this IResult<T> result, T value)
     {
         ArgumentNullException.ThrowIfNull(result);
 
@@ -112,7 +112,7 @@ public static partial class IResultExtensions
 
         return result
             .WithStatusCode(StatusCode.BadRequest)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -129,7 +129,7 @@ public static partial class IResultExtensions
         return result
             .WithDetail(detail)
             .WithStatusCode(StatusCode.BadRequest)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -148,7 +148,7 @@ public static partial class IResultExtensions
             .WithTitle(title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.BadRequest)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -163,7 +163,7 @@ public static partial class IResultExtensions
 
         return result
             .WithStatusCode(StatusCode.Unauthorized)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -180,7 +180,7 @@ public static partial class IResultExtensions
         return result
             .WithDetail(detail)
             .WithStatusCode(StatusCode.Unauthorized)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -199,7 +199,7 @@ public static partial class IResultExtensions
             .WithTitle(title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.Unauthorized)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -214,7 +214,7 @@ public static partial class IResultExtensions
 
         return result
             .WithStatusCode(StatusCode.Forbidden)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -231,7 +231,7 @@ public static partial class IResultExtensions
         return result
             .WithDetail(detail)
             .WithStatusCode(StatusCode.Forbidden)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -250,7 +250,7 @@ public static partial class IResultExtensions
             .WithTitle(title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.Forbidden)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -265,7 +265,7 @@ public static partial class IResultExtensions
 
         return result
             .WithStatusCode(StatusCode.NotFound)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -282,7 +282,7 @@ public static partial class IResultExtensions
         return result
             .WithDetail(detail)
             .WithStatusCode(StatusCode.NotFound)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -301,7 +301,7 @@ public static partial class IResultExtensions
             .WithTitle(title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.NotFound)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -316,7 +316,7 @@ public static partial class IResultExtensions
 
         return result
             .WithStatusCode(StatusCode.Conflict)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -333,7 +333,7 @@ public static partial class IResultExtensions
         return result
             .WithDetail(detail)
             .WithStatusCode(StatusCode.Conflict)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -352,7 +352,7 @@ public static partial class IResultExtensions
             .WithTitle(title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.Conflict)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -367,7 +367,7 @@ public static partial class IResultExtensions
 
         return result
             .WithStatusCode(StatusCode.InternalServerError)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -384,7 +384,7 @@ public static partial class IResultExtensions
         return result
             .WithDetail(detail)
             .WithStatusCode(StatusCode.InternalServerError)
-            .WithValue(default);
+            .WithValue(default!);
     }
 
     /// <summary>
@@ -403,6 +403,6 @@ public static partial class IResultExtensions
             .WithTitle(title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.InternalServerError)
-            .WithValue(default);
+            .WithValue(default!);
     }
 }

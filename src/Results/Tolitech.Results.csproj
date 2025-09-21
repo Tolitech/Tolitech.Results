@@ -9,7 +9,7 @@
     <Authors>Tolitech</Authors>
     <Description>The Results pattern elegantly manages errors, encapsulating outcomes and values, fostering clean and predictable error handling in code.</Description>
     <PackageProjectUrl>https://www.tolitech.com.br</PackageProjectUrl>
-    <Version>1.0.0-preview.7</Version>
+    <Version>1.0.0-preview.8</Version>
     <PackageIcon>tolitech-icon.png</PackageIcon>
     <PackageReadmeFile>README.en.md</PackageReadmeFile>
     <Copyright>Copyright (c) 2025 Tolitech</Copyright>
