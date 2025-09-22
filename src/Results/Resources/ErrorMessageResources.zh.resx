@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BadGateway_Detail" xml:space="preserve">
+    <value>服务器从上游服务器接收到无效的响应。</value>
+  </data>
+  <data name="BadGateway_Title" xml:space="preserve">
+    <value>错误网关</value>
+  </data>
   <data name="BadRequest_Detail" xml:space="preserve">
     <value>请求无效或包含不正确的数据。</value>
   </data>
@@ -135,17 +141,47 @@
   <data name="Forbidden_Title" xml:space="preserve">
     <value>禁止访问</value>
   </data>
+  <data name="GatewayTimeout_Detail" xml:space="preserve">
+    <value>服务器未能及时收到上游服务器的响应。</value>
+  </data>
+  <data name="GatewayTimeout_Title" xml:space="preserve">
+    <value>网关超时</value>
+  </data>
   <data name="InternalServerError_Detail" xml:space="preserve">
     <value>服务器发生意外错误。请稍后再试。</value>
   </data>
   <data name="InternalServerError_Title" xml:space="preserve">
     <value>服务器内部错误</value>
   </data>
+  <data name="MethodNotAllowed_Detail" xml:space="preserve">
+    <value>请求的资源不支持该请求方法。</value>
+  </data>
+  <data name="MethodNotAllowed_Title" xml:space="preserve">
+    <value>方法不被允许</value>
+  </data>
   <data name="NotFound_Detail" xml:space="preserve">
     <value>服务器上找不到请求的资源。</value>
   </data>
   <data name="NotFound_Title" xml:space="preserve">
     <value>资源未找到</value>
+  </data>
+  <data name="RequestTimeout_Detail" xml:space="preserve">
+    <value>服务器等待请求时超时。</value>
+  </data>
+  <data name="RequestTimeout_Title" xml:space="preserve">
+    <value>请求超时</value>
+  </data>
+  <data name="ServiceUnavailable_Detail" xml:space="preserve">
+    <value>由于临时过载或维护，服务器目前无法处理请求。</value>
+  </data>
+  <data name="ServiceUnavailable_Title" xml:space="preserve">
+    <value>服务不可用</value>
+  </data>
+  <data name="TooManyRequests_Detail" xml:space="preserve">
+    <value>在给定时间内发送了太多请求。请稍后再试。</value>
+  </data>
+  <data name="TooManyRequests_Title" xml:space="preserve">
+    <value>请求过多</value>
   </data>
   <data name="Unauthorized_Detail" xml:space="preserve">
     <value>请求需要有效的身份验证。</value>

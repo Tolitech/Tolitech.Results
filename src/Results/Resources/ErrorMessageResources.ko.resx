@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BadGateway_Detail" xml:space="preserve">
+    <value>서버가 업스트림 서버로부터 잘못된 응답을 받았습니다.</value>
+  </data>
+  <data name="BadGateway_Title" xml:space="preserve">
+    <value>잘못된 게이트웨이</value>
+  </data>
   <data name="BadRequest_Detail" xml:space="preserve">
     <value>요청이 유효하지 않거나 잘못된 데이터를 포함하고 있습니다.</value>
   </data>
@@ -135,17 +141,47 @@
   <data name="Forbidden_Title" xml:space="preserve">
     <value>금지됨</value>
   </data>
+  <data name="GatewayTimeout_Detail" xml:space="preserve">
+    <value>서버가 업스트림 서버로부터 적시에 응답을 받지 못했습니다.</value>
+  </data>
+  <data name="GatewayTimeout_Title" xml:space="preserve">
+    <value>게이트웨이 시간 초과</value>
+  </data>
   <data name="InternalServerError_Detail" xml:space="preserve">
     <value>서버에서 예기치 않은 오류가 발생했습니다. 나중에 다시 시도하세요.</value>
   </data>
   <data name="InternalServerError_Title" xml:space="preserve">
     <value>내부 서버 오류</value>
   </data>
+  <data name="MethodNotAllowed_Detail" xml:space="preserve">
+    <value>요청된 리소스에 대해 지원되지 않는 요청 메서드입니다.</value>
+  </data>
+  <data name="MethodNotAllowed_Title" xml:space="preserve">
+    <value>허용되지 않는 메서드</value>
+  </data>
   <data name="NotFound_Detail" xml:space="preserve">
     <value>요청한 리소스를 서버에서 찾을 수 없습니다.</value>
   </data>
   <data name="NotFound_Title" xml:space="preserve">
     <value>리소스를 찾을 수 없음</value>
+  </data>
+  <data name="RequestTimeout_Detail" xml:space="preserve">
+    <value>서버가 요청을 기다리는 동안 시간 초과가 발생했습니다.</value>
+  </data>
+  <data name="RequestTimeout_Title" xml:space="preserve">
+    <value>요청 시간 초과</value>
+  </data>
+  <data name="ServiceUnavailable_Detail" xml:space="preserve">
+    <value>서버가 일시적 과부하 또는 유지 관리로 인해 요청을 처리할 수 없습니다.</value>
+  </data>
+  <data name="ServiceUnavailable_Title" xml:space="preserve">
+    <value>서비스 이용 불가</value>
+  </data>
+  <data name="TooManyRequests_Detail" xml:space="preserve">
+    <value>일정 시간 내에 너무 많은 요청을 보냈습니다. 나중에 다시 시도하세요.</value>
+  </data>
+  <data name="TooManyRequests_Title" xml:space="preserve">
+    <value>요청이 너무 많음</value>
   </data>
   <data name="Unauthorized_Detail" xml:space="preserve">
     <value>요청에는 유효한 인증이 필요합니다.</value>

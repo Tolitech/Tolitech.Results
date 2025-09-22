@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BadGateway_Detail" xml:space="preserve">
+    <value>The server received an invalid response from an upstream server.</value>
+  </data>
+  <data name="BadGateway_Title" xml:space="preserve">
+    <value>Bad gateway</value>
+  </data>
   <data name="BadRequest_Detail" xml:space="preserve">
     <value>The request was not valid or contained incorrect data.</value>
   </data>
@@ -135,17 +141,47 @@
   <data name="Forbidden_Title" xml:space="preserve">
     <value>Forbidden</value>
   </data>
+  <data name="GatewayTimeout_Detail" xml:space="preserve">
+    <value>The server did not receive a timely response from an upstream server.</value>
+  </data>
+  <data name="GatewayTimeout_Title" xml:space="preserve">
+    <value>Gateway timeout</value>
+  </data>
   <data name="InternalServerError_Detail" xml:space="preserve">
     <value>An unexpected error occurred on the server. Please try again later.</value>
   </data>
   <data name="InternalServerError_Title" xml:space="preserve">
     <value>Internal server error</value>
   </data>
+  <data name="MethodNotAllowed_Detail" xml:space="preserve">
+    <value>The request method is not supported for the requested resource.</value>
+  </data>
+  <data name="MethodNotAllowed_Title" xml:space="preserve">
+    <value>Method not allowed</value>
+  </data>
   <data name="NotFound_Detail" xml:space="preserve">
     <value>The requested resource could not be found on the server.</value>
   </data>
   <data name="NotFound_Title" xml:space="preserve">
     <value>Resource not found</value>
+  </data>
+  <data name="RequestTimeout_Detail" xml:space="preserve">
+    <value>The server timed out waiting for the request.</value>
+  </data>
+  <data name="RequestTimeout_Title" xml:space="preserve">
+    <value>Request timeout</value>
+  </data>
+  <data name="ServiceUnavailable_Detail" xml:space="preserve">
+    <value>The server is currently unable to handle the request due to temporary overload or maintenance.</value>
+  </data>
+  <data name="ServiceUnavailable_Title" xml:space="preserve">
+    <value>Service unavailable</value>
+  </data>
+  <data name="TooManyRequests_Detail" xml:space="preserve">
+    <value>You have sent too many requests in a given amount of time. Please try again later.</value>
+  </data>
+  <data name="TooManyRequests_Title" xml:space="preserve">
+    <value>Too many requests</value>
   </data>
   <data name="Unauthorized_Detail" xml:space="preserve">
     <value>The request requires valid authentication.</value>
