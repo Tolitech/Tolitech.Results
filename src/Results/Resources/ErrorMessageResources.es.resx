@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BadGateway_Detail" xml:space="preserve">
+    <value>El servidor recibió una respuesta no válida de un servidor upstream.</value>
+  </data>
+  <data name="BadGateway_Title" xml:space="preserve">
+    <value>Puerta de enlace incorrecta</value>
+  </data>
   <data name="BadRequest_Detail" xml:space="preserve">
     <value>La solicitud no era válida o contenía datos incorrectos.</value>
   </data>
@@ -135,17 +141,47 @@
   <data name="Forbidden_Title" xml:space="preserve">
     <value>Prohibido</value>
   </data>
+  <data name="GatewayTimeout_Detail" xml:space="preserve">
+    <value>El servidor no recibió una respuesta oportuna de un servidor upstream.</value>
+  </data>
+  <data name="GatewayTimeout_Title" xml:space="preserve">
+    <value>Tiempo de espera de la puerta de enlace agotado</value>
+  </data>
   <data name="InternalServerError_Detail" xml:space="preserve">
     <value>Se produjo un error inesperado en el servidor. Inténtelo de nuevo más tarde.</value>
   </data>
   <data name="InternalServerError_Title" xml:space="preserve">
     <value>Error interno del servidor</value>
   </data>
+  <data name="MethodNotAllowed_Detail" xml:space="preserve">
+    <value>El método de la solicitud no es compatible con el recurso solicitado.</value>
+  </data>
+  <data name="MethodNotAllowed_Title" xml:space="preserve">
+    <value>Método no permitido</value>
+  </data>
   <data name="NotFound_Detail" xml:space="preserve">
     <value>No se pudo encontrar el recurso solicitado en el servidor.</value>
   </data>
   <data name="NotFound_Title" xml:space="preserve">
     <value>Recurso no encontrado</value>
+  </data>
+  <data name="RequestTimeout_Detail" xml:space="preserve">
+    <value>El servidor agotó el tiempo de espera mientras esperaba la solicitud.</value>
+  </data>
+  <data name="RequestTimeout_Title" xml:space="preserve">
+    <value>Tiempo de espera de la solicitud agotado</value>
+  </data>
+  <data name="ServiceUnavailable_Detail" xml:space="preserve">
+    <value>El servidor no puede manejar la solicitud actualmente debido a sobrecarga temporal o mantenimiento.</value>
+  </data>
+  <data name="ServiceUnavailable_Title" xml:space="preserve">
+    <value>Servicio no disponible</value>
+  </data>
+  <data name="TooManyRequests_Detail" xml:space="preserve">
+    <value>Ha enviado demasiadas solicitudes en un período de tiempo determinado. Inténtelo de nuevo más tarde.</value>
+  </data>
+  <data name="TooManyRequests_Title" xml:space="preserve">
+    <value>Demasiadas solicitudes</value>
   </data>
   <data name="Unauthorized_Detail" xml:space="preserve">
     <value>La solicitud requiere autenticación válida.</value>

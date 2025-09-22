@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BadGateway_Detail" xml:space="preserve">
+    <value>サーバーが上流サーバーから無効な応答を受け取りました。</value>
+  </data>
+  <data name="BadGateway_Title" xml:space="preserve">
+    <value>不正なゲートウェイ</value>
+  </data>
   <data name="BadRequest_Detail" xml:space="preserve">
     <value>リクエストが無効、または不正なデータを含んでいます。</value>
   </data>
@@ -135,17 +141,47 @@
   <data name="Forbidden_Title" xml:space="preserve">
     <value>禁止</value>
   </data>
+  <data name="GatewayTimeout_Detail" xml:space="preserve">
+    <value>サーバーが上流サーバーからの応答を期限内に受信できませんでした。</value>
+  </data>
+  <data name="GatewayTimeout_Title" xml:space="preserve">
+    <value>ゲートウェイタイムアウト</value>
+  </data>
   <data name="InternalServerError_Detail" xml:space="preserve">
     <value>サーバーで予期しないエラーが発生しました。後でもう一度お試しください。</value>
   </data>
   <data name="InternalServerError_Title" xml:space="preserve">
     <value>サーバー内部エラー</value>
   </data>
+  <data name="MethodNotAllowed_Detail" xml:space="preserve">
+    <value>要求されたリソースに対してこのリクエストメソッドはサポートされていません。</value>
+  </data>
+  <data name="MethodNotAllowed_Title" xml:space="preserve">
+    <value>許可されていないメソッド</value>
+  </data>
   <data name="NotFound_Detail" xml:space="preserve">
     <value>サーバー上で要求されたリソースが見つかりませんでした。</value>
   </data>
   <data name="NotFound_Title" xml:space="preserve">
     <value>リソースが見つかりません</value>
+  </data>
+  <data name="RequestTimeout_Detail" xml:space="preserve">
+    <value>サーバーがリクエストを待機中にタイムアウトしました。</value>
+  </data>
+  <data name="RequestTimeout_Title" xml:space="preserve">
+    <value>リクエストタイムアウト</value>
+  </data>
+  <data name="ServiceUnavailable_Detail" xml:space="preserve">
+    <value>サーバーが一時的な過負荷またはメンテナンスのためリクエストを処理できません。</value>
+  </data>
+  <data name="ServiceUnavailable_Title" xml:space="preserve">
+    <value>サービス利用不可</value>
+  </data>
+  <data name="TooManyRequests_Detail" xml:space="preserve">
+    <value>短時間にリクエストを送りすぎました。後でもう一度お試しください。</value>
+  </data>
+  <data name="TooManyRequests_Title" xml:space="preserve">
+    <value>リクエストが多すぎます</value>
   </data>
   <data name="Unauthorized_Detail" xml:space="preserve">
     <value>リクエストには有効な認証が必要です。</value>

@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BadGateway_Detail" xml:space="preserve">
+    <value>Сервер получил недопустимый ответ от вышестоящего сервера.</value>
+  </data>
+  <data name="BadGateway_Title" xml:space="preserve">
+    <value>Неверный шлюз</value>
+  </data>
   <data name="BadRequest_Detail" xml:space="preserve">
     <value>Запрос недействителен или содержит неверные данные.</value>
   </data>
@@ -135,17 +141,47 @@
   <data name="Forbidden_Title" xml:space="preserve">
     <value>Запрещено</value>
   </data>
+  <data name="GatewayTimeout_Detail" xml:space="preserve">
+    <value>Сервер не получил своевременный ответ от вышестоящего сервера.</value>
+  </data>
+  <data name="GatewayTimeout_Title" xml:space="preserve">
+    <value>Тайм-аут шлюза</value>
+  </data>
   <data name="InternalServerError_Detail" xml:space="preserve">
     <value>На сервере произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.</value>
   </data>
   <data name="InternalServerError_Title" xml:space="preserve">
     <value>Внутренняя ошибка сервера</value>
   </data>
+  <data name="MethodNotAllowed_Detail" xml:space="preserve">
+    <value>Метод запроса не поддерживается для данного ресурса.</value>
+  </data>
+  <data name="MethodNotAllowed_Title" xml:space="preserve">
+    <value>Метод не разрешён</value>
+  </data>
   <data name="NotFound_Detail" xml:space="preserve">
     <value>Запрашиваемый ресурс не найден на сервере.</value>
   </data>
   <data name="NotFound_Title" xml:space="preserve">
     <value>Ресурс не найден</value>
+  </data>
+  <data name="RequestTimeout_Detail" xml:space="preserve">
+    <value>Время ожидания запроса на сервере истекло.</value>
+  </data>
+  <data name="RequestTimeout_Title" xml:space="preserve">
+    <value>Тайм-аут запроса</value>
+  </data>
+  <data name="ServiceUnavailable_Detail" xml:space="preserve">
+    <value>Сервер в данный момент не может обработать запрос из-за временной перегрузки или обслуживания.</value>
+  </data>
+  <data name="ServiceUnavailable_Title" xml:space="preserve">
+    <value>Сервис недоступен</value>
+  </data>
+  <data name="TooManyRequests_Detail" xml:space="preserve">
+    <value>Вы отправили слишком много запросов за определённый промежуток времени. Попробуйте позже.</value>
+  </data>
+  <data name="TooManyRequests_Title" xml:space="preserve">
+    <value>Слишком много запросов</value>
   </data>
   <data name="Unauthorized_Detail" xml:space="preserve">
     <value>Для выполнения запроса требуется действительная аутентификация.</value>

@@ -61,6 +61,24 @@ namespace Tolitech.Results.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The server received an invalid response from an upstream server..
+        /// </summary>
+        internal static string BadGateway_Detail {
+            get {
+                return ResourceManager.GetString("BadGateway_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bad gateway.
+        /// </summary>
+        internal static string BadGateway_Title {
+            get {
+                return ResourceManager.GetString("BadGateway_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The request was not valid or contained incorrect data..
         /// </summary>
         internal static string BadRequest_Detail {
@@ -115,6 +133,24 @@ namespace Tolitech.Results.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The server did not receive a timely response from an upstream server..
+        /// </summary>
+        internal static string GatewayTimeout_Detail {
+            get {
+                return ResourceManager.GetString("GatewayTimeout_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gateway timeout.
+        /// </summary>
+        internal static string GatewayTimeout_Title {
+            get {
+                return ResourceManager.GetString("GatewayTimeout_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An unexpected error occurred on the server. Please try again later..
         /// </summary>
         internal static string InternalServerError_Detail {
@@ -133,6 +169,24 @@ namespace Tolitech.Results.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The request method is not supported for the requested resource..
+        /// </summary>
+        internal static string MethodNotAllowed_Detail {
+            get {
+                return ResourceManager.GetString("MethodNotAllowed_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method not allowed.
+        /// </summary>
+        internal static string MethodNotAllowed_Title {
+            get {
+                return ResourceManager.GetString("MethodNotAllowed_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The requested resource could not be found on the server..
         /// </summary>
         internal static string NotFound_Detail {
@@ -147,6 +201,60 @@ namespace Tolitech.Results.Resources {
         internal static string NotFound_Title {
             get {
                 return ResourceManager.GetString("NotFound_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The server timed out waiting for the request..
+        /// </summary>
+        internal static string RequestTimeout_Detail {
+            get {
+                return ResourceManager.GetString("RequestTimeout_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request timeout.
+        /// </summary>
+        internal static string RequestTimeout_Title {
+            get {
+                return ResourceManager.GetString("RequestTimeout_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The server is currently unable to handle the request due to temporary overload or maintenance..
+        /// </summary>
+        internal static string ServiceUnavailable_Detail {
+            get {
+                return ResourceManager.GetString("ServiceUnavailable_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service unavailable.
+        /// </summary>
+        internal static string ServiceUnavailable_Title {
+            get {
+                return ResourceManager.GetString("ServiceUnavailable_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have sent too many requests in a given amount of time. Please try again later..
+        /// </summary>
+        internal static string TooManyRequests_Detail {
+            get {
+                return ResourceManager.GetString("TooManyRequests_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Too many requests.
+        /// </summary>
+        internal static string TooManyRequests_Title {
+            get {
+                return ResourceManager.GetString("TooManyRequests_Title", resourceCulture);
             }
         }
         

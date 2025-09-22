@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="BadGateway_Detail" xml:space="preserve">
+    <value>Le serveur a reçu une réponse invalide d’un serveur en amont.</value>
+  </data>
+  <data name="BadGateway_Title" xml:space="preserve">
+    <value>Mauvaise passerelle</value>
+  </data>
   <data name="BadRequest_Detail" xml:space="preserve">
     <value>La requête n’était pas valide ou contenait des données incorrectes.</value>
   </data>
@@ -135,17 +141,47 @@
   <data name="Forbidden_Title" xml:space="preserve">
     <value>Interdit</value>
   </data>
+  <data name="GatewayTimeout_Detail" xml:space="preserve">
+    <value>Le serveur n’a pas reçu de réponse dans les délais d’un serveur en amont.</value>
+  </data>
+  <data name="GatewayTimeout_Title" xml:space="preserve">
+    <value>Délai d’attente de la passerelle</value>
+  </data>
   <data name="InternalServerError_Detail" xml:space="preserve">
     <value>Une erreur inattendue est survenue sur le serveur. Veuillez réessayer plus tard.</value>
   </data>
   <data name="InternalServerError_Title" xml:space="preserve">
     <value>Erreur interne du serveur</value>
   </data>
+  <data name="MethodNotAllowed_Detail" xml:space="preserve">
+    <value>La méthode de requête n’est pas prise en charge pour la ressource demandée.</value>
+  </data>
+  <data name="MethodNotAllowed_Title" xml:space="preserve">
+    <value>Méthode non autorisée</value>
+  </data>
   <data name="NotFound_Detail" xml:space="preserve">
     <value>La ressource demandée est introuvable sur le serveur.</value>
   </data>
   <data name="NotFound_Title" xml:space="preserve">
     <value>Ressource introuvable</value>
+  </data>
+  <data name="RequestTimeout_Detail" xml:space="preserve">
+    <value>Le serveur a expiré en attendant la requête.</value>
+  </data>
+  <data name="RequestTimeout_Title" xml:space="preserve">
+    <value>Délai d’attente de la requête</value>
+  </data>
+  <data name="ServiceUnavailable_Detail" xml:space="preserve">
+    <value>Le serveur est actuellement incapable de traiter la requête en raison d’une surcharge temporaire ou d’une maintenance.</value>
+  </data>
+  <data name="ServiceUnavailable_Title" xml:space="preserve">
+    <value>Service indisponible</value>
+  </data>
+  <data name="TooManyRequests_Detail" xml:space="preserve">
+    <value>Vous avez envoyé trop de requêtes dans un laps de temps donné. Veuillez réessayer plus tard.</value>
+  </data>
+  <data name="TooManyRequests_Title" xml:space="preserve">
+    <value>Trop de requêtes</value>
   </data>
   <data name="Unauthorized_Detail" xml:space="preserve">
     <value>La requête nécessite une authentification valide.</value>

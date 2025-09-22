@@ -323,6 +323,9 @@ public class Result : IResult
         {
             IsSuccess = false;
             StatusCode = statusCode;
+
+            // Set default title and detail.
+            SetDefaultErrorMessage(statusCode);
         }
 
         _errorMessages ??= [];
@@ -438,5 +441,35 @@ public class Result : IResult
             StatusCode.NoContent or
             StatusCode.Found or
             StatusCode.NotModified;
+    }
+
+    /// <summary>
+    /// Sets the error message details based on the specified <see cref="StatusCode"/>.
+    /// </summary>
+    /// <remarks>This method updates the <c>Title</c> and <c>Detail</c> properties with predefined error
+    /// messages corresponding to the provided <paramref name="statusCode"/>. If the <paramref name="statusCode"/> does
+    /// not match any predefined value, the properties remain unchanged.</remarks>
+    /// <param name="statusCode">The HTTP status code that determines the error message. Must be a valid <see cref="StatusCode"/> enumeration
+    /// value.</param>
+    private void SetDefaultErrorMessage(StatusCode statusCode)
+    {
+#pragma warning disable IDE0072 // Add missing cases
+        (Title, Detail) = statusCode switch
+        {
+            StatusCode.BadRequest => (ErrorMessageResources.BadRequest_Title, ErrorMessageResources.BadRequest_Detail),
+            StatusCode.Unauthorized => (ErrorMessageResources.Unauthorized_Title, ErrorMessageResources.Unauthorized_Detail),
+            StatusCode.Forbidden => (ErrorMessageResources.Forbidden_Title, ErrorMessageResources.Forbidden_Detail),
+            StatusCode.NotFound => (ErrorMessageResources.NotFound_Title, ErrorMessageResources.NotFound_Detail),
+            StatusCode.MethodNotAllowed => (ErrorMessageResources.MethodNotAllowed_Title, ErrorMessageResources.MethodNotAllowed_Detail),
+            StatusCode.RequestTimeout => (ErrorMessageResources.RequestTimeout_Title, ErrorMessageResources.RequestTimeout_Detail),
+            StatusCode.Conflict => (ErrorMessageResources.Conflict_Title, ErrorMessageResources.Conflict_Detail),
+            StatusCode.TooManyRequests => (ErrorMessageResources.TooManyRequests_Title, ErrorMessageResources.TooManyRequests_Detail),
+            StatusCode.InternalServerError => (ErrorMessageResources.InternalServerError_Title, ErrorMessageResources.InternalServerError_Detail),
+            StatusCode.BadGateway => (ErrorMessageResources.BadGateway_Title, ErrorMessageResources.BadGateway_Detail),
+            StatusCode.ServiceUnavailable => (ErrorMessageResources.ServiceUnavailable_Title, ErrorMessageResources.ServiceUnavailable_Detail),
+            StatusCode.GatewayTimeout => (ErrorMessageResources.GatewayTimeout_Title, ErrorMessageResources.GatewayTimeout_Detail),
+            _ => (Title, Detail),
+        };
+#pragma warning restore IDE0072 // Add missing cases
     }
 }
