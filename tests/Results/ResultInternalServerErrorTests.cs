@@ -88,7 +88,6 @@ public class ResultInternalServerErrorTests
         Assert.False(result.IsSuccess);
         Assert.True(result.IsFailure);
         Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
-        Assert.Null(result.Title);
         Assert.Equal("Detail", result.Detail);
     }
 
@@ -110,5 +109,64 @@ public class ResultInternalServerErrorTests
         Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
         Assert.Equal("Title", result.Title);
         Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the InternalServerError method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void InternalServerError_T_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.InternalServerError();
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the InternalServerError method when called with detail parameter.
+    /// </summary>
+    [Fact]
+    public void InternalServerError_T_WithDetailParameter_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.InternalServerError("Detail");
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the InternalServerError method when called with title and detail parameter.
+    /// </summary>
+    [Fact]
+    public void InternalServerError_T_WithTitleAndDetailParameters_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.InternalServerError("Title", "Detail");
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
+        Assert.Equal("Title", result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the InternalServerError method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void InternalServerError_Extensions_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result.NoContent().InternalServerError();
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
     }
 }

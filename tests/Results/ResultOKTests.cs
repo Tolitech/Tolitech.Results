@@ -139,4 +139,18 @@ public class ResultOKTests
         Assert.Equal("Test", result.Value);
         Assert.Equal(StatusCode.OK, result.StatusCode);
     }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the OK method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void OK_Extensions_ReturnsSuccessWithStatusCode200()
+    {
+        // Arrange & Act
+        IResult result = Result.NoContent().OK();
+
+        // Assert
+        Assert.True(result.IsSuccess);
+        Assert.Equal(StatusCode.OK, result.StatusCode);
+    }
 }

@@ -128,4 +128,18 @@ public class ResultFoundTests
         Assert.Equal("Test", result.Value);
         Assert.Equal(StatusCode.Found, result.StatusCode);
     }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Found method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void Found_Extensions_ReturnsSuccessWithStatusCode302()
+    {
+        // Arrange & Act
+        IResult result = Result.NoContent().Found();
+
+        // Assert
+        Assert.True(result.IsSuccess);
+        Assert.Equal(StatusCode.Found, result.StatusCode);
+    }
 }

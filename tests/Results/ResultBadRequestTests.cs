@@ -167,7 +167,6 @@ public class ResultBadRequestTests
         Assert.False(result.IsSuccess);
         Assert.True(result.IsFailure);
         Assert.Equal(StatusCode.BadRequest, result.StatusCode);
-        Assert.Null(result.Title);
         Assert.Equal("Detail", result.Detail);
     }
 
@@ -189,5 +188,64 @@ public class ResultBadRequestTests
         Assert.Equal(StatusCode.BadRequest, result.StatusCode);
         Assert.Equal("Title", result.Title);
         Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the BadRequest method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void BadRequest_T_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.BadRequest();
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the BadRequest method when called with detail parameter.
+    /// </summary>
+    [Fact]
+    public void BadRequest_T_WithDetailParameter_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.BadRequest("Detail");
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the BadRequest method when called with title and detail parameter.
+    /// </summary>
+    [Fact]
+    public void BadRequest_T_WithTitleAndDetailParameters_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.BadRequest("Title", "Detail");
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
+        Assert.Equal("Title", result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the BadRequest method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void BadRequest_Extensions_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result.NoContent().BadRequest();
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
     }
 }

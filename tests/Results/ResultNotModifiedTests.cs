@@ -128,4 +128,18 @@ public class ResultNotModifiedTests
         Assert.Equal("Test", result.Value);
         Assert.Equal(StatusCode.NotModified, result.StatusCode);
     }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the NotModified method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void NotModified_Extensions_ReturnsSuccessWithStatusCode304()
+    {
+        // Arrange & Act
+        IResult result = Result.NoContent().NotModified();
+
+        // Assert
+        Assert.True(result.IsSuccess);
+        Assert.Equal(StatusCode.NotModified, result.StatusCode);
+    }
 }

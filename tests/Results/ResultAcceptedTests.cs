@@ -53,4 +53,18 @@ public class ResultAcceptedTests
         Assert.Equal("Test", result.Value);
         Assert.Equal(StatusCode.Accepted, result.StatusCode);
     }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Accepted method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void Accept_Extensions_ReturnsSuccessWithStatusCode202()
+    {
+        // Arrange & Act
+        IResult result = Result.NoContent().Accepted();
+
+        // Assert
+        Assert.True(result.IsSuccess);
+        Assert.Equal(StatusCode.Accepted, result.StatusCode);
+    }
 }
