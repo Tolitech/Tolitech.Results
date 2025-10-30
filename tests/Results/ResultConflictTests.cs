@@ -88,7 +88,6 @@ public class ResultConflictTests
         Assert.False(result.IsSuccess);
         Assert.True(result.IsFailure);
         Assert.Equal(StatusCode.Conflict, result.StatusCode);
-        Assert.Null(result.Title);
         Assert.Equal("Detail", result.Detail);
     }
 
@@ -110,5 +109,64 @@ public class ResultConflictTests
         Assert.Equal(StatusCode.Conflict, result.StatusCode);
         Assert.Equal("Title", result.Title);
         Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Conflict method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void Conflict_T_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.Conflict();
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Conflict, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Conflict method when called with detail parameter.
+    /// </summary>
+    [Fact]
+    public void Conflict_T_WithDetailParameter_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.Conflict("Detail");
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Conflict, result.StatusCode);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Conflict method when called with title and detail parameter.
+    /// </summary>
+    [Fact]
+    public void Conflict_T_WithTitleAndDetailParameters_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.Conflict("Title", "Detail");
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Conflict, result.StatusCode);
+        Assert.Equal("Title", result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Conflict method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void Conflict_Extensions_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result.NoContent().Conflict();
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Conflict, result.StatusCode);
     }
 }

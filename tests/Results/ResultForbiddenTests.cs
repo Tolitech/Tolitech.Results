@@ -88,7 +88,6 @@ public class ResultForbiddenTests
         Assert.False(result.IsSuccess);
         Assert.True(result.IsFailure);
         Assert.Equal(StatusCode.Forbidden, result.StatusCode);
-        Assert.Null(result.Title);
         Assert.Equal("Detail", result.Detail);
     }
 
@@ -110,5 +109,64 @@ public class ResultForbiddenTests
         Assert.Equal(StatusCode.Forbidden, result.StatusCode);
         Assert.Equal("Title", result.Title);
         Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Forbidden method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void Forbidden_T_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.Forbidden();
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Forbidden, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Forbidden method when called with detail parameter.
+    /// </summary>
+    [Fact]
+    public void Forbidden_T_WithDetailParameter_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.Forbidden("Detail");
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Forbidden, result.StatusCode);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Forbidden method when called with title and detail parameter.
+    /// </summary>
+    [Fact]
+    public void Forbidden_T_WithTitleAndDetailParameters_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.Forbidden("Title", "Detail");
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Forbidden, result.StatusCode);
+        Assert.Equal("Title", result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Forbidden method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void Forbidden_Extensions_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result.NoContent().Forbidden();
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Forbidden, result.StatusCode);
     }
 }

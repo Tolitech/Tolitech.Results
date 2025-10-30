@@ -128,4 +128,18 @@ public class ResultCreatedTests
         Assert.Equal("Test", result.Value);
         Assert.Equal(StatusCode.Created, result.StatusCode);
     }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Created method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void Created_Extensions_ReturnsSuccessWithStatusCode201()
+    {
+        // Arrange & Act
+        IResult result = Result.NoContent().Created();
+
+        // Assert
+        Assert.True(result.IsSuccess);
+        Assert.Equal(StatusCode.Created, result.StatusCode);
+    }
 }

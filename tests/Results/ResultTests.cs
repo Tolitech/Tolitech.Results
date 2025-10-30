@@ -201,4 +201,208 @@ public class ResultTests
         Assert.Equal(resultNew.StatusCode, resultOld.StatusCode);
         Assert.Equal(2, resultNew.Errors.Count);
     }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_BadRequest()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.BadRequest);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.BadRequest, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_BadGateway()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.BadGateway);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.BadGateway, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_Conflict()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.Conflict);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Conflict, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_Forbidden()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.Forbidden);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Forbidden, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_GatewayTimeout()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.GatewayTimeout);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.GatewayTimeout, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_InternalServerError()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.InternalServerError);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.InternalServerError, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_MethodNotAllowed()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.MethodNotAllowed);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.MethodNotAllowed, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_NotFound()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.NotFound);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.NotFound, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_RequestTimeout()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.RequestTimeout);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.RequestTimeout, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_ServiceUnavailable()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.ServiceUnavailable);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.ServiceUnavailable, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_TooManyRequests()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.TooManyRequests);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.TooManyRequests, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Verifies that adding an error to a result sets the status code and marks the result as a failure.
+    /// </summary>
+    [Fact]
+    public void AddError_WithStatusCode_Unauthorized()
+    {
+        // Arrange
+        IResult result = Result.OK();
+
+        // Act
+        result.AddError("Error", StatusCode.Unauthorized);
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Unauthorized, result.StatusCode);
+    }
 }

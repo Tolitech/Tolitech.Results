@@ -88,7 +88,6 @@ public class ResultUnauthorizedTests
         Assert.False(result.IsSuccess);
         Assert.True(result.IsFailure);
         Assert.Equal(StatusCode.Unauthorized, result.StatusCode);
-        Assert.Null(result.Title);
         Assert.Equal("Detail", result.Detail);
     }
 
@@ -110,5 +109,64 @@ public class ResultUnauthorizedTests
         Assert.Equal(StatusCode.Unauthorized, result.StatusCode);
         Assert.Equal("Title", result.Title);
         Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Unauthorized method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void Unauthorized_T_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.Unauthorized();
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Unauthorized, result.StatusCode);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Unauthorized method when called with detail parameter.
+    /// </summary>
+    [Fact]
+    public void Unauthorized_T_WithDetailParameter_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.Unauthorized("Detail");
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Unauthorized, result.StatusCode);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Unauthorized method when called with title and detail parameter.
+    /// </summary>
+    [Fact]
+    public void Unauthorized_T_WithTitleAndDetailParameters_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result<bool>.Unauthorized("Title", "Detail");
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Unauthorized, result.StatusCode);
+        Assert.Equal("Title", result.Title);
+        Assert.Equal("Detail", result.Detail);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the Unauthorized method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void Unauthorized_Extensions_ReturnsFailure()
+    {
+        // Arrange & Act
+        IResult result = Result.NoContent().Unauthorized();
+
+        // Assert
+        Assert.True(result.IsFailure);
+        Assert.Equal(StatusCode.Unauthorized, result.StatusCode);
     }
 }

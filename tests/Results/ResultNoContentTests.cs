@@ -53,4 +53,18 @@ public class ResultNoContentTests
         Assert.True(string.IsNullOrEmpty(result.Value));
         Assert.Equal(StatusCode.NoContent, result.StatusCode);
     }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the NoContent method when called with no parameters.
+    /// </summary>
+    [Fact]
+    public void NoContent_Extensions_ReturnsSuccessWithStatusCode204()
+    {
+        // Arrange & Act
+        IResult result = Result.OK().NoContent();
+
+        // Assert
+        Assert.True(result.IsSuccess);
+        Assert.Equal(StatusCode.NoContent, result.StatusCode);
+    }
 }
