@@ -14,7 +14,7 @@
     <PackageProjectUrl>https://www.tolitech.com.br</PackageProjectUrl>
     <PackageIcon>tolitech-icon.png</PackageIcon>
     <PackageReadmeFile>README.en.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/Tolitech/Results</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Tolitech/Tolitech.Results</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>results;guards</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
