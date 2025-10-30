@@ -1,4 +1,6 @@
-﻿namespace Tolitech.Results;
+﻿using Tolitech.Results.Resources;
+
+namespace Tolitech.Results;
 
 /// <summary>
 /// Provides extension methods for the <see cref="IResult"/> interface.
@@ -86,7 +88,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result.WithStatusCode(StatusCode.BadRequest);
+        return result.BadRequest(ErrorMessageResources.BadRequest_Detail);
     }
 
     /// <summary>
@@ -99,9 +101,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result
-            .WithDetail(detail)
-            .WithStatusCode(StatusCode.BadRequest);
+        return result.BadRequest(ErrorMessageResources.BadRequest_Title, detail);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result.WithStatusCode(StatusCode.Unauthorized);
+        return result.Unauthorized(ErrorMessageResources.Unauthorized_Detail);
     }
 
     /// <summary>
@@ -143,9 +143,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result
-            .WithDetail(detail)
-            .WithStatusCode(StatusCode.Unauthorized);
+        return result.Unauthorized(ErrorMessageResources.Unauthorized_Title, detail);
     }
 
     /// <summary>
@@ -174,7 +172,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result.WithStatusCode(StatusCode.Forbidden);
+        return result.Forbidden(ErrorMessageResources.Forbidden_Detail);
     }
 
     /// <summary>
@@ -187,9 +185,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result
-            .WithDetail(detail)
-            .WithStatusCode(StatusCode.Forbidden);
+        return result.Forbidden(ErrorMessageResources.Forbidden_Title, detail);
     }
 
     /// <summary>
@@ -218,7 +214,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result.WithStatusCode(StatusCode.NotFound);
+        return result.NotFound(ErrorMessageResources.NotFound_Detail);
     }
 
     /// <summary>
@@ -231,9 +227,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result
-            .WithDetail(detail)
-            .WithStatusCode(StatusCode.NotFound);
+        return result.NotFound(ErrorMessageResources.NotFound_Title, detail);
     }
 
     /// <summary>
@@ -262,7 +256,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result.WithStatusCode(StatusCode.Conflict);
+        return result.Conflict(ErrorMessageResources.Conflict_Detail);
     }
 
     /// <summary>
@@ -275,9 +269,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result
-            .WithDetail(detail)
-            .WithStatusCode(StatusCode.Conflict);
+        return result.Conflict(ErrorMessageResources.Conflict_Title, detail);
     }
 
     /// <summary>
@@ -306,7 +298,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result.WithStatusCode(StatusCode.InternalServerError);
+        return result.InternalServerError(ErrorMessageResources.InternalServerError_Detail);
     }
 
     /// <summary>
@@ -319,9 +311,7 @@ public static partial class IResultExtensions
     {
         ArgumentNullException.ThrowIfNull(result);
 
-        return result
-            .WithDetail(detail)
-            .WithStatusCode(StatusCode.InternalServerError);
+        return result.InternalServerError(ErrorMessageResources.InternalServerError_Title, detail);
     }
 
     /// <summary>

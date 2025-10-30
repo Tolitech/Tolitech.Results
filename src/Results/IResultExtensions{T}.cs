@@ -1,4 +1,6 @@
-﻿namespace Tolitech.Results;
+﻿using Tolitech.Results.Resources;
+
+namespace Tolitech.Results;
 
 /// <summary>
 /// Provides extension methods for the <see cref="IResult"/> interface.
@@ -111,6 +113,8 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.BadRequest_Title)
+            .WithDetail(ErrorMessageResources.BadRequest_Detail)
             .WithStatusCode(StatusCode.BadRequest)
             .WithValue(default!);
     }
@@ -127,6 +131,7 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.BadRequest_Title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.BadRequest)
             .WithValue(default!);
@@ -162,6 +167,8 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.Unauthorized_Title)
+            .WithDetail(ErrorMessageResources.Unauthorized_Detail)
             .WithStatusCode(StatusCode.Unauthorized)
             .WithValue(default!);
     }
@@ -178,6 +185,7 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.Unauthorized_Title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.Unauthorized)
             .WithValue(default!);
@@ -213,6 +221,8 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.Forbidden_Title)
+            .WithDetail(ErrorMessageResources.Forbidden_Detail)
             .WithStatusCode(StatusCode.Forbidden)
             .WithValue(default!);
     }
@@ -229,6 +239,7 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.Forbidden_Title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.Forbidden)
             .WithValue(default!);
@@ -264,6 +275,8 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.NotFound_Title)
+            .WithDetail(ErrorMessageResources.NotFound_Detail)
             .WithStatusCode(StatusCode.NotFound)
             .WithValue(default!);
     }
@@ -280,6 +293,7 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.NotFound_Title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.NotFound)
             .WithValue(default!);
@@ -315,6 +329,8 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.Conflict_Title)
+            .WithDetail(ErrorMessageResources.Conflict_Detail)
             .WithStatusCode(StatusCode.Conflict)
             .WithValue(default!);
     }
@@ -331,6 +347,7 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.Conflict_Title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.Conflict)
             .WithValue(default!);
@@ -366,6 +383,8 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.InternalServerError_Title)
+            .WithDetail(ErrorMessageResources.InternalServerError_Detail)
             .WithStatusCode(StatusCode.InternalServerError)
             .WithValue(default!);
     }
@@ -382,6 +401,7 @@ public static partial class IResultExtensions
         ArgumentNullException.ThrowIfNull(result);
 
         return result
+            .WithTitle(ErrorMessageResources.InternalServerError_Title)
             .WithDetail(detail)
             .WithStatusCode(StatusCode.InternalServerError)
             .WithValue(default!);
