@@ -24,7 +24,7 @@ This solution brings together three specialized libraries for result handling, H
 #### Success Result
 ```csharp
 var result = Result.OK();
-var resultWithValue = Result.OK<int>(42);
+var resultWithValue = Result<int>.OK(42);
 ```
 
 #### Error Result with Details
@@ -36,12 +36,12 @@ var result = Result.BadRequest()
 ```
 
 #### Available Factory Methods
-- `OK()`, `OK<T>(T value)`
-- `Created()`, `Created<T>(T value)`
-- `Accepted()`, `Accepted<T>(T value)`
-- `NoContent()`, `NoContent<T>()`
-- `Found()`, `Found<T>(T value)`
-- `NotModified()`, `NotModified<T>(T value)`
+- `OK()`, `OK(T value)`
+- `Created()`, `Created(T value)`
+- `Accepted()`, `Accepted(T value)`
+- `NoContent()`,
+- `Found()`, `Found(T value)`
+- `NotModified()`, `NotModified(T value)`
 - `BadRequest()`, `BadRequest(string detail)`, `BadRequest(string title, string detail)`
 - `Unauthorized()`, `Unauthorized(string detail)`, `Unauthorized(string title, string detail)`
 - `Forbidden()`, `Forbidden(string detail)`, `Forbidden(string title, string detail)`
