@@ -14,7 +14,7 @@
     <PackageReadmeFile>README.en.md</PackageReadmeFile>
     <Copyright>Copyright (c) 2025 Tolitech</Copyright>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/Tolitech/Results</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Tolitech/Tolitech.Results</RepositoryUrl>
     <PackageTags>results</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
