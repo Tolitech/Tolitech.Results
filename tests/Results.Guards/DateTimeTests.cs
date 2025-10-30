@@ -91,6 +91,57 @@ public class DateTimeTests
     }
 
     /// <summary>
+    /// Unit test to verify the behavior of the ErrorIfFuture method with a future DateTime.
+    /// </summary>
+    [Fact]
+    public void ErrorIfFuture_WithFutureDateTimeOffsetLocal_ReturnsFailureInResult()
+    {
+        // Arrange
+        IResult result = Result.OK();
+        DateTimeOffset date = DateTimeOffset.Now.AddHours(1);
+
+        // Act
+        result.Guard(date).ErrorIfFuture().End();
+
+        // Assert
+        Assert.True(result.IsFailure);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the ErrorIfFuture method with a future DateTime.
+    /// </summary>
+    [Fact]
+    public void ErrorIfFuture_WithFutureDateTimeOffsetNullable_ReturnsFailureInResult()
+    {
+        // Arrange
+        IResult result = Result.OK();
+        DateTimeOffset? date = DateTimeOffset.UtcNow.AddDays(1);
+
+        // Act
+        result.Guard(date).ErrorIfFuture().End();
+
+        // Assert
+        Assert.True(result.IsFailure);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the ErrorIfFuture method with a future DateTime.
+    /// </summary>
+    [Fact]
+    public void ErrorIfFuture_WithFutureDateTimeOffset_ReturnsFailureInResult()
+    {
+        // Arrange
+        IResult result = Result.OK();
+        DateTimeOffset date = DateTimeOffset.UtcNow.AddDays(1);
+
+        // Act
+        result.Guard(date).ErrorIfFuture().End();
+
+        // Assert
+        Assert.True(result.IsFailure);
+    }
+
+    /// <summary>
     /// Unit test to verify the behavior of the ErrorIfFuture method with a future DateOnly.
     /// </summary>
     [Fact]
@@ -360,6 +411,40 @@ public class DateTimeTests
 
         // Assert
         Assert.True(result.IsSuccess);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the ErrorIfPast method with a past DateTime.
+    /// </summary>
+    [Fact]
+    public void ErrorIfPast_WithPastDateTimeOffset_ReturnsFailureInResult()
+    {
+        // Arrange
+        IResult result = Result.OK();
+        DateTimeOffset date = DateTimeOffset.UtcNow.AddDays(-1);
+
+        // Act
+        result.Guard(date).ErrorIfPast().End();
+
+        // Assert
+        Assert.True(result.IsFailure);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the ErrorIfPast method with a past DateTime.
+    /// </summary>
+    [Fact]
+    public void ErrorIfPast_WithPastDateTimeOffsetNullable_ReturnsFailureInResult()
+    {
+        // Arrange
+        IResult result = Result.OK();
+        DateTimeOffset? date = DateTimeOffset.UtcNow.AddDays(-1);
+
+        // Act
+        result.Guard(date).ErrorIfPast().End();
+
+        // Assert
+        Assert.True(result.IsFailure);
     }
 
     /// <summary>
@@ -635,6 +720,40 @@ public class DateTimeTests
     }
 
     /// <summary>
+    /// Unit test to verify the behavior of the ErrorIfNotFuture method with a DateTime set to tomorrow.
+    /// </summary>
+    [Fact]
+    public void ErrorIfNotFuture_WithFutureDateTimeOffset_ReturnsSuccessInResult()
+    {
+        // Arrange
+        IResult result = Result.OK();
+        DateTimeOffset date = DateTimeOffset.UtcNow.AddDays(-1);
+
+        // Act
+        result.Guard(date).ErrorIfNotFuture().End();
+
+        // Assert
+        Assert.True(result.IsFailure);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the ErrorIfNotFuture method with a null DateTime.
+    /// </summary>
+    [Fact]
+    public void ErrorIfNotFuture_WithNullOffset_ReturnsSuccessInResult()
+    {
+        // Arrange
+        IResult result = Result.OK();
+        DateTimeOffset? date = DateTimeOffset.UtcNow.AddDays(-1);
+
+        // Act
+        result.Guard(date).ErrorIfNotFuture().End();
+
+        // Assert
+        Assert.True(result.IsFailure);
+    }
+
+    /// <summary>
     /// Unit test to verify the behavior of the ErrorIfNotFuture method with a DateOnly set to tomorrow.
     /// </summary>
     [Fact]
@@ -898,6 +1017,40 @@ public class DateTimeTests
         // Arrange
         IResult result = Result.OK();
         DateTime? date = DateTime.Today.AddDays(1);
+
+        // Act
+        result.Guard(date).ErrorIfNotPast().End();
+
+        // Assert
+        Assert.True(result.IsFailure);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the ErrorIfNotPast method with a DateTime set to yesterday.
+    /// </summary>
+    [Fact]
+    public void ErrorIfNotPast_WithPastDateTimeOffset_ReturnsSuccessInResult()
+    {
+        // Arrange
+        IResult result = Result.OK();
+        DateTimeOffset date = DateTimeOffset.UtcNow.AddDays(1);
+
+        // Act
+        result.Guard(date).ErrorIfNotPast().End();
+
+        // Assert
+        Assert.True(result.IsFailure);
+    }
+
+    /// <summary>
+    /// Unit test to verify the behavior of the ErrorIfNotPast method with a null DateTime.
+    /// </summary>
+    [Fact]
+    public void ErrorIfNotPast_WithNullOffset_ReturnsSuccessInResult()
+    {
+        // Arrange
+        IResult result = Result.OK();
+        DateTimeOffset? date = DateTimeOffset.UtcNow.AddDays(1);
 
         // Act
         result.Guard(date).ErrorIfNotPast().End();
